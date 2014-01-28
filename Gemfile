@@ -15,6 +15,14 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'capybara'
+  gem 'poltergeist'
+  gem 'selenium-webdriver'
+  gem 'factory_girl_rails'
+  gem 'pry'
+  gem 'rubocop'
+  gem 'launchy'
+  gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 gem 'jquery-rails'
