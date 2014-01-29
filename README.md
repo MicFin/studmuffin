@@ -29,13 +29,6 @@ On **Linux**, install via prebuilt binary provided on the [PhantomJS Downloads][
 page. As of this writing we are using version 1.9.2, but please check to see
 if there is an updated binary available.
 
-***A note for debian derivatives***
-
-If `apt-cache show phantomjs` shows a version >= 1.9.0, you can install
-directly from the vendor provided repositories via `sudo apt-get install phantomjs`.
-debian testing (currently jessie), for example, has a recent enough phantomjs.
-
-
 ``` sh
 cd /usr/local/share
 sudo wget https://phantomjs.googlecode.com/files/phantomjs-1.9.2-linux-x86_64.tar.bz2
@@ -67,18 +60,20 @@ In order for the pq gem (the name of the gem for postgres is shortened to "pq") 
 ``` sh
 $ sudo apt-get install libpq-dev
 ```
+
+### Install the required gems:
+
+``` sh
+$ bundle install
+```
+
 Prepare your databases
 
 ``` sh
 $ rake db:create
 $ rake db:migrate
 $ rake db:test:prepare
-```
-
-### Install the required gems:
-
-``` sh
-$ bundle install
+$ rake db:seed
 ```
 
 ### Running the development server

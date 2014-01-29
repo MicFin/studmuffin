@@ -6,5 +6,12 @@ require File.expand_path('../config/application', __FILE__)
 
 Studmuffin::Application.load_tasks
 
+if Rails.env.test? || Rails.env.development?
+  require 'rubocop/rake_task'
+  Rubocop::RakeTask.new
+end
+
+task checks: [:bundle_audit, :rubocop, :whitespace]
+
 task(:default).clear
-task default: [:spec]
+task default: [:spec, :checks]

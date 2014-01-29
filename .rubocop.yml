@@ -1,0 +1,54 @@
+AllCops:
+  Excludes:
+    - db/schema.rb
+    - vendor/cache/**
+    - script/rails
+    - config/*
+  Includes:
+    - '*.rake'
+    - Gemfile
+    - Guardfile
+    - Rakefile
+    - config.ru
+  RunRailsCops: true
+
+AlignParameters:
+  Enabled: false
+
+Blocks:
+  Enabled: false
+
+ClassLength:
+  Enabled: false
+
+CollectionMethods:
+  PreferredMethods:
+   collect!: map!
+   collect: map
+   find: detect
+   find_all: select
+   reduce: inject
+
+Documentation:
+  Enabled: false
+
+For:
+  EnforcedStyle: for
+
+IfUnlessModifier:
+  Enabled: false
+
+LineLength:
+  Max: 99
+
+MethodCalledOnDoEndBlock:
+  Enabled: true
+
+MethodLength:
+  Enabled: false
+
+RegexpLiteral:
+  MaxSlashes: 0
+
+SymbolArray:
+  Enabled: false

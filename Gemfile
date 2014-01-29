@@ -5,6 +5,7 @@ ruby '2.0.0'
 gem 'rails', '3.2.16'
 gem 'sqlite3'
 gem 'pg'
+gem 'devise'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -23,6 +24,7 @@ group :development, :test do
   gem 'launchy'
   gem 'spring'
   gem 'spring-commands-rspec'
+  gem 'bundler-audit'
 end
 
 gem 'jquery-rails'
