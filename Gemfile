@@ -6,11 +6,15 @@ gem 'rails', '3.2.16'
 gem 'sqlite3'
 gem 'pg'
 gem 'devise'
+gem 'jquery-rails'
+gem 'therubyracer'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'bootstrap-sass'
+  gem 'font-awesome-rails'
 end
 
 group :development, :test do
@@ -26,5 +30,3 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'bundler-audit'
 end
-
-gem 'jquery-rails'

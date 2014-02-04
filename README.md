@@ -6,13 +6,13 @@ Getting Started
 
 ### Setup RVM
 
-Install via the instructions on the [RVM Homepage][] to install. On Linux, do
+Install via the instructions on the [RVM Install Page][] to install. On Linux, do
 not use the version provided via apt-get.
 
 Install and configure your default ruby. As of this writing we are using
 MRI 2.0.0-p247.
 
-[RVM Homepage]: http://rvm.io/
+[RVM Install Page]: http://rvm.io/rvm/install
 
 ### Install PhantomJS
 
@@ -52,13 +52,24 @@ sudo apt-get update
 Install postgres
 
 ``` sh
-$ sudo apt-get install postgresql
+$ brew install postgresql           # Mac
+$ sudo apt-get install postgresql   # Linux
 ```
 
 In order for the pq gem (the name of the gem for postgres is shortened to "pq") to work, the following needs to be installed as well.
 
 ``` sh
 $ sudo apt-get install libpq-dev
+```
+
+Create a postgres user
+
+``` sh
+# on debian derivatives, including Ubuntu
+$ sudo su postgres -c 'createuser -P -d pguser'
+
+# on OS X
+$ createuser -P -d pguser
 ```
 
 ### Install the required gems:

@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
   <title>Studmuffin</title>
   <%= stylesheet_link_tag    'application', :media => 'all' %>
   <%= javascript_include_tag 'application' %>
@@ -10,7 +15,72 @@
   <p class='notice'><%= notice %></p>
   <p class='alert'><%= alert %></p>
 
-<%= yield %>
+  <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+      <li class="sidebar-brand"></li>
+      <li><a href="#top">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
 
+  <%= yield %>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center">
+          <ul class="list-inline">
+            <li><a href = "#"><i class="fa fa-facebook fa-3x"></a></i>
+            </li>
+            <li><a href = "#"><i class="fa fa-twitter fa-3x"></a></i>
+            </li>
+            <li><a href = "#"><i class="fa fa-pinterest fa-3x"></a></i>
+            </li>
+          </ul>
+          <div class="top-scroll">
+            <a href="#top"><i class="fa fa-circle-arrow-up scroll fa-4x"></i></a>
+          </div>
+          <hr>
+          <p>Copyright &copy; Kindrdfood 2014</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Custom JavaScript for the Side Menu and Smooth Scrolling -->
+  <script>
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+  </script>
+  <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+  </script>
+  <script>
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+  </script>
 </body>
 </html>
