@@ -1,0 +1,12 @@
+<p id='notice'><%= notice %></p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<%= link_to root_path(anchor: 'profile') do %>
+  <button id="edit" type="button" class="btn btn-default btn-lg">
+    <span class="glyphicon glyphicon-edit"></span> Edit
+  </button>
+<% end %>

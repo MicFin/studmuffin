@@ -18,7 +18,7 @@ class NotesController < ApplicationController
     @user = find_user
     @note = @user.notes.new params[:note]
     @note.save
-    redirect_to user_note_path(@user, @note)
+    redirect_to root_path(anchor: 'notes')
   end
 
   def edit
@@ -37,7 +37,7 @@ class NotesController < ApplicationController
     @user = find_user
     @note = find_note(@user)
     @note.destroy
-    redirect_to user_notes_path(@user)
+    redirect_to root_path(anchor: 'notes')
   end
 
   private

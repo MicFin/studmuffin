@@ -1,4 +1,3 @@
-<h1>New Note</h1>
 <%= form_for([@user, @note]) do |f| %>
   <% if @note.errors.any? %>
     <div id='error_explanation'>
@@ -14,12 +13,18 @@
   <div class='field'>
     <%= f.label :name %><br />
     <%= f.text_field :name %><br />
-
+    <br />
     <%= f.label :content %><br />
-    <%= f.text_field :content %>
+    <%= f.text_area :content %>
   </div>
 
-  <div class='actions'>
-    <%= f.submit %>
-  </div>
+  <br />
+
+  <%= button_tag( class: 'btn btn-default btn-lg') do %>
+    <span class="glyphicon glyphicon-floppy-saved"></span> Save
+  <% end %>
+
+  <%= link_to root_path(anchor: 'notes'), method: :get, class: "btn btn-default btn-lg" do %>
+    <span class= "glyphicon glyphicon-remove-circle"></span> Cancel
+  <% end %>
 <% end %>

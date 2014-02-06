@@ -18,14 +18,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.save
-    redirect_to @user
+    redirect_to root_path
   end
 
   def update
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
-    redirect_to @user
     @user.save
+    redirect_to root_path(anchor: 'profile')
   end
 
   def destroy

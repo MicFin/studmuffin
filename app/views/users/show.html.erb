@@ -1,9 +1,10 @@
 <p id='notice'><%= notice %></p>
-
+<%= link_to root_path(anchor: 'call') do %>
+  <button id="back" type="button" class="btn btn-default btn-lg">
+    <span class="glyphicon glyphicon-chevron-left"></span> Back
+  </button>
+<% end %>
 <p>
   <b>Email:</b>
   <%= @user.email %>
 </p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

@@ -1,2 +1,19 @@
+<%= link_to root_path(anchor: 'notes') do %>
+  <button id="back" type="button" class="btn btn-default btn-lg">
+    <span class="glyphicon glyphicon-chevron-left"></span> Back
+  </button>
+<% end %>
 <h2><%= @note.name %></h2>
 <%= @note.content %>
+<br />
+<br />
+<%= link_to edit_user_note_path(@user, @note) do %>
+  <button id="edit" type="button" class="btn btn-default btn-lg">
+    <span class="glyphicon glyphicon-edit"></span> Edit
+  </button>
+<% end %>
+<%= link_to user_note_path(@user, @note), method: :delete, data: { confirm: 'Are you sure?' } do %>
+  <button id="delete" type="button" class="btn btn-default btn-lg">
+    <span class="glyphicon glyphicon-trash"></span> Delete
+  </button>
+<% end %>

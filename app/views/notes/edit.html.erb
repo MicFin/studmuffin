@@ -14,12 +14,20 @@
   <div class='field'>
     <%= f.label :name %><br />
     <%= f.text_field :name %><br />
-
+    <br />
     <%= f.label :content %><br />
-    <%= f.text_field :content %>
+    <%= f.text_area :content %>
   </div>
 
-  <div class='actions'>
-    <%= f.submit %>
-  </div>
+  <br />
+
+  <%= button_tag( :class => "btn btn-default btn-lg") do %>
+    <span class="glyphicon glyphicon-floppy-saved"></span> Save
+  <% end %>
+
+  <%= link_to user_note_path(@user, @note) do %>
+    <button id="cancel" type="button" class="btn btn-default btn-lg">
+      <span class="glyphicon glyphicon-remove-circle"></span> Cancel
+    </button>
+  <% end %>
 <% end %>

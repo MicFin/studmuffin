@@ -5,5 +5,8 @@ class HomeController < ApplicationController
 
   def show
     @users = User.all
+    @user = current_user
+    @notes = @user.notes.all
+    @note = @user.notes.new
   end
 end

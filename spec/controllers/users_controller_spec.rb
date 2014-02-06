@@ -12,14 +12,6 @@ describe UsersController do
   # UsersController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe 'GET index' do
-    it 'assigns all users as @users' do
-      user = User.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:users).should eq([user])
-    end
-  end
-
   describe 'GET show' do
     it 'assigns the requested user as @user' do
       user = User.create! valid_attributes
@@ -32,14 +24,6 @@ describe UsersController do
     it 'assigns a new user as @user' do
       get :new, {}, valid_session
       assigns(:user).should be_a_new(User)
-    end
-  end
-
-  describe 'GET edit' do
-    it 'assigns the requested user as @user' do
-      user = User.create! valid_attributes
-      get :edit, { id: user.to_param }, valid_session
-      assigns(:user).should eq(user)
     end
   end
 
@@ -61,7 +45,7 @@ describe UsersController do
 
       it 'redirects to the created user' do
         post :create, { user: valid_attributes }, valid_session
-        response.should redirect_to(User.last)
+        response.should redirect_to(root_path)
       end
     end
 
@@ -91,7 +75,7 @@ describe UsersController do
       it 'redirects to the user' do
         user = User.create! valid_attributes
         put :update, { id: user.to_param, user: valid_attributes }, valid_session
-        response.should redirect_to(user)
+        response.should redirect_to('/#profile')
       end
     end
 
