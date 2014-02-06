@@ -18,6 +18,15 @@
       <div class="col-md-6 col-md-offset-3 text-center">
         <h2>Subtle Sidebar is the Perfect Template for your Next Portfolio Website Project!</h2>
         <p class="lead">This template really has it all. It's up to you to customize it to your liking! It features some fresh photography courtesy of <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a>.</p>
+        <% @users.each do |user| %>
+          <div>
+            <span id="call-<%= user.id %>" style="display:none">
+              User: <%= user.email %>,
+              Presence: <span id="<%= user.id %>">offline</span>,
+              <a onclick="call('<%= user.id %>')" href="javascript:void(0)">Call</a>
+            </span>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -142,3 +151,56 @@
       <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
   </small>
 </div>
+
+<!-- Vline javascript -->
+<script type="text/javascript">
+  var loginToken = "<%= Vline.create_login_token(current_user.id) %>";
+  var serviceId = "<%= Vline.service_id %>";
+  var authId = "<%= Vline.provider_id %>";
+  var profile = {"displayName" : "<%= current_user.email %>"};
+  var people = [
+      <% @users.each do |user| %>
+      "<%= user.id %>",
+      <% end %>
+  ];
+  var client = vline.Client.create({"serviceId": serviceId, "ui": true});
+  var session;
+
+  function call(userId) {
+    if (session) {
+      session.getPerson(userId)
+        .done(function(person) {
+            person.startMedia();
+        });
+    }
+  }
+
+  client.on('login', function(e) {
+    session = e.target;
+    for (var i=0; i < people.length; i++) {
+      session.getPerson(people[i])
+      .done(function(person) {
+        var updatePresence = function(e) {
+          var person = e.target;
+          var presenceState = person.getPresenceState();
+          var shortId = person.getShortId();
+          var elem = document.getElementById(shortId);
+          elem.innerHTML = presenceState;
+
+          // Show only online users
+          elem = document.getElementById('call-' + shortId);
+          if (presenceState === "online" && shortId !== "<%= current_user.id %>") {
+            elem.style.display = "";
+          } else {
+            elem.style.display = "none";
+          }
+        };
+
+        updatePresence({target: person});
+        person.on('change:presenceState', updatePresence);
+      });
+    }
+  });
+
+  client.login(authId, profile, loginToken);
+</script>

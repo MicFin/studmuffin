@@ -78,7 +78,7 @@ $ createuser -P -d pguser
 $ bundle install
 ```
 
-Prepare your databases
+### Prepare your databases
 
 ``` sh
 $ rake db:create
@@ -87,10 +87,25 @@ $ rake db:test:prepare
 $ rake db:seed
 ```
 
+### Setup your Environment
+
+You will need to create a `.env` file in the root of the project to define
+some configuration and security settings. An example env file has been
+provided in the root of this project as `env.example`. Copy this file to
+`.env` and fill in the values as needed.
+
+If you run the app via `foreman start`, the environment variables in the
+`.env` file will be exported automatically. If you run outside of foreman,
+you can use the following to populate the env vars:
+
+``` sh
+export `cat .env`
+```
+
 ### Running the development server
 
 ``` sh
-$ rails s
+$ foreman start
 ```
 
 ### Running tests:

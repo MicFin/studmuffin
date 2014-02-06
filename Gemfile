@@ -8,6 +8,7 @@ gem 'pg'
 gem 'devise'
 gem 'jquery-rails'
 gem 'therubyracer'
+gem 'foreman'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -15,6 +16,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'bootstrap-sass'
   gem 'font-awesome-rails'
+  gem 'vline-rails'
 end
 
 group :development, :test do
@@ -29,4 +31,5 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'bundler-audit'
+  gem 'forward'
 end
