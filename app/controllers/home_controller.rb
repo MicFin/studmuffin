@@ -8,5 +8,6 @@ class HomeController < ApplicationController
     @user = current_user
     @notes = @user.notes.all
     @note = @user.notes.new
+    @user_allergies = UsersAllergy.where(user_id: @user.id)
   end
 end

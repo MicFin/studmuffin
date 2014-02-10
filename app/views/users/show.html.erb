@@ -5,6 +5,16 @@
   </button>
 <% end %>
 <p>
-  <b>Email:</b>
-  <%= @user.email %>
+  <b>Email:</b></br>
+  <%= @user.email %></br>
+  <b>Fullname: </b></br>
+  <%= @user.fullname %></br>
+  <b>Allergy: </b></br>
+  <% @user_allergies.each do |allergy| %>
+    <% if allergy == @user_allergies.last %>
+      <%= Allergy.find(allergy.allergy_id).name %>
+    <% else %>
+      <%= Allergy.find(allergy.allergy_id).name + ', ' %>
+    <% end %>
+  <% end %>
 </p>

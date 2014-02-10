@@ -12,7 +12,15 @@
     </div>
   <% end %>
 
-  <div class='field'>
+  <div class='form-group'>
+    <%= f.label :fullname %><br />
+    <%= f.text_field :fullname %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :allergy %><br />
+    <%= f.select :allergy_ids, Allergy.all.collect {|x| [x.name, x.id]}, {}, :size => Allergy.count, :multiple => true %>
+  </div>
+  <div class='form-group'>
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
