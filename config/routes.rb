@@ -4,7 +4,9 @@ Studmuffin::Application.routes.draw do
   mount Vline::API => '_vline/api'
 
   devise_for :users
-  resources :users
+  resources :users do
+    resources :notes
+  end
 
   root to: 'home#show'
 end

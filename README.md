@@ -64,6 +64,7 @@ $ sudo apt-get install libpq-dev
 
 Create a postgres user
 
+Create the default db user named "pguser", authenticated via the password pgpass (which you will be prompted for two times via the command below):
 ``` sh
 # on debian derivatives, including Ubuntu
 $ sudo su postgres -c 'createuser -P -d pguser'
