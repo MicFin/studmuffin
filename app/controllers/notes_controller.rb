@@ -1,4 +1,6 @@
 class NotesController < ApplicationController
+  before_filter :user_is_permitted
+
   def index
     @user = find_user
     @notes = @user.notes.all

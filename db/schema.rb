@@ -28,16 +28,17 @@ ActiveRecord::Schema.define(:version => 20140223215052) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",              :default => "", :null => false
-    t.string   "encrypted_password", :default => "", :null => false
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.string   "email",              :default => "",    :null => false
+    t.string   "encrypted_password", :default => "",    :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.string   "fullname"
+    t.boolean  "admin",              :default => false, :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
-  create_table "users_allergies", :id => false, :force => true do |t|
+  create_table "users_allergies", :force => true do |t|
     t.integer  "allergy_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
