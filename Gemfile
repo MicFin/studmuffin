@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 gem 'rails', '3.2.16'
-gem 'sqlite3'
 gem 'pg'
 gem 'devise'
 gem 'jquery-rails'
@@ -32,4 +31,8 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'bundler-audit'
   gem 'forward'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
