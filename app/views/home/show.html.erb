@@ -41,6 +41,7 @@
             </span>
           </div>
         <% end %>
+        <span id='no-users-online'>No users online</span>
       </div>
     </div>
   </div>
@@ -148,8 +149,10 @@
 
           // Show only online users
           elem = document.getElementById('call-' + shortId);
+          noUserMsg = document.getElementById('no-users-online')
           if (presenceState === "online" && shortId !== "<%= current_user.id %>") {
             elem.style.display = "";
+            noUserMsg.style.display = "none"
           } else {
             elem.style.display = "none";
           }
