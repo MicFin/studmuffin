@@ -4,11 +4,11 @@
   </button>
 <% end %>
 <p>
-  <b>Email:</b></br>
-  <%= @user.email %></br>
-  <b>Fullname: </b></br>
-  <%= @user.fullname %></br>
-  <b>Allergy: </b></br>
+  <b>Email:</b><br/>
+  <%= @user.email %><br/><br/>
+  <b>Fullname: </b><br/>
+  <%= @user.fullname %><br/><br/>
+  <b>Allergy: </b><br/>
   <% @user_allergies.each do |allergy| %>
     <% if allergy == @user_allergies.last %>
       <%= Allergy.find(allergy.allergy_id).name %>
