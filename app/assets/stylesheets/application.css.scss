@@ -227,6 +227,13 @@ height: 150px;
 width: 600px;
 }
 
+#logout {
+  position: fixed;
+  top: 0;
+  margin: 5px 0 0 5px;
+  z-index: 1;
+}
+
 /* Responsive */
 
 @media (max-width: 768px) {

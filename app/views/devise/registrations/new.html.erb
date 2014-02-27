@@ -1,0 +1,43 @@
+<h2>Sign up</h2>
+
+<%#= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%#= devise_error_messages! %>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id='error_explanation'>
+      <h2><%= pluralize(@user.errors.count, 'error') %> prohibited this user from being saved:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <form class = 'form-horizontal' role = 'form'>
+    <div class='form-group'>
+      <%= f.label :fullname %>
+      <%= f.text_field :fullname, placeholder: 'Firstname Lastname' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :allergy %>
+      <%= f.select :allergy_ids, Allergy.all.collect {|x| [x.name, x.id]}, {}, :size => Allergy.count, :multiple => true %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :email %>
+      <%= f.text_field :email, placeholder: 'User@Example.com' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :password %>
+      <%= f.password_field :password, placeholder: 'Password' %>
+    </div>
+    <div class='actions'>
+      <%= f.submit  "Sign up" %>
+    </div>
+  </form>
+
+<% end %>
+
+<%= render "devise/shared/links" %>
+
