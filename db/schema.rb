@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20140223215052) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
-  create_table "users_allergies", :force => true do |t|
+  create_table "users_allergies", :id => false, :force => true do |t|
     t.integer  "allergy_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
