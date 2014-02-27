@@ -1,5 +1,7 @@
 for i in 1..3
-  User.find_or_create_by_email email: "user#{i}@example.com", password: 'changeme'
+  email = "user#{i}@example.com"
+  name = "User #{i}"
+  User.find_or_create_by_email email: email, password: 'changeme', fullname: name
 end
 Allergy.create(name: 'Wheat')
 Allergy.create(name: 'Soy')
