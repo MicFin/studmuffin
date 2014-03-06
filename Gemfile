@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'therubyracer'
 gem 'foreman'
 gem 'paperclip'
+gem 'rmagick', '2.13.2', :git=>'http://github.com/rmagick/rmagick.git'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

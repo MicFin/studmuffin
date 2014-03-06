@@ -1,3 +1,9 @@
+GIT
+  remote: http://github.com/rmagick/rmagick.git
+  revision: 79e1708c7f6792a3a90cb8cb3ffaeb74c58e092e
+  specs:
+    rmagick (2.13.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -269,6 +275,7 @@ DEPENDENCIES
   pry
   rails (= 3.2.16)
   rails_12factor
+  rmagick (= 2.13.2)!
   rspec-rails (~> 2.0)
   rubocop
   sass-rails (~> 3.2.3)

@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
-    @user.save
+    @user.save!
     redirect_to root_path(anchor: 'profile')
   end
 
@@ -34,4 +34,5 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_path
   end
+
 end
