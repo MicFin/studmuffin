@@ -11,12 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140223215052) do
+ActiveRecord::Schema.define(:version => 20140308202456) do
 
   create_table "allergies", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "startdate"
+    t.datetime "enddate"
+    t.date     "allday"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "notes", :force => true do |t|
@@ -38,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20140223215052) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
-  create_table "users_allergies", :force => true do |t|
+  create_table "users_allergies", :id => false, :force => true do |t|
     t.integer  "allergy_id"
     t.integer  "user_id"
     t.datetime "created_at", :null => false

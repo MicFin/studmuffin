@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require fullcalendar
 //= require_tree .
 // Loads all Bootstrap javascripts
 //= require bootstrap

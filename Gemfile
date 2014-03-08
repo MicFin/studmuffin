@@ -16,6 +16,7 @@ group :assets do
   gem 'bootstrap-sass'
   gem 'font-awesome-rails'
   gem 'vline-rails'
+  gem 'fullcalendar-rails'
 end
 
 group :development, :test do
