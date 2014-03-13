@@ -26,11 +26,9 @@
   </div>
   <div class='form-group'>
     <%= f.label "User Profile Picture" %><br />
-    <%= image_tag @user.avatar.url(:thumb) %>
-    <%= f.file_field :avatar %>
-  </div>
-
-  <br />
+    <%= image_tag @user.avatar.url(:thumb), class: "profile-picture" %>
+    <%= f.file_field :avatar, class: "file-prompt" %><br />
+  </div><br />
 
   <%= button_tag( class: 'btn btn-default btn-lg') do %>
     <span class="glyphicon glyphicon-floppy-saved"></span> Save

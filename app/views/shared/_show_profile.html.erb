@@ -12,10 +12,11 @@
     <% else %>
       <%= Allergy.find(allergy.allergy_id).name + ', ' %>
     <% end %>
-  <% end %>
+  <% end %></br></br>
+  <b>User Profile Picture</b></br>
 </p>
-<b>User Profile Picture</b></br>
-<%= image_tag @user.avatar.url(:medium) %></br></br>
+
+<%= image_tag @user.avatar.url(:medium), class: 'profile-picture' %></br></br>
 
 <%= link_to root_path(anchor: 'profile') do %>
   <button id="edit" type="button" class="btn btn-default btn-lg">
