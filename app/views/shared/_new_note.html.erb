@@ -20,11 +20,11 @@
 
   <br />
 
-  <%= button_tag( class: 'btn btn-default btn-lg') do %>
+  <%= button_tag( class: 'btn btn-default btn-lg', id: 'save') do %>
     <span class="glyphicon glyphicon-floppy-saved"></span> Save
   <% end %>
 
-  <%= link_to root_path(anchor: 'notes'), method: :get, class: "btn btn-default btn-lg" do %>
+  <%= link_to root_path(anchor: 'notes'), method: :get, class: "btn btn-default btn-lg", id: 'cancel' do %>
     <span class= "glyphicon glyphicon-remove-circle"></span> Cancel
   <% end %>
 <% end %>

@@ -61,5 +61,8 @@ module Studmuffin
 
     # Tell Rails to only partially load your app - required for Heroku
     config.assets.initialize_on_precompile = false
+
+    # Suppress I18n.enforce_available_locales deprecation warning
+    config.i18n.enforce_available_locales = true
   end
 end
