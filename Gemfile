@@ -31,6 +31,8 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'bundler-audit'
   gem 'forward'
+  gem 'dotenv-rails'
+  gem 'database_cleaner'
 end
 
 group :production do

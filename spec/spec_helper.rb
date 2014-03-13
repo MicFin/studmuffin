@@ -10,10 +10,18 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   config.fixture_path = '#{::Rails.root}/spec/fixtures'
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
   config.infer_base_class_for_anonymous_controllers = false
   config.order = 'random'
+  config.include FactoryGirl::Syntax::Methods
+  config.include Features::SessionHelpers, type: :feature
 end
 
 require 'capybara/poltergeist'
+
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, timeout: 10_000)
+end
+
 Capybara.javascript_driver = :poltergeist
+Capybara.default_wait_time = 5
