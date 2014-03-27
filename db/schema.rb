@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140302215341) do
+ActiveRecord::Schema.define(:version => 20140326210545) do
 
   create_table "allergies", :force => true do |t|
     t.string   "name"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(:version => 20140302215341) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "childname"
+    t.integer  "childheight"
+    t.integer  "childweight"
+    t.date     "childdob"
+    t.text     "childhist"
+    t.text     "childmeds"
+    t.datetime "apptdate"
+    t.text     "apptquestions"
+    t.text     "apptfoodhist"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

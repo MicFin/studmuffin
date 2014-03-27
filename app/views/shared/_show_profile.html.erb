@@ -14,9 +14,39 @@
     <% end %>
   <% end %></br></br>
   <b>User Profile Picture</b></br>
+  <%= image_tag @user.avatar.url(:medium), class: 'profile-picture' %></br></br>
+
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-4 col-md-offset-4 text-center">
+      <h2>Appointment Details</h2>
+      <hr>
+      <b>Next Appointment Date</b></br>
+      <%= @user.apptdate.strftime('%B %e %Y at %l:%M%P') %></br></br>
+      <b>Child's Food Diary</b></br>
+      <%= @user.apptfoodhist %></br></br>
+      <b>Questions for Dietitian</b></br>
+      <%= @user.apptquestions %></br></br>
+
+      <h2>Child's Details</h2>
+      <hr>
+      <b>Child's Name</b></br>
+      <%= @user.childname %></br></br>
+      <b>Birthday</b></br>
+      <%= @user.childdob.strftime('%B %e, %Y') %></br></br>
+      <b>Height</b></br>
+      <%= @user.childheight %> inches</br></br>
+      <b>Weight</b></br>
+      <%= @user.childweight %> pounds</br></br>
+      <b>Medical History</b></br>
+      <%= @user.childhist %></br></br>
+      <b>Medications</b></br>
+      <%= @user.childmeds %></br></br>
+    </div>
+  </div>
 </p>
 
-<%= image_tag @user.avatar.url(:medium), class: 'profile-picture' %></br></br>
+
 
 <%= link_to root_path(anchor: 'profile') do %>
   <button id="edit" type="button" class="btn btn-default btn-lg">

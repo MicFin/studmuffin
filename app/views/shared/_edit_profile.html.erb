@@ -28,6 +28,42 @@
     <%= f.label "User Profile Picture" %><br />
     <%= image_tag @user.avatar.url(:thumb), class: "profile-picture" %>
     <%= f.file_field :avatar, class: "file-prompt" %><br />
+  </div>
+  <div class='form-group'>
+    <%= f.label "Child's Name" %><br />
+    <%= f.text_field :childname %>
+  </div><br />
+  <div class='form-group'>
+    <%= f.label "Child's Height (inches)" %><br />
+    <%= f.text_field :childheight %>
+  </div><br />
+  <div class='form-group'>
+    <%= f.label "Child's Weight (lbs)" %><br />
+    <%= f.text_field :childweight %>
+  </div><br />
+  <div class='form-group'>
+    <%= f.label "Child's Birthdate" %><br />
+    <%= f.text_field :childdob %>
+  </div><br />
+  <div class='form-group'>
+    <%= f.label "Child's Medical History" %><br />
+    <%= f.text_area :childhist %>
+  </div><br />
+  <div class='form-group'>
+    <%= f.label "Child's Medications" %><br />
+    <%= f.text_area :childmeds %>
+  </div><br />
+  <div class='form-group'>
+    <%= f.label "Next Appointment" %><br />
+    <%= f.datetime_select :apptdate, order: [:month, :day, :year], minute_step: 30, ampm:true %>
+  </div>
+  <div class='form-group'>
+    <%= f.label "Child's Food Journal" %><br />
+    <%= f.text_area :apptfoodhist %>
+  </div><br />
+  <div class='form-group'>
+    <%= f.label "Questions for Dietitian" %><br />
+    <%= f.text_area :apptquestions %>
   </div><br />
 
   <%= button_tag( class: 'btn btn-default btn-lg') do %>
