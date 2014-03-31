@@ -29,26 +29,26 @@ ActiveRecord::Schema.define(:version => 20140326210545) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",               :default => "",    :null => false
-    t.string   "encrypted_password",  :default => "",    :null => false
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.string   "email",               :default => "",                    :null => false
+    t.string   "encrypted_password",  :default => "",                    :null => false
+    t.datetime "created_at",                                             :null => false
+    t.datetime "updated_at",                                             :null => false
     t.string   "fullname"
     t.string   "allergy"
-    t.boolean  "admin",               :default => false, :null => false
+    t.boolean  "admin",               :default => false,                 :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "childname"
-    t.integer  "childheight"
-    t.integer  "childweight"
-    t.date     "childdob"
-    t.text     "childhist"
-    t.text     "childmeds"
-    t.datetime "apptdate"
-    t.text     "apptquestions"
-    t.text     "apptfoodhist"
+    t.string   "childname",           :default => "NA"
+    t.integer  "childheight",         :default => 9999
+    t.integer  "childweight",         :default => 9999
+    t.date     "childdob",            :default => '1961-01-01'
+    t.text     "childhist",           :default => "NA"
+    t.text     "childmeds",           :default => "NA"
+    t.datetime "apptdate",            :default => '1901-01-01 01:00:00'
+    t.text     "apptquestions",       :default => "NA"
+    t.text     "apptfoodhist",        :default => "NA"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
