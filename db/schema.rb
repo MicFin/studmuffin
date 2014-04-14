@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140414202511) do
+ActiveRecord::Schema.define(:version => 20140414203121) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(:version => 20140414202511) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.string   "fullname"
     t.boolean  "admin",                  :default => false, :null => false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
