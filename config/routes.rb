@@ -15,4 +15,6 @@ devise_for :users, :controllers => { :confirmations => "confirmations", registra
     resources :notes
   end
 
+  get "/survey", to: "home#survey", as: :survey_page
+
 end

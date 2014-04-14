@@ -17,6 +17,12 @@
 //= require bootstrap
 
 $('document').ready(function() {
+
+
+
+
+
+	// IE SUPPORT FOR "PLACEHOLDER" TEXT
 	var placeholderSupport = ("placeholder" in document.createElement("input"));
 		if(!placeholderSupport){
 		  //This browser does not support the placeholder attribute

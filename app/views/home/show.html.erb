@@ -10,27 +10,35 @@
   <div class="container">
     <div class="row text-center">
       <%= image_tag "logo.png", class: "logo" %>
-      <div class="col-md-6 col-md-offset-3 text-center">
-        <h2>Online Users</h2>
-        <hr>
-        <% @users.each do |user| %>
-          <div>
-            <span id="call-<%= user.id %>" style="display:none">
-              <%#= link_to user.fullname, user_path(user) %>
-              <a onclick="call('<%= user.id %>')" href="javascript:void(0)">
-                <button id="place-call" type="button" class="btn btn-default btn-xs">
-                  <span class="glyphicon glyphicon-earphone"></span> Call
-                </button>
-              </a>
-            </span>
-          </div>
-        <% end %>
-        <span id='no-users-online'>No users online</span>
-      </div>
     </div>
   </div>
 </div>
 
+
+<% if @user.is_admin? %>
+  <div class="col-md-6 col-md-offset-3 text-center">
+    <h2>Online Users</h2>
+    <hr>
+    <% @users.each do |user| %>
+      <div>
+        <span id="call-<%= user.id %>" style="display:none">
+          <%#= link_to user.fullname, user_path(user) %>
+          <a onclick="call('<%= user.id %>')" href="javascript:void(0)">
+            <button id="place-call" type="button" class="btn btn-default btn-xs">
+              <span class="glyphicon glyphicon-earphone"></span> Call
+            </button>
+          </a>
+        </span>
+      </div>
+    <% end %>
+    <span id='no-users-online'>No users online</span>
+  </div>
+<% else %>
+  <div class="col-xs-12 text-center">
+  <h1>Thank you for waiting patiently,</h1>
+  <h1>your appointment will begin shortly!</h1>
+  </div>
+<% end %>
 
 <!-- Vline javascript -->
 <script type="text/javascript">

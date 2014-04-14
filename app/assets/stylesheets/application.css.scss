@@ -41,39 +41,10 @@ body {
   border-color: #983806;
 }
 
-#call {
-  padding: 50px 0;
-}
-
-#notes {
-  background: $kindrdgreen;
-  padding: 50px 0;
-  color: #ffffff;
-}
-
 .fa-twitter,
 .fa-facebook,
 .fa-pinterest {
   color: $kindrdorange;
-}
-
-#index-notes {
-  width: 50%;
-  margin: 0 auto;
-
-  h3, a {
-    color: #ffffff;
-  }
-
-  p {
-    text-align: left;
-  }
-}
-
-#notes {
-  input, textarea {
-    color: #000;
-  }
 }
 
 textarea {
