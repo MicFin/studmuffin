@@ -5,8 +5,8 @@ default: &default
   min_messages: WARNING
   pool: 5
   timeout: 5000
-  username: pguser
-  password: pgpass
+  # username: pguser
+  # password: pgpass
 
 development:
   <<: *default
