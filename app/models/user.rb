@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :fullname, :allergy_ids, :password_confirmation
+  attr_accessible :email, :password, :fullname, :allergy_ids, :password_confirmation, :first_name, :last_name
   devise :database_authenticatable, :registerable, :timeoutable
   has_many :users_allergies
   has_many :notes
