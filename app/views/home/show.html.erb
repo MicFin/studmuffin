@@ -32,7 +32,7 @@
         <% @users.each do |user| %>
           <div>
             <span id="call-<%= user.id %>" style="display:none">
-              <%= link_to user.fullname, user_path(user) %>
+              <%#= link_to user.fullname, user_path(user) %>
               <a onclick="call('<%= user.id %>')" href="javascript:void(0)">
                 <button id="place-call" type="button" class="btn btn-default btn-xs">
                   <span class="glyphicon glyphicon-earphone"></span> Call
@@ -57,7 +57,7 @@
     </div>
     <div class="row text-center">
       <div id="index-notes">
-        <%= render :partial => "shared/index_notes" %>
+        <%#= render :partial => "shared/index_notes" %>
       </div>
       <div id="new-note"></div>
     </div>
@@ -74,7 +74,7 @@
     </div>
     <div class="row text-center">
       <div id="show-profile">
-        <%= render :partial => "shared/show_profile" %>
+        <%#= render :partial => "shared/show_profile" %>
       </div>
       <div id="edit-profile"></div>
     </div>
@@ -167,22 +167,3 @@
   client.login(authId, profile, loginToken);
 </script>
 
-<script language="javascript" type="text/javascript">
-  jQuery(
-    function editProfile($) {
-      $('#edit').on('click', function() {
-        $("#edit-profile").html('<%= escape_javascript(render :partial => "shared/edit_profile").html_safe %>');
-        $("#show-profile").empty();
-      });
-    }
-  );
-
-  jQuery(
-    function newNote($) {
-      $('#new').on('click', function() {
-        $("#new-note").html('<%= escape_javascript(render :partial => "shared/new_note").html_safe %>');
-        $("#index-notes").empty();
-      });
-    }
-  );
-</script>

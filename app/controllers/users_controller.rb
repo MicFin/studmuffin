@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    binding.pry
     @user = User.new
   end
 
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    binding.pry
     @user = User.new(params[:user])
     @user.save
     redirect_to root_path
