@@ -15,3 +15,31 @@
 //= require_tree .
 // Loads all Bootstrap javascripts
 //= require bootstrap
+
+$('document').ready(function() {
+	var placeholderSupport = ("placeholder" in document.createElement("input"));
+		if(!placeholderSupport){
+		  //This browser does not support the placeholder attribute
+		  //use javascript instead
+		  $('[placeholder]').focus(function() {
+		    var input = $(this);
+		    if (input.val() === input.attr('placeholder')) {
+		      input.val('');
+		      input.removeClass('placeholder');
+		    }
+		  }).blur(function() {
+		    var input = $(this);
+		    if (input.val() === '' || input.val() === input.attr('placeholder')) {
+		      input.addClass('placeholder');
+		      input.val(input.attr('placeholder'));
+		    }
+		  }).blur().parents('form').submit(function() {
+		    $(this).find('[placeholder]').each(function() {
+		      var input = $(this);
+		      if (input.val() === input.attr('placeholder')) {
+		        input.val('');
+		      }
+		    })
+		  });
+		}
+});

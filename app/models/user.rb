@@ -4,4 +4,6 @@ class User < ActiveRecord::Base
   has_many :users_allergies
   has_many :notes
   has_many :allergies, through: :users_allergies
+
+  validates_presence_of :first_name, :last_name, :email, :password, {message: "can't be blank" }
 end

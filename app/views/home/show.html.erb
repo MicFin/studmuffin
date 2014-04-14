@@ -1,27 +1,11 @@
-<a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
-<div id="sidebar-wrapper">
-  <ul class="sidebar-nav">
-    <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-    <li class="sidebar-brand"></li>
-    <li><a href="#top">Home</a></li>
-    <li><a href="#call">Make a Call</a></li>
-    <li><a href="#notes">My Notes</a></li>
-    <li><a href="#profile">My Profile</a></li>
-  </ul>
-</div>
-
-<div id="top" class="header">
-  <div class="vert-text">
-    <div class="title">
-      <h1>KindrdFood</h1>
-      <h3>
-        Guidance to good health through great food
-      </h3>
-      <a href="#call" class="btn btn-default btn-lg">Get Started</a>
-    </div>
-  </div>
-</div>
-
+  <% if current_user %>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <button id="logout" type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-log-out"></span> Logout
+      </button>
+    <% end %>
+  <% end %>
+  
 <div id="call">
   <div class="container">
     <div class="row text-center">
