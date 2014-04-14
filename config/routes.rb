@@ -7,6 +7,12 @@ Studmuffin::Application.routes.draw do
   resources :users do
     resources :notes
   end
-
-  root to: 'home#show'
+devise_scope :user do
+  authenticated :user do
+    root :to => 'home#show', as: :authenticated_root
+  end
+  unauthenticated :user do
+    root :to => 'devise/registrations#new', as: :unauthenticated_root
+  end
+end
 end
