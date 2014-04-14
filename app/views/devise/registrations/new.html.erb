@@ -17,12 +17,12 @@
 
   <form class = 'form-horizontal' role = 'form'>
     <div class='form-group'>
-      <%= f.label :fullname %>
-      <%= f.text_field :fullname, placeholder: 'Firstname Lastname' %>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, placeholder: 'First Name' %>
     </div>
     <div class='form-group'>
-      <%= f.label :allergy %>
-      <%= f.select :allergy_ids, Allergy.all.collect {|x| [x.name, x.id]}, {}, :size => Allergy.count, :multiple => true %>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, placeholder: 'Last Name' %>
     </div>
     <div class='form-group'>
       <%= f.label :email %>
