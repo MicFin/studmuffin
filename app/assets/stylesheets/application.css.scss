@@ -24,9 +24,6 @@ body {
   width: 100%;
 }
 
-
-
-
 .btn-primary {
   background-color: $kindrdorange;
   border-color: $darkorange;
@@ -119,4 +116,10 @@ input[type="password"]{
    border-color: rgba(241, 101, 33, 0.5);
    border-width: 5px;
    border-radius: 5px;
+}
+
+.survey-page {
+  background-color: $kindrdorange;
+  padding: 50px;
+  border-radius: 5px;
 }
