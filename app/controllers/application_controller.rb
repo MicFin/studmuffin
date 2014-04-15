@@ -10,4 +10,13 @@ class ApplicationController < ActionController::Base
   def not_found
     render file: "#{Rails.root}/public/404.html", status: 404, layout: false
   end
+
+  def after_sign_in_path_for(resource)
+
+    # if resource.is_admin? == true
+    #   #add where an admin should go on sign up
+    # else
+      :survey_page
+    # end 
+  end 
 end

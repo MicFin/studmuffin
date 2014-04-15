@@ -259,6 +259,7 @@ DEPENDENCIES
   forward
   jquery-rails
   launchy
+  libv8
   pg
   poltergeist
   pry

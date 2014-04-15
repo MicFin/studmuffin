@@ -1,45 +1,51 @@
-<h2>Sign up</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+    <%= image_tag("logo.png", class: "img-responsive") %>
+    </div>
+  </div>
+  <div class="row">
 
-<%#= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%#= devise_error_messages! %>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-g-6">
+      <h3 >THREE QUICK STEPS! </h3> 
+    
+        <ul>
+          <li style="color: green"><b>Create a login on this page.</b></li>
+          <li>Help your RDN prep for you with a health profile.</li>
+          <li>Make sure your technology works for an easy appointment.</li>
+        </ul>
 
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id='error_explanation'>
-      <h2><%= pluralize(@user.errors.count, 'error') %> prohibited this user from being saved:</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <p>Let’s make sure that you have a great appointment with your Registered Dietitian Nutritionist (RDN)!
+        Your RDN needs to hear about you and what you need to that you need to eat safe, healthy, great tasting food.</p>
 
-  <form class = 'form-horizontal' role = 'form'>
-    <div class='form-group'>
-      <%= f.label :fullname %>
-      <%= f.text_field :fullname, placeholder: 'Firstname Lastname' %>
+        <p>This should only take a few short minutes!</p>
+    
     </div>
-    <div class='form-group'>
-      <%= f.label :allergy %>
-      <%= f.select :allergy_ids, Allergy.all.collect {|x| [x.name, x.id]}, {}, :size => Allergy.count, :multiple => true %>
-    </div>
-    <div class='form-group'>
-      <%= f.label :email %>
-      <%= f.text_field :email, placeholder: 'User@Example.com' %>
-    </div>
-    <div class='form-group'>
-      <%= f.label :password %>
-      <%= f.password_field :password, placeholder: 'Password' %>
-    </div>
-    <div class='actions'>
-      <%= f.submit  "Sign up" %>
-    </div>
-    <div class='emphasized'>
-      For best results, we recommend using <a href='https://www.google.com/intl/en/chrome/browser/'>Google Chrome</a>
-    </div>
-  </form>
-
-<% end %>
-
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <form class='form-horizontal text-center' role='form'>
+          <div class='form-group'>     
+            <%= f.text_field :first_name, placeholder: ' First Name' %>
+          </div>
+          <div class='form-group'>   
+            <%= f.text_field :last_name, placeholder: ' Last Name' %>
+          </div>
+          <div class='form-group'>
+            <%= f.text_field :email, placeholder: ' User@Example.com' %>
+          </div>
+          <div class='form-group'>      
+            <%= f.password_field :password, placeholder: ' Password' %>
+          </div>
+          <div class='actions text-center'>
+            <%= f.submit  "BEGIN", class: "btn-success btn-lg" %>
+          </div>
+          <div class='emphasized'>
+            For best results, we recommend using <a href='https://www.google.com/intl/en/chrome/browser/'>Google Chrome</a>
+          </div>
+        </form>
+      <% end %>
 <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
