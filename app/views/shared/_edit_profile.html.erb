@@ -43,7 +43,7 @@
   </div><br />
   <div class='form-group'>
     <%= f.label "Child's Birthdate" %><br />
-    <%= f.text_field :childdob %>
+    <%= f.date_select :childdob, order: [:month, :day, :year], start_year: Date.today.year-100, end_year: Date.today.year %>
   </div><br />
   <div class='form-group'>
     <%= f.label "Child's Medical History" %><br />
@@ -55,7 +55,7 @@
   </div><br />
   <div class='form-group'>
     <%= f.label "Next Appointment" %><br />
-    <%= f.datetime_select :apptdate, order: [:month, :day, :year], minute_step: 30, ampm:true %>
+    <%= f.datetime_select :apptdate, order: [:month, :day, :year], minute_step: 30, ampm:true, start_year: Date.today.year, end_year: Date.today.year + 1 %>
   </div>
   <div class='form-group'>
     <%= f.label "Child's Food Journal" %><br />
