@@ -6,4 +6,6 @@
 
 
 User.create(email: "tara@kindrdfood.com", password: 'tararules', first_name: "Tara", last_name: "McCarthy", admin: true)
+
 User.create(email: "david@kindrdfood.com", password: 'davidrules', first_name: "David", last_name: "Constantine", admin: true)
+

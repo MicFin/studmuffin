@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name
+  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :admin
   devise :database_authenticatable, :registerable, :timeoutable
 
   validates_presence_of :first_name, :last_name, :email, :password, {message: "can't be blank" }
