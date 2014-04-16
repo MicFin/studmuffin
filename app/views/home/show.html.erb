@@ -22,7 +22,7 @@
     <% @users.each do |user| %>
       <div>
         <span id="call-<%= user.id %>" style="display:none">
-        <%= @user.first_name %>
+        <%= user.first_name %>
           <a onclick="call('<%= user.id %>')" href="javascript:void(0)">
             <button id="place-call" type="button" class="btn btn-default btn-xs">
               <span class="glyphicon glyphicon-earphone"></span> Call
