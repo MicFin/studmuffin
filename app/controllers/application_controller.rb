@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     # if resource.is_admin? == true
     #   #add where an admin should go on sign up
     # else
-      :survey_page
+      :show_page
     # end 
   end 
 end
