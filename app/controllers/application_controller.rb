@@ -13,18 +13,23 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     # add to sign in count every time user signs in
-    resource.sign_in_count = resource.sign_in_count + 1
-    if resource.is_admin? == true
-      # send admin user to show page
-      :show_page
-    else
-      if resource.sign_in_count == 0
-        # if first time then send to survey
-        :survey_page
-      else
-        # if not first time then send to waiting room
+    binding.pry
+    if resource.class == User
+      resource.sign_in_count = resource.sign_in_count + 1
+      if resource.is_admin? == true
+        # send admin user to show page
         :show_page
-      end
-    end 
+      else
+        if resource.sign_in_count == 0
+          # if first time then send to survey
+          :survey_page
+        else
+          # if not first time then send to waiting room
+          :show_page
+        end
+      end 
+    end
+    super
   end 
+
 end
