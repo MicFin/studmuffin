@@ -14,6 +14,23 @@ Studmuffin::Application.configure do
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
+  config.action_mailer.default_url_options = { :host => 'kindrdfood-rd.herokuapp.com' }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"  
+
+  config.action_mailer.smtp_settings = {
+    :address   => "smtp.gmail.com",
+    :port      => 587,
+    :user_name => ENV["GMAIL_USERNAME"],
+    :password  => ENV["GMAIL_PASSWORD"],
+    domain: ENV["GMAIL_DOMAIN"],
+    authentication: "plain",
+    :enable_starttls_auto => true 
+  }
+
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
 
