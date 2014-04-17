@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     # add to sign in count every time user signs in
-    binding.pry
     if resource.class == User
       resource.sign_in_count = resource.sign_in_count + 1
       if resource.is_admin? == true
