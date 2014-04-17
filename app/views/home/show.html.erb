@@ -15,14 +15,14 @@
 </div>
 
 
-<% if @user.is_admin? %>
+<% if @user.first_name == "Tara"%>
   <div class="col-md-6 col-md-offset-3 text-center">
     <h2>Online Users</h2>
     <hr>
     <% @users.each do |user| %>
       <div>
         <span id="call-<%= user.id %>" style="display:none">
-          <%#= link_to user.fullname, user_path(user) %>
+        <%= user.first_name %>
           <a onclick="call('<%= user.id %>')" href="javascript:void(0)">
             <button id="place-call" type="button" class="btn btn-default btn-xs">
               <span class="glyphicon glyphicon-earphone"></span> Call

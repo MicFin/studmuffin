@@ -16,5 +16,5 @@ devise_for :users, :controllers => { :confirmations => "confirmations", registra
   end
 
   get "/survey", to: "home#survey", as: :survey_page
-
+  get "/show", to: "home#show", as: :show_page
 end
