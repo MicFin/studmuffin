@@ -23,7 +23,10 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
       <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-        <%= devise_error_messages! %>
+        <%#= devise_error_messages! %>
+
+        <%= render 'layouts/messages' %>
+
         <form class='form-horizontal text-center' role='form'>
           <div class='form-group'>
             <%= f.text_field :email, placeholder: ' Email' %>

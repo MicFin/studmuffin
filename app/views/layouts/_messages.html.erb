@@ -1,0 +1,8 @@
+<% flash.each do |key, value| %>
+<div class="col-xs-2"></div>
+  <div class="alert alert-danger alert-block form-group col-xs-8" style="padding-top: 25px">
+    <button type="button" data-dismiss="alert" class="close">×</button>
+    <h4><%= value %></h4>
+  </div>
+<% end %>
+
