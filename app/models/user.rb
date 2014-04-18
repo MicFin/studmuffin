@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   # validates :phone_number, format: { with: 1?\s*\W?\s*([2-9][0-8][0-9])\s*\W?\s*([2-9][0-9]{2})\s*\W?\s*([0-9]{4})(\se?x?t?(\d*))?;, message: "bad format" }
   phony_normalize :phone_number, :default_country_code => 'US'
   # validates :email, :uniqueness => true
-  validates_presence_of :phone_number, {message: "is an invalid number.  Please provide your RDN with a phonenumber to call in case of a connection issue.  We will ONLY call you during a consultation.  And we will NEVER share your number." }
+  validates_presence_of :phone_number, {message: "is an invalid number.  Please provide your RDN with a phone number to call in case of a connection issue.  We will ONLY call you during a consultation.  And we will NEVER share your number." }
   validates :phone_number, :phony_plausible => true
 
   def is_admin?
