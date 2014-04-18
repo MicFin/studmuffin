@@ -11,6 +11,7 @@ gem 'foreman'
 gem "libv8"
 gem 'newrelic_rpm'
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'phony_rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
