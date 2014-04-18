@@ -3,3 +3,8 @@
 
 en:
   hello: "Hello world"
+
+en:
+  errors:
+    messages:
+      improbable_phone: "is an invalid number.  Your phone number will ONLY be used in case of a connection problem.  Otherwise we will NEVER call you.  And we will NEVER share your number."

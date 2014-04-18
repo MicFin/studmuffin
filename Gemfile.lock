@@ -83,6 +83,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    countries (0.9.3)
+      currencies (~> 0.4.2)
+    currencies (0.4.2)
     database_cleaner (1.2.0)
     descendants_tracker (0.0.3)
     devise (3.2.2)
@@ -163,6 +166,11 @@ GEM
       ast (~> 1.1)
       slop (~> 3.4, >= 3.4.5)
     pg (0.17.1)
+    phony (2.2.4)
+    phony_rails (0.6.1)
+      activesupport (>= 3.0)
+      countries (>= 0.8.2)
+      phony (~> 2.1)
     poltergeist (1.5.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -310,6 +318,7 @@ DEPENDENCIES
   libv8
   newrelic_rpm
   pg
+  phony_rails
   poltergeist
   pry
   rails (= 3.2.16)
