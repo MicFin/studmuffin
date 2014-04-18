@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :timeoutable, :trackable, :recoverable, :rememberable, :validatable, :timeoutable
 
-  validates_presence_of :first_name, :last_name, :email, :password, {message: "can't be blank" }
+  validates_presence_of :first_name, :last_name, {message: "can't be blank" }
   # validates :email, :uniqueness => true
   validates_presence_of :phone_number, {message: "can't be blank.  Your phone number will ONLY be used in case of a connection problem.  Otherwise we will NEVER call you.  And we will NEVER share your number." }
 
