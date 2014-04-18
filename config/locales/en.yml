@@ -7,4 +7,4 @@ en:
 en:
   errors:
     messages:
-      improbable_phone: "is an invalid number.  Your phone number will ONLY be used in case of a connection problem.  Otherwise we will NEVER call you.  And we will NEVER share your number."
+      improbable_phone: "is an invalid number.  Please provide your RDN with a number to call in case of a connection issue.  We will ONLY call you during a consultation.  And we will NEVER share your number."
