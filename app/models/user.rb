@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   # saves phone number in normalized US format
   phony_normalize :phone_number, :default_country_code => 'US'
+  
   # validates phone number is in a correct format
   validates :phone_number, :phony_plausible => true
 
