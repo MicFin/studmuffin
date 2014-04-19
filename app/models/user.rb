@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   # saves phone number in normalized US format
   phony_normalize :phone_number, :default_country_code => 'US'
   # validates phone number is present
-  validates_presence_of :phone_number, {message: "is an invalid number.  Please provide your RDN with a phone number to call in case of a connection issue.  We will ONLY call you during a consultation.  And we will NEVER share your number." }
+  # validates_presence_of :phone_number, {message: "is an invalid number.  Please provide your RDN with a phone number to call in case of a connection issue.  We will ONLY call you during a consultation.  And we will NEVER share your number." }
   # validates phone number is in a correct format
   validates :phone_number, :phony_plausible => true
 
