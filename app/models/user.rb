@@ -3,11 +3,14 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :timeoutable, :trackable, :recoverable, :rememberable, :validatable, :timeoutable
 
+  has_many :user_surveys
+  has_many :surveys, through: :user_surveys
+
   validates_presence_of :first_name, :last_name, {message: "can't be blank" }
 
   # saves phone number in normalized US format
   phony_normalize :phone_number, :default_country_code => 'US'
-  
+
   # validates phone number is in a correct format
   validates :phone_number, :phony_plausible => true
 

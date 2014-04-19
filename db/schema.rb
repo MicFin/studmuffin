@@ -55,12 +55,10 @@ ActiveRecord::Schema.define(:version => 20140419184255) do
   create_table "user_surveys", :force => true do |t|
     t.integer  "survey_id"
     t.integer  "user_id"
-    t.integer  "order"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "user_surveys", ["order"], :name => "index_user_surveys_on_order"
   add_index "user_surveys", ["survey_id"], :name => "index_user_surveys_on_survey_id"
   add_index "user_surveys", ["user_id"], :name => "index_user_surveys_on_user_id"
 
