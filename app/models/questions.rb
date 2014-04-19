@@ -4,5 +4,5 @@ class Questions < ActiveRecord::Base
   has_many :answers, through: :choice
   has_many :survey_questions
   has_many :surveys, through: :survey_questions
-  attr_accessible :title
+  attr_accessible :content
 end
