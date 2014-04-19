@@ -45,8 +45,8 @@ body {
 }
 
 textarea {
-height: 150px;
-width: 600px;
+  height: 150px;
+  width: 600px;
 }
 
 #logout {
@@ -81,6 +81,11 @@ width: 600px;
 }
 
 /* Mike */
+
+.form-text{
+  padding-left: 5%;
+}
+
 input[type="text"] {
    height: 40px;
    width: 100%;
