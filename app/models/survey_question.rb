@@ -1,4 +1,4 @@
-class SurveyQuestions < ActiveRecord::Base
+class SurveyQuestion < ActiveRecord::Base
   belongs_to :survey
   belongs_to :question
   has_many :user_answers

@@ -1,4 +1,4 @@
-class Answers < ActiveRecord::Base
+class Answer < ActiveRecord::Base
   has_many :user_selected_answers
   has_many :user_answers, through: :user_selected_answers
   has_many :users, through: :user_answers
