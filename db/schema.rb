@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140418161017) do
+ActiveRecord::Schema.define(:version => 20140421172800) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -45,6 +45,47 @@ ActiveRecord::Schema.define(:version => 20140418161017) do
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+
+  create_table "questions", :force => true do |t|
+    t.integer  "survey_id"
+    t.string   "type"
+    t.text     "choices"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "questions", ["survey_id"], :name => "index_questions_on_survey_id"
+
+  create_table "surveys", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_survey_answers", :force => true do |t|
+    t.integer  "user_survey_id"
+    t.integer  "question_id"
+    t.text     "user_input"
+    t.integer  "choice"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "user_survey_answers", ["question_id"], :name => "index_user_survey_answers_on_question_id"
+  add_index "user_survey_answers", ["user_survey_id"], :name => "index_user_survey_answers_on_user_survey_id"
+
+  create_table "user_surveys", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "survey_id"
+    t.boolean  "completed",    :default => false
+    t.datetime "completed_at"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "user_surveys", ["survey_id"], :name => "index_user_surveys_on_survey_id"
+  add_index "user_surveys", ["user_id"], :name => "index_user_surveys_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
