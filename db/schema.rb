@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140419191548) do
+ActiveRecord::Schema.define(:version => 20140421172800) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -46,58 +46,16 @@ ActiveRecord::Schema.define(:version => 20140419191548) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
-  create_table "answers", :force => true do |t|
-    t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "choice_answers", :force => true do |t|
-    t.integer  "choice_id"
-    t.integer  "answer_id"
-    t.integer  "order"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "choice_answers", ["answer_id"], :name => "index_choice_answers_on_answer_id"
-  add_index "choice_answers", ["choice_id"], :name => "index_choice_answers_on_choice_id"
-  add_index "choice_answers", ["order"], :name => "index_choice_answers_on_order"
-
-  create_table "choices", :force => true do |t|
-    t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "question_types", :force => true do |t|
-    t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "questions", :force => true do |t|
-    t.integer  "question_type_id"
-    t.integer  "choice_id"
-    t.string   "content"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
-  add_index "questions", ["choice_id"], :name => "index_questions_on_choice_id"
-  add_index "questions", ["question_type_id"], :name => "index_questions_on_question_type_id"
-
-  create_table "survey_questions", :force => true do |t|
     t.integer  "survey_id"
-    t.integer  "question_id"
-    t.integer  "order"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "type"
+    t.text     "choices"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  add_index "survey_questions", ["order"], :name => "index_survey_questions_on_order"
-  add_index "survey_questions", ["question_id"], :name => "index_survey_questions_on_question_id"
-  add_index "survey_questions", ["survey_id"], :name => "index_survey_questions_on_survey_id"
+  add_index "questions", ["survey_id"], :name => "index_questions_on_survey_id"
 
   create_table "surveys", :force => true do |t|
     t.string   "title"
@@ -105,32 +63,25 @@ ActiveRecord::Schema.define(:version => 20140419191548) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "user_answers", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "survey_question_id"
+  create_table "user_survey_answers", :force => true do |t|
+    t.integer  "user_survey_id"
+    t.integer  "question_id"
     t.text     "user_input"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-  end
-
-  add_index "user_answers", ["survey_question_id"], :name => "index_user_answers_on_survey_question_id"
-  add_index "user_answers", ["user_id"], :name => "index_user_answers_on_user_id"
-
-  create_table "user_selected_answers", :force => true do |t|
-    t.integer  "user_answer_id"
-    t.integer  "answer_id"
+    t.integer  "choice"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
 
-  add_index "user_selected_answers", ["answer_id"], :name => "index_user_selected_answers_on_answer_id"
-  add_index "user_selected_answers", ["user_answer_id"], :name => "index_user_selected_answers_on_user_answer_id"
+  add_index "user_survey_answers", ["question_id"], :name => "index_user_survey_answers_on_question_id"
+  add_index "user_survey_answers", ["user_survey_id"], :name => "index_user_survey_answers_on_user_survey_id"
 
   create_table "user_surveys", :force => true do |t|
-    t.integer  "survey_id"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "survey_id"
+    t.boolean  "completed",    :default => false
+    t.datetime "completed_at"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   add_index "user_surveys", ["survey_id"], :name => "index_user_surveys_on_survey_id"

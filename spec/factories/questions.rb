@@ -1,9 +1,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :question, :class => 'Questions' do
-    question_type nil
-    choice nil
-    title "MyString"
+  factory :question do
+    survey nil
+    type ""
+    choices "MyText"
   end
 end
