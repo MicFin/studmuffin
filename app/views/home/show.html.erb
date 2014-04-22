@@ -1,4 +1,4 @@
-  <% binding.pry%>
+
   <% if current_user %>
     <%= link_to destroy_user_session_path, method: :delete do %>
       <button id="logout" type="button" class="btn btn-default btn-sm">
@@ -16,7 +16,7 @@
 </div>
 
 
-<% if @user.first_name == "Tara"%>
+<% if @user.is_rd?%>
   <div class="col-md-6 col-md-offset-3 text-center">
     <h2>Online Users</h2>
     <hr>

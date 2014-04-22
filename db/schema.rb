@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140421174517) do
+ActiveRecord::Schema.define(:version => 20140422162930) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -46,6 +46,23 @@ ActiveRecord::Schema.define(:version => 20140421174517) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "dietary_restrictions", :force => true do |t|
+    t.string   "name"
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "families", :force => true do |t|
+    t.string   "name"
+    t.string   "location"
+    t.integer  "head_of_family_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "families", ["head_of_family_id"], :name => "index_families_on_head_of_family_id"
+
   create_table "questions", :force => true do |t|
     t.integer  "survey_id"
     t.string   "type"
@@ -58,11 +75,43 @@ ActiveRecord::Schema.define(:version => 20140421174517) do
 
   add_index "questions", ["survey_id"], :name => "index_questions_on_survey_id"
 
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
+  add_index "roles", ["name"], :name => "index_roles_on_name"
+
   create_table "surveys", :force => true do |t|
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "user_dietary_restrictions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "dietary_restriction_id"
+    t.text     "other_field"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  add_index "user_dietary_restrictions", ["dietary_restriction_id"], :name => "index_user_dietary_restrictions_on_dietary_restriction_id"
+  add_index "user_dietary_restrictions", ["user_id"], :name => "index_user_dietary_restrictions_on_user_id"
+
+  create_table "user_families", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "family_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "user_families", ["family_id"], :name => "index_user_families_on_family_id"
+  add_index "user_families", ["user_id"], :name => "index_user_families_on_user_id"
 
   create_table "user_survey_answers", :force => true do |t|
     t.integer  "user_survey_id"
@@ -118,5 +167,12 @@ ActiveRecord::Schema.define(:version => 20140421174517) do
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "users_roles", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+  end
+
+  add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
 
 end
