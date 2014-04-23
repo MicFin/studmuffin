@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :user_surveys
   has_many :surveys, through: :user_surveys
-  has_many :user_answers
+  has_many :user_dietary_restrictions
+  has_many :dietary_restrictions, through: :user_dietary_restrictions
   
   validates_presence_of :first_name, :last_name, {message: "can't be blank" }
 

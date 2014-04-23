@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140422162930) do
+ActiveRecord::Schema.define(:version => 20140423030116) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -49,8 +49,9 @@ ActiveRecord::Schema.define(:version => 20140422162930) do
   create_table "dietary_restrictions", :force => true do |t|
     t.string   "name"
     t.string   "type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.boolean  "input_option"
   end
 
   create_table "families", :force => true do |t|

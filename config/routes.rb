@@ -6,11 +6,12 @@ Studmuffin::Application.routes.draw do
   match '_vline/launch' => 'vline#launch', :via => :get
   mount Vline::API => '_vline/api'
 
-devise_for :users, :controllers => { :confirmations => "confirmations", registrations: "devise/registrations" } 
+  devise_for :users, :controllers => { :confirmations => "confirmations", registrations: "devise/registrations" } 
 
   devise_scope :user do
     authenticated :user do
       root :to => 'home#show', as: :authenticated_root
+      resources :families
     end
     unauthenticated :user do
       root :to => 'devise/registrations#new', as: :unauthenticated_root
@@ -20,4 +21,5 @@ devise_for :users, :controllers => { :confirmations => "confirmations", registra
 
   get "/survey", to: "home#survey", as: :survey_page
   get "/show", to: "home#show", as: :show_page
+
 end

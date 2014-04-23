@@ -4,13 +4,16 @@ class FamiliesController < ApplicationController
   end
 
   def show
+    @user = current_user
     @family = Family.find(params[:id])
     @family_dietary_restrictions = @family.dietary_restrictions
     @family_members = @family.users 
   end
 
   def new
-    @family = Family.new
+    @user = current_user
+    @family = Family.new(name: "#{@user.last_name} Family")
+    binding.pry
   end
 
   def edit
@@ -18,8 +21,12 @@ class FamiliesController < ApplicationController
   end
 
   def create
+    @user = current_user
     @family = Family.new(params[:family])
+    @family.head_of_family_id = @user.id
+    @family.users << @user
     @family.save
+    binding.pry
     redirect_to root_path
   end
 
