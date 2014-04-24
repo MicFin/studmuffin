@@ -14,6 +14,8 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'phony_rails'
 gem 'cancancan', '~> 1.7'
 gem "rolify"
+gem "cocoon"
+gem 'simple_form'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

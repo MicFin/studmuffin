@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140423030116) do
+ActiveRecord::Schema.define(:version => 20140424192733) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -163,11 +163,18 @@ ActiveRecord::Schema.define(:version => 20140423030116) do
     t.string   "last_name"
     t.string   "phone_number"
     t.boolean  "rd"
+    t.integer  "age_months"
+    t.string   "sex"
+    t.integer  "height_inches"
+    t.integer  "weight_ounces"
   end
 
+  add_index "users", ["age_months"], :name => "index_users_on_age_months"
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["height_inches"], :name => "index_users_on_height_inches"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["weight_ounces"], :name => "index_users_on_weight_ounces"
 
   create_table "users_roles", :id => false, :force => true do |t|
     t.integer "user_id"

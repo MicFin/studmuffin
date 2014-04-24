@@ -8,7 +8,9 @@ class User < ActiveRecord::Base
   has_many :surveys, through: :user_surveys
   has_many :user_dietary_restrictions
   has_many :dietary_restrictions, through: :user_dietary_restrictions
-  
+  has_many :user_families
+  has_many :families, through: :user_families
+
   validates_presence_of :first_name, :last_name, {message: "can't be blank" }
 
   # saves phone number in normalized US format

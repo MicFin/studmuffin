@@ -17,9 +17,38 @@
       <%= f.text_field :name, placeholder: @family.name %>
     </div>
     <div class='form-group'>
+  <%= f.fields_for @user do |ff| %>
+    <%= ff.label_tag :first_name %>
+    <%= ff.text_field :first_name, placeholder: 'First Name', %>
+    <%= ff.label_tag :last_name %>
+    <%= ff.text_field :last_name, placeholder: 'Last Name', %>
+    <%= ff.label_tag :age %>
+    <%= ff.text_field :age, placeholder: 'Enter Age', %>
+    <%= ff.label_tag :height %>
+    <%= ff.text_field :height_feet, placeholder: 'Last Name', %>
+  <% end %>
 		</div>
     <div class='actions'>
       <%= f.submit %>
     </div>
   </form>
+<% end %>
+
+
+<%= form_for @quote do |f| %>
+  <%= f.fields_for @customer do |builder| %>
+    <%= label_tag :firstname %>
+    <%= builder.text_field :firstname %>
+    <%= label_tag :lastname %>
+    <%= builder.text_field :lastname %>
+  <% end %>
+  <%= f.fields_for @item do |builder| %>
+    <%= label_tag :name %>
+    <%= builder.text_field :name %>
+    <%= label_tag :description %>
+    <%= builder.text_field :description %>
+  <% end %>
+  <%= label_tag :quote_number %>
+  <%= f.text_field :quote_number %>
+  <%= f.submit %>
 <% end %>

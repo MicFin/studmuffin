@@ -74,6 +74,7 @@ GEM
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     cliver (0.3.2)
+    cocoon (1.2.6)
     coderay (1.1.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -259,6 +260,9 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0.4)
+    simple_form (2.1.1)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     slop (3.4.7)
     spring (1.0.0)
     spring-commands-rspec (1.0.1)
@@ -308,6 +312,7 @@ DEPENDENCIES
   bundler-audit
   cancancan (~> 1.7)
   capybara
+  cocoon
   coffee-rails (~> 3.2.1)
   database_cleaner
   devise
@@ -331,6 +336,7 @@ DEPENDENCIES
   rubocop
   sass-rails (~> 3.2.3)
   selenium-webdriver
+  simple_form
   spring
   spring-commands-rspec
   therubyracer
