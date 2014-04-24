@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140424192733) do
+ActiveRecord::Schema.define(:version => 20140424224236) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -171,7 +171,6 @@ ActiveRecord::Schema.define(:version => 20140424192733) do
 
   add_index "users", ["age_months"], :name => "index_users_on_age_months"
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["height_inches"], :name => "index_users_on_height_inches"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
   add_index "users", ["weight_ounces"], :name => "index_users_on_weight_ounces"

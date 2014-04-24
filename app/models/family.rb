@@ -1,12 +1,15 @@
 class Family < ActiveRecord::Base
   belongs_to :head_of_family, :class_name => "User", :foreign_key => "user_id"
-  attr_accessible :location, :name, :head_of_family_id, users_attributes: [:id, :description, :done, :_destroy], head_of_family_attributes: [:id, :description, :done, :_destroy]
+  attr_accessible :location, 
+                    :name,
+                    :users_attributes
   
   has_many :user_families
   has_many :users, through: :user_families
 
   accepts_nested_attributes_for :users, :reject_if => :all_blank, :allow_destroy => true
-  accepts_nested_attributes_for :head_of_family, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :user_families, :reject_if => :all_blank, :allow_destroy => true
+
 
 
 

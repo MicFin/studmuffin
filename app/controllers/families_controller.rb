@@ -1,6 +1,6 @@
 class FamiliesController < ApplicationController
   def index
-    @families = user.all
+    @families = Family.all
   end
 
   def show
@@ -13,7 +13,8 @@ class FamiliesController < ApplicationController
   def new
     @user = current_user
     @family = Family.new(name: "#{@user.last_name} Family")
-    binding.pry
+    @family.users.build
+    @new_user = User.new
   end
 
   def edit
@@ -21,13 +22,14 @@ class FamiliesController < ApplicationController
   end
 
   def create
+    binding.pry
     @user = current_user
     @family = Family.new(params[:family])
-    @family.head_of_family_id = @user.id
     @family.users << @user
+    @family.head_of_family = @user
     @family.save
     binding.pry
-    redirect_to root_path
+    render :index 
   end
 
   def update
