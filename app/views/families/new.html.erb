@@ -1,4 +1,4 @@
-<h1>Register</h1>
+<h1>Who makes your table special?</h1>
 <%= form_for(@family) do |f| %>
   <% if @family.errors.any? %>
     <div id='error_explanation'>
@@ -10,14 +10,22 @@
       </ul>
     </div>
   <% end %>
-
-  <form class = 'form-horizontal' role = 'form'>
+  <form class='form-horizontal' role='form'>
     <div class='form-group'>
       <%= f.label :name %>
       <%= f.text_field :name, placeholder: @family.name %>
     </div>
     <div class='form-group'>
-		</div>
+      <%= f.label :location %>
+      <%= f.text_field :location, placeholder: "City, State or Zip Code" %>
+    </div>
+<%= f.fields_for :user do |ff| %>
+    <div class='form-group'>
+      <%= ff.label :first_name, "First Name" %>
+      <%= ff.text_field :location, placeholder: "First Name" %>
+      <%= ff.hidden_field :location, placeholder: "First Name" %>
+    </div>
+<% end %>
     <div class='actions'>
       <%= f.submit %>
     </div>

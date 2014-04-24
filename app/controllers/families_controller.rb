@@ -13,6 +13,7 @@ class FamiliesController < ApplicationController
   def new
     @user = current_user
     @family = Family.new(name: "#{@user.last_name} Family")
+    @new_user = User.new
     binding.pry
   end
 
