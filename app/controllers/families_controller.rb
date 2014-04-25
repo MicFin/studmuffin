@@ -15,6 +15,10 @@ class FamiliesController < ApplicationController
     @family = Family.new(name: "#{@user.last_name} Family")
     @family.users.build
     @new_user = User.new
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def edit
