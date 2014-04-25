@@ -10,5 +10,5 @@ $(document).ready(function() {
 			$("#child-forms-div-"+family_clicks).show()
 	});
 
-	$(".date-picker").datepicker();
+	// $(".date-picker").datepicker();
  });

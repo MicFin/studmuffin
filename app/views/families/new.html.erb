@@ -20,20 +20,34 @@
       <div id="child-forms-div-<%=i%>" class='form-group'>
         <div class='form-group col-xs-6 col-sm-4 col-md-3 col-md-3'>
           <%= f.fields_for :users, @new_user do |ff| %>
-
-            <div class="form-group"><%= label_tag :first_name %>
-            <%= ff.text_field :first_name, placeholder: 'First Name' %>
+            <% if @new_user.errors.any? %>
+              <div id='error_explanation'>
+                <h2><%= pluralize(@new_user.errors.count, 'error') %> prohibited this table guest from being saved:</h2>
+                <ul>
+                  <% @new_user.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="form-group">
+            <%= label_tag :first_name %>
+            <%= ff.text_field :first_name, placeholder: 'First Name'%>
             </div>
-            <div class="form-group"><%= label_tag :last_name %>
-            <%= ff.text_field :last_name, placeholder: 'Last Name' %>
+            <div class="form-group">
+            <%= label_tag :last_name %>
+            <%= ff.text_field :last_name, placeholder: 'Last Name'%>
             </div>
-            <div class="form-group date-picker"><%= label_tag :birth_date %></br>
-            <%= ff.date_select :age_months, :order => [:month, :day, :year] %>
+            <div class="form-group date-picker">
+            <%= label_tag :birth_date %></br>
+            <%= ff.date_select :birth_date, :start_year => 1920, :end_year => 2014 %>
             </div>
-            <div class="form-group"><%= label_tag :height_inches %>
+            <div class="form-group">
+            <%= label_tag :height_inches %>
             <%= ff.number_field :height_inches, placeholder: 'Height in Inches' %>
             </div>
-            <div class="form-group"><%= label_tag :weight_ounces %>
+            <div class="form-group">
+            <%= label_tag :weight_ounces %>
             <%= ff.number_field :weight_ounces, placeholder: 'Weight in Pounds'%>
             </div>
           <% end %>

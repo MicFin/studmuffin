@@ -26,13 +26,11 @@ class FamiliesController < ApplicationController
   end
 
   def create
-    binding.pry
     @user = current_user
     @family = Family.new(params[:family])
     @family.users << @user
     @family.head_of_family = @user
     @family.save
-    binding.pry
     render :index 
   end
 

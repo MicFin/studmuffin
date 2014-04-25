@@ -7,11 +7,8 @@ class Family < ActiveRecord::Base
   has_many :user_families
   has_many :users, through: :user_families
 
-  accepts_nested_attributes_for :users, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :users, :reject_if => :all_blank, :allow_destroy => true, :reject_if => :no_first_name
   accepts_nested_attributes_for :user_families, :reject_if => :all_blank, :allow_destroy => true
-
-
-
 
   def dietary_restrictions
     family_restrictions = []
@@ -24,5 +21,9 @@ class Family < ActiveRecord::Base
     end
     return family_restrictions.uniq
   end
+
+def no_first_name(attributes)
+  attributes[:first_name].blank?
+end
 
 end
