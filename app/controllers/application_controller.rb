@@ -25,8 +25,8 @@ class ApplicationController < ActionController::Base
       #   else
           # if not first time then send to waiting room
           :show_page
-        end
-      end 
+      #   end
+      # end 
     end
   end 
 
