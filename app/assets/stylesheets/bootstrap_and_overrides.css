@@ -1,0 +1,53 @@
+
+/*Fonts*/
+.green {
+  color: rgba(17, 117, 59, 1);
+}
+
+.bright-green{
+  color: rgba(57, 158, 72, 1);
+}
+
+.orange{
+  color: rgba(246, 141, 60, 1);
+}
+.white{
+  color: rgba(255, 255, 255, 1);
+}
+.dark-orange{
+ color: #f27234; 
+}
+
+.cursive {
+  font-family: 'Pacifico', cursive; 
+}
+
+.bold-italics{
+  font-style: italic;
+  font-weight: bold;
+}
+
+.large{
+  font-size: 60px;
+} 
+
+select.date-select {
+		size: 20000em;
+		height: 2000px;
+    background-color: #000000;
+    display: block-inline;
+}
+
+.member-form-green {
+  background-color: rgba(57, 158, 72, 0.2);
+  padding: 2%;
+  border: 1px solid rgba(17, 117, 59, 1);
+  border-radius: 5px;
+}
+
+.member-form-white {
+  background-color: rgba(255, 255, 255, 1);
+  padding: 2%;
+  border: 1px solid rgba(17, 117, 59, 1);
+  border-radius: 5px;
+}

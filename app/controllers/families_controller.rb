@@ -14,7 +14,6 @@ class FamiliesController < ApplicationController
     @user = current_user
     @family = Family.new(name: "#{@user.last_name} Family")
     @new_user = User.new
-    binding.pry
   end
 
   def edit
@@ -27,7 +26,6 @@ class FamiliesController < ApplicationController
     @family.head_of_family_id = @user.id
     @family.users << @user
     @family.save
-    binding.pry
     redirect_to root_path
   end
 
