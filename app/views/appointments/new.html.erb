@@ -1,0 +1,23 @@
+
+
+<%= form_for(@appointment) do |f| %>
+<div class="appointment-div">
+  <h1>Who is this appointment for?</h1>
+  <h2>For the first consultation we recommened only adults attend </h2>
+  <ul style="list-style-type: none">
+    <% @family_members.each do |member| %>
+    <li>
+      <div class="checkbox">
+        <input id="patient-focus-<%=member.id%>" name="meeting[patient_focus]" type="checkbox" value="<%=member.id%>"> <%=member.first_name%>
+      </div>  
+    </li>
+    <% end %>
+  </ul>
+</div>
+<div class='actions submit-appointment'>
+  <%= f.submit %>
+</div>
+<% end %>
+
+
+

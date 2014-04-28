@@ -27,11 +27,13 @@ class FamiliesController < ApplicationController
 
   def create
     @user = current_user
+    @user.update_attributes(params[:family][:users_attributes]["0"])
+    params[:family][:users_attributes].delete("0")
     @family = Family.new(params[:family])
     @family.users << @user
     @family.head_of_family = @user
     @family.save
-    render :index 
+    redirect_to new_user_dietary_restriction_path
   end
 
   def update

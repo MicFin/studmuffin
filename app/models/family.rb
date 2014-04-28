@@ -1,5 +1,5 @@
 class Family < ActiveRecord::Base
-  belongs_to :head_of_family, :class_name => "User", :foreign_key => "user_id"
+  belongs_to :head_of_family, :class_name => "User", :foreign_key => "head_of_family_id"
   attr_accessible :location, 
                     :name,
                     :users_attributes
@@ -22,6 +22,7 @@ class Family < ActiveRecord::Base
     return family_restrictions.uniq
   end
 
+## family can not create a user without a first name, see accepted_nested_attributes_for reject_if:
 def no_first_name(attributes)
   attributes[:first_name].blank?
 end

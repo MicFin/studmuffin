@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140425052407) do
+ActiveRecord::Schema.define(:version => 20140428015111) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -46,12 +46,25 @@ ActiveRecord::Schema.define(:version => 20140425052407) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "appointments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "patient_focus_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "appointment_host_id"
+  end
+
+  add_index "appointments", ["appointment_host_id"], :name => "index_appointments_on_appointment_host_id"
+  add_index "appointments", ["user_id"], :name => "index_appointments_on_user_id"
+
   create_table "dietary_restrictions", :force => true do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "category"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.boolean  "input_option"
+    t.integer  "order"
+    t.text     "description"
   end
 
   create_table "families", :force => true do |t|
@@ -66,12 +79,12 @@ ActiveRecord::Schema.define(:version => 20140425052407) do
 
   create_table "questions", :force => true do |t|
     t.integer  "survey_id"
-    t.string   "type"
-    t.text     "choices"
+    t.string   "answer_type"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "order"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "question_order"
+    t.hstore   "choices"
   end
 
   add_index "questions", ["survey_id"], :name => "index_questions_on_survey_id"
@@ -118,9 +131,9 @@ ActiveRecord::Schema.define(:version => 20140425052407) do
     t.integer  "user_survey_id"
     t.integer  "question_id"
     t.text     "user_input"
-    t.integer  "choice"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.hstore   "choices"
   end
 
   add_index "user_survey_answers", ["question_id"], :name => "index_user_survey_answers_on_question_id"
@@ -168,6 +181,7 @@ ActiveRecord::Schema.define(:version => 20140425052407) do
     t.integer  "height_inches"
     t.integer  "weight_ounces"
     t.date     "birth_date"
+    t.text     "more_info"
   end
 
   add_index "users", ["age_months"], :name => "index_users_on_age_months"

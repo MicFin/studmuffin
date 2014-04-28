@@ -12,11 +12,14 @@ Studmuffin::Application.routes.draw do
     authenticated :user do
       root :to => 'home#show', as: :authenticated_root
       resources :families
+      resources :user_dietary_restrictions
+      resources :meetings
+      resources :appointments
+      resources :user_surveys
     end
     unauthenticated :user do
       root :to => 'devise/registrations#new', as: :unauthenticated_root
     end
-    resources :notes
   end
 
   get "/survey", to: "home#survey", as: :survey_page

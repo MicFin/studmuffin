@@ -1,0 +1,65 @@
+<h1>Who makes your table special?</h1>
+<%= form_for(@user_survey) do |f| %>
+  <% if @user_survey.errors.any? %>
+    <div id='error_explanation'>
+      <h2><%= pluralize(@user_survey.errors.count, 'error') %> prohibited this user_survey from being saved:</h2>
+      <ul>
+        <% @user_survey.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <%= f.hidden_field :survey_id, value: @survey.id %>
+  
+  <form class = 'form-horizontal' role = 'form'>
+
+    <% @survey.questions.each do |question| %>
+      <h3><%= question.content %></h3>
+      <%= f.fields_for :user_survey_answers, @user_survey_answer do |ff| %>
+          <% if @user_survey_answer.errors.any? %>
+            <div id='error_explanation'>
+              <h2><%= pluralize(@user_survey_answer.errors.count, 'error') %> prohibited this answer from being saved:</h2>
+              <ul>
+                <% @user_survey_answer.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        <% if question.answer_type == "open_response" %>
+          <div class='form-group'>
+            <%= ff.text_field :user_input, placeholder: "Tell us more" %>
+            <%= ff.hidden_field :question_id, value: question.id %>
+          </div>
+        <% elsif question.answer_type == "yes/no" %>
+          <% question.choices.each do |number, choice| %>
+            <div class="checkbox">
+              <input id="question-<%=question.id%>-checkbox" name="user_survey[user_survey_answers_attributes][<%=question.id%>][choices][<%=number%>]" type="checkbox" value="<%=choice%>"> 
+              <%=choice%>
+              <input type="hidden" name="user_survey[user_survey_answers_attributes][<%=question.id%>][question_id]" value="<%=question.id%>">
+            </div> 
+          <% end %>
+        <% elsif question.answer_type == "multiple_choice" %>
+          <div class='form-group'>
+            <% question.choices.each do |number, choice| %>
+            <div class="checkbox">
+              <input id="question-<%=question.id%>-checkbox" name="user_survey[user_survey_answers_attributes][<%=question.id%>][choices][<%=number%>]" type="checkbox" value="<%=choice%>"> 
+              <%=choice%>
+              <input type="hidden" name="user_survey[user_survey_answers_attributes][<%=question.id%>][question_id]" value="<%=question.id%>">
+            </div> 
+          <% end %>
+          </div>
+        <% end %>
+
+      <% end %>
+    <% end %>
+
+    <div class='form-group btn'>
+      <%= f.submit "Submit", class: "btn btn-success btn-lg" %>
+    </div>
+  </form>
+<% end %>
+
+
