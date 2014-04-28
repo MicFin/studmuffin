@@ -32,7 +32,6 @@ class UserDietaryRestrictionsController < ApplicationController
       if allergy_array["allergies"]
         allergy_array["allergies"].each do |allergy|
           if DietaryRestriction.find(allergy.to_i).input_option == true
-            binding.pry
             @new_restriction = UserDietaryRestriction.new(user_id: user.to_i, dietary_restriction_id: allergy.to_i, other_field: params["user"][user]["other"][allergy])
             @new_restriction.save
           else

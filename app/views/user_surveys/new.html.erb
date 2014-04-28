@@ -34,13 +34,16 @@
             <%= ff.hidden_field :question_id, value: question.id %>
           </div>
         <% elsif question.answer_type == "yes/no" %>
-          <% question.choices.each do |number, choice| %>
-            <div class="checkbox">
-              <input id="question-<%=question.id%>-checkbox" name="user_survey[user_survey_answers_attributes][<%=question.id%>][choices][<%=number%>]" type="checkbox" value="<%=choice%>"> 
-              <%=choice%>
-              <input type="hidden" name="user_survey[user_survey_answers_attributes][<%=question.id%>][question_id]" value="<%=question.id%>">
-            </div> 
-          <% end %>
+          <div class="radio">
+            <label>
+              <input type="radio" name="user_survey[user_survey_answers_attributes][<%=question.id%>][choices]"  id="optionsRadios1" value="Yes">Yes
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="user_survey[user_survey_answers_attributes][<%=question.id%>][choices]"  id="optionsRadios2" value="No">No
+            </label>
+          </div>
         <% elsif question.answer_type == "multiple_choice" %>
           <div class='form-group'>
             <% question.choices.each do |number, choice| %>

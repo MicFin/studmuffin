@@ -14,6 +14,11 @@ class UserSurvey < ActiveRecord::Base
       end
       return true
     end
+    if (attributes[:choices] == "Yes" )
+      attributes[:choices] = {"1" => "Yes"}
+    elsif (attributes[:choices] == "No")
+      attributes[:choices] = {"2" => "No"}
+    end
     return false
   end
 

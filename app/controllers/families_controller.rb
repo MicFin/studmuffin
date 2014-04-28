@@ -33,6 +33,7 @@ class FamiliesController < ApplicationController
     @family.users << @user
     @family.head_of_family = @user
     @family.save
+    binding.pry
     redirect_to new_user_dietary_restriction_path
   end
 

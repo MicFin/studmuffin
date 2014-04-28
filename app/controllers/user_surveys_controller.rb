@@ -30,8 +30,7 @@ class UserSurveysController < ApplicationController
     if params["user_survey"]["survey_id"] == "2"
       redirect_to new_user_survey_path(survey_id: 3)
     else
-      binding.pry
-      render :show 
+      render :survey_thanks 
     end
   end
 

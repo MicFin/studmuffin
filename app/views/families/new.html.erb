@@ -1,107 +1,153 @@
-<h1>Who makes your table special?</h1>
-<%= form_for(@family) do |f| %>
-  <% if @family.errors.any? %>
-    <div id='error_explanation'>
-      <h2><%= pluralize(@family.errors.count, 'error') %> prohibited this family from being saved:</h2>
-      <ul>
-        <% @family.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+<div class="container">
+  <div class="row">
+    <div class="row text-center form-group">
+      <h1 class="green">Who makes your table <span class="cursive large orange">special?</span></h1>
     </div>
-  <% end %>
-
-  <form class = 'form-horizontal' role = 'form'>
-    <div class='form-group'>
-      <%= f.label :name %>
-      <%= f.text_field :name, placeholder: @family.name %>
-    </div>
-
- 
-    <div id="child-forms-div-0" class='form-group'>
-      <div class='form-group col-xs-6 col-sm-4 col-md-3 col-md-3'>
-
-        <%= f.fields_for :users, @user do |ff| %>
-          <% if @user.errors.any? %>
-            <div id='error_explanation'>
-              <h2><%= pluralize(@user.errors.count, 'error') %> prohibited this table guest from being saved:</h2>
-              <ul>
-                <% @user.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
-          <div class="form-group">
-          <%= label_tag :first_name %>
-          <%= ff.text_field :first_name, placeholder: 'First Name'%>
-          </div>
-          <div class="form-group">
-          <%= label_tag :last_name %>
-          <%= ff.text_field :last_name, placeholder: 'Last Name'%>
-          </div>
-          <div class="form-group date-picker">
-          <%= label_tag :birth_date %></br>
-          <%= ff.date_select :birth_date, :start_year => 1920, :end_year => 2014 %>
-          </div>
-          <div class="form-group">
-          <%= label_tag :height_inches %>
-          <%= ff.number_field :height_inches, placeholder: 'Height in Inches' %>
-          </div>
-          <div class="form-group">
-          <%= label_tag :weight_ounces %>
-          <%= ff.number_field :weight_ounces, placeholder: 'Weight in Pounds'%>
-          </div>
-        <% end %>
-      </div>
-    </div>
-
-    <% (1..10).each do |i| %>
-    <div id="child-forms-div-<%=i%>" class='form-group'>
-      <div class='form-group col-xs-6 col-sm-4 col-md-3 col-md-3'>
-
-    <%= f.fields_for :users, @new_user do |ff| %>
-      <% if @new_user.errors.any? %>
+    <%= form_for(@family) do |f| %>
+      <% if @family.errors.any? %>
         <div id='error_explanation'>
-          <h2><%= pluralize(@new_user.errors.count, 'error') %> prohibited this table guest from being saved:</h2>
+          <h2><%= pluralize(@family.errors.count, 'error') %> prohibited this family from being saved:</h2>
           <ul>
-            <% @new_user.errors.full_messages.each do |msg| %>
+            <% @family.errors.full_messages.each do |msg| %>
               <li><%= msg %></li>
             <% end %>
           </ul>
         </div>
       <% end %>
-      <div class="form-group">
-      <%= label_tag :first_name %>
-      <%= ff.text_field :first_name, placeholder: 'First Name'%>
+
+      <form class = 'form-horizontal' role = 'form'>
+        <div class="row text-center">
+          <div class="hidden-xs col-sm-4 col-md-4 col-lg-4"></div>
+          <div class='form-group col-xs-12 col-sm-4 col-md-4 col-lg-4'>
+            <%= f.label :family_name %>
+            <%= f.text_field :name, placeholder: @family.name %>
+          </div>
+        </div>
+        <div class="row text-center">
+          <button type="button" id="add-family-button" class="btn btn-warning">Add to your table</button>
+          <div class='form-group btn'>
+            <%= f.submit "Complete", class: "btn btn-success btn-lg" %>
+          </div>
+        </div>
+        <% (1..10).each do |i| %>
+        <div id="child-forms-div-<%=i%>" class='col-xs-12 col-sm-6 col-md-6 col-lg-6 member-form-green' >
+        <%= f.fields_for :users, @new_user do |ff| %>
+          <% if @new_user.errors.any? %>
+            <div id='error_explanation'>
+              <h2><%= pluralize(@new_user.errors.count, 'error') %> prohibited this table guest from being saved:</h2>
+              <ul>
+                <% @new_user.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="row form-group">
+            <div class="col-xs-6">
+              <%= label_tag :first_name %>
+              <%= ff.text_field :first_name, placeholder: 'First Name'%>
+            </div>
+            <div class="col-xs-6">
+              <%= label_tag :last_name %>
+              <%= ff.text_field :last_name, placeholder: 'Last Name'%>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-xs-12">
+              <%= label_tag :birth_date %>
+            </div>
+            <div class="col-xs-3 col-sm-12 col-md-12 col-lg-12">
+            <%= ff.date_select :birth_date, prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, :class => "date-select" %>
+            </div>
+          </div>
+          <div class="col-xs-12" style="line-height: -10%">
+            <label class="control-label">Sex: </label>
+            <div class="radio-inline" style="margin-top: 6%; margin-left: 5%">
+              <label>
+                <input type="radio" name="family[users_attributes][0][sex]" id="sexRadios-0-1" value="Female">
+                <b>Female</b>
+              </label>
+            </div>
+            <div class="radio-inline" style="margin-top: 6%">
+              <label>
+                <input type="radio" name="family[users_attributes][0][sex]" id="sexRadios-0-2" value="Male">
+                <b>Male</b>
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-6">
+              <%= label_tag :height_inches %>
+              <%= ff.text_field :height_inches, placeholder: 'Enter Height'%>
+            </div>
+            <div class="col-xs-6">
+              <%= label_tag :weight_ounces %>
+              <%= ff.text_field :weight_ounces, placeholder: 'Enter Weight'%>
+            </div>
+          </div>
+        <% end %>
+      </div> 
+      <% end %>
+      <div id="child-forms-div-0" class='col-xs-12 col-sm-6 col-md-6 col-lg-6 member-form-green' >
+      <%= f.fields_for :users, @user do |ff| %>
+        <% if @user.errors.any? %>
+          <div id='error_explanation'>
+            <h2><%= pluralize(@user.errors.count, 'error') %> prohibited this table guest from being saved:</h2>
+            <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="row form-group">
+          <div class="col-xs-6">
+            <%= label_tag :first_name %>
+            <%= ff.text_field :first_name, placeholder: 'First Name'%>
+          </div>
+          <div class="col-xs-6">
+            <%= label_tag :last_name %>
+            <%= ff.text_field :last_name, placeholder: 'Last Name'%>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-xs-12">
+           <%= label_tag :birth_date %>
+          </div>
+          <div class="col-xs-3 col-sm-12 col-md-12 col-lg-12">
+            <%= ff.date_select :birth_date, prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, :class => "date-select" %>
+          </div>
+        </div>
+        <div class="col-xs-12" style="line-height: -10%">
+          <label class="control-label">Sex: </label>
+          <div class="radio-inline" style="margin-top: 6%; margin-left: 5%">
+            <label>
+              <input type="radio" name="family[users_attributes][0][sex]" id="sexRadios-0-1" value="Female">
+              <b>Female</b>
+            </label>
+          </div>
+          <div class="radio-inline" style="margin-top: 6%">
+            <label>
+              <input type="radio" name="family[users_attributes][0][sex]" id="sexRadios-0-2" value="Male">
+              <b>Male</b>
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-6">
+            <%= label_tag :height_inches %>
+            <%= ff.text_field :height_inches, placeholder: 'Enter Height'%>
+          </div>
+          <div class="col-xs-6">
+            <%= label_tag :weight_ounces %>
+            <%= ff.text_field :weight_ounces, placeholder: 'Enter Weight'%>
+          </div>
+        </div>
+      <% end %>
       </div>
-      <div class="form-group">
-      <%= label_tag :last_name %>
-      <%= ff.text_field :last_name, placeholder: 'Last Name'%>
-      </div>
-      <div class="form-group date-picker">
-      <%= label_tag :birth_date %></br>
-      <%= ff.date_select :birth_date, :start_year => 1920, :end_year => 2014 %>
-      </div>
-      <div class="form-group">
-      <%= label_tag :height_inches %>
-      <%= ff.number_field :height_inches, placeholder: 'Height in Inches' %>
-      </div>
-      <div class="form-group">
-      <%= label_tag :weight_ounces %>
-      <%= ff.number_field :weight_ounces, placeholder: 'Weight in Pounds'%>
-      </div>
+    </form>
     <% end %>
-    </div> 
   </div>
-    <% end %>
-
-
-    <button type="button" id="add-family-button" class="btn btn-warning">Add to your table</button>
-    <div class='form-group btn'>
-      <%= f.submit "Create Table", class: "btn btn-success btn-lg" %>
-    </div>
-  </form>
-<% end %>
+</div>
 
 

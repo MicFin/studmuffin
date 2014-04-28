@@ -4,10 +4,13 @@ $(document).ready(function() {
 		$("#child-forms-div-"+i).hide()
 	};
 
-	var family_clicks = 1;
+	var family_clicks = 10;
 	$("#add-family-button").click(function(){
-			family_clicks = family_clicks + 1;
-			$("#child-forms-div-"+family_clicks).show()
+			var last_form = family_clicks + 1
+			$("#child-forms-div-"+family_clicks).show();
+			$("#child-forms-div-0").addClass("member-form-white");
+			$("#child-forms-div-"+last_form).addClass("member-form-white");
+			family_clicks = family_clicks - 1;
 	});
 
 
@@ -46,7 +49,5 @@ $(document).ready(function() {
     $(".other-issues-div").show();
    	$(".create-diets-button").show(); 
   });
-
-
   
 });
