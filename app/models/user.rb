@@ -17,13 +17,13 @@ class User < ActiveRecord::Base
   # validates phone number is in a correct format
   validates :phone_number, :phony_plausible => true
 
-  def is_rd?
-    if self.rd == true
-      return true
-    else
-      return false
-    end
-  end
+  # def is_rd?
+  #   if self.rd == true
+  #     return true
+  #   else
+  #     return false
+  #   end
+  # end
 
   def password_required?
     # if user roll x then
