@@ -32,21 +32,14 @@
 } 
 
 select.date-select {
-		size: 20000em;
-		height: 2000px;
+    size: 20000em;
+    height: 2000px;
     background-color: #000000;
     display: block-inline;
 }
 
 .member-form-green {
-<<<<<<< HEAD
-  background-color: rgba(57, 158, 72, 0.2);
-  padding: 2%;
-  border: 1px solid rgba(17, 117, 59, 1);
-  border-radius: 5px;
-=======
 
->>>>>>> cocoon
 }
 
 .member-form-white {
@@ -54,8 +47,6 @@ select.date-select {
   padding: 2%;
   border: 1px solid rgba(17, 117, 59, 1);
   border-radius: 5px;
-<<<<<<< HEAD
-=======
 }
 
 
@@ -211,5 +202,4 @@ div.new_html_code {
 
 .orange-background{
   background-color: rgba(246, 141, 60, 1);
->>>>>>> cocoon
 }
