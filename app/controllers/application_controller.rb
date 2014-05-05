@@ -17,10 +17,10 @@ class ApplicationController < ActionController::Base
     # add to sign in count every time user signs in
     if resource.class == User
       # resource.sign_in_count = resource.sign_in_count + 1
-      if resource.is_rd? 
-        # send admin user to show page
-        :show_page
-      else
+      # if resource.is_rd? 
+      #   # send admin user to show page
+      #   :show_page
+      # else
         if resource.sign_in_count <= 1
           # if first time then send to build family
           new_family_path
@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
           # if not first time then send to waiting room
           :show_page
         end
-      end 
+      # end 
     end
   end 
 

@@ -1,38 +1,3 @@
-<h1>Who makes your table special?</h1>
-<%= form_for(@family) do |f| %>
-  <% if @family.errors.any? %>
-    <div id='error_explanation'>
-      <h2><%= pluralize(@family.errors.count, 'error') %> prohibited this family from being saved:</h2>
-      <ul>
-        <% @family.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <form class='form-horizontal' role='form'>
-    <div class='form-group'>
-      <%= f.label :name %>
-      <%= f.text_field :name, placeholder: @family.name %>
-    </div>
-    <div class='form-group'>
-      <%= f.label :location %>
-      <%= f.text_field :location, placeholder: "City, State or Zip Code" %>
-    </div>
-<%= f.fields_for :user do |ff| %>
-    <div class='form-group'>
-      <%= ff.label :first_name, "First Name" %>
-      <%= ff.text_field :location, placeholder: "First Name" %>
-      <%= ff.hidden_field :location, placeholder: "First Name" %>
-    </div>
-<% end %>
-    <div class='actions'>
-      <%= f.submit %>
-    </div>
-  </form>
-<% end %>
-=======
-
   <div class="row form-group">
     <form class = 'form-horizontal' role = 'form'>
     <%#= form_for @family, url: families_path do |f| %>  
@@ -99,4 +64,3 @@
     <% end %>
     </form>
   </div>
-
