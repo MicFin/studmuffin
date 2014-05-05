@@ -1,4 +1,7 @@
 class Question < ActiveRecord::Base
   belongs_to :survey
-  attr_accessible :choices, :type, :content, :order
+  has_many :user_survey_answers
+  attr_accessible :answer_type, :content, :question_order, :choices
+  serialize :choices, ActiveRecord::Coders::Hstore.new({})
+
 end

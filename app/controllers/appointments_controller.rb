@@ -21,7 +21,13 @@ class AppointmentsController < ApplicationController
   def create
     @user = current_user
     @appointment = Appointment.new(params[:appointment])
+<<<<<<< HEAD
     @appointment.patient_focus_id = params["meeting"]["patient_focus"].to_i
+=======
+    if params["meeting"]
+      @appointment.patient_focus_id = params["meeting"]["patient_focus"].to_i
+    end
+>>>>>>> cocoon
     @appointment.appointment_host_id = @user.id
     ## does not assign user and focus, only assigns focus as user
     @appointment.save

@@ -39,10 +39,14 @@ select.date-select {
 }
 
 .member-form-green {
+<<<<<<< HEAD
   background-color: rgba(57, 158, 72, 0.2);
   padding: 2%;
   border: 1px solid rgba(17, 117, 59, 1);
   border-radius: 5px;
+=======
+
+>>>>>>> cocoon
 }
 
 .member-form-white {
@@ -50,4 +54,162 @@ select.date-select {
   padding: 2%;
   border: 1px solid rgba(17, 117, 59, 1);
   border-radius: 5px;
+<<<<<<< HEAD
+=======
+}
+
+
+div.new_html_code {
+  width:100px;
+  height:325px;
+  min-width:150px;
+  min-height:100px;
+  max-width:10000000;
+  max-height:10000000;
+  overflow:hidden;
+  display:block;
+}
+
+.carousel-caption {
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  bottom: 20px;
+  z-index: 0;
+  color: black;
+  text-shadow: 0;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  text-align: center;
+  text-shadow: 0 0px 0px rgba(0,0,0,0);
+}
+
+.carousel-control.right {
+  left: auto;
+  right: 15px;
+  height: 35%;
+  background-image: none;
+  background-repeat: none;
+  background-color: rgba(246, 141, 60, 1);
+  border-radius: 100px;
+  margin-top: 12%;
+}
+
+.carousel-control.left {
+  right: auto;
+  left: 15px;
+  height: 35%;
+  background-image: none;
+  background-repeat: none;
+  border-radius: 100px;
+  z-index: 1;
+  margin-top: 12%;
+}
+
+.carousel-control .icon-prev, .carousel-control .glyphicon-chevron-left {
+  left: 40%;
+  top: 45%;
+}
+
+.carousel-control {
+  text-shadow: none;
+  opacity: 1;
+  filter: alpha(opacity=100)
+}
+
+.carousel-control:hover, .carousel-control:focus {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+.carousel-background{
+  background-color: rgba(57, 158, 72, 0.2);
+}
+
+.add-member-button-text{
+  margin-top: 10%;
+  padding: 2%;
+  border-radius: 100px;
+  font-size: 12px;
+}
+
+.welcome-message{
+  font-size: 20px;
+  background-color: rgba(246, 141, 60, 1);
+  padding: 2%;
+  border-radius: 5px; 
+  color: white;
+}
+
+.large-plus-sign{
+  line-height: 4px;
+  font-size: 50px;
+}
+
+/*ALLERGIES OR NOT*/
+.diet-text-div{
+  color: white;
+  background-color:  rgba(246, 141, 60, 1);
+  padding: 2%;
+  margin-left: -5%;
+  margin-right: -5%;
+}
+
+.btn-circle {
+  width: 120px;
+  height: 120px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 40px;
+  line-height: 1.42;
+  border-radius: 100px;
+}
+
+/*PANEL OF ALLERGIES*/
+
+.panel-default>.panel-heading {
+  color: white;
+  background-color: rgba(246, 141, 60, 1);
+  border-color: rgba(246, 141, 60, 1);
+}
+
+.panel-heading {
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.panel-body {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.restrictions-div{
+  background-color: rgba(57, 158, 72, 0.2);
+  padding: 2%;
+}
+
+.light-green-div{
+  background-color: rgba(57, 158, 72, 0.2);
+  padding: 2%;
+  border-radius: 20px;
+}
+
+.light-green-background{
+  background-color: rgba(57, 158, 72, 0.2);
+}
+
+
+.orange-div{
+  background-color: rgba(246, 141, 60, 1);
+/*  padding: 2%;*/
+  border-radius: 20px;
+  color: white;
+  line-height: 3;
+}
+
+.orange-background{
+  background-color: rgba(246, 141, 60, 1);
+>>>>>>> cocoon
 }

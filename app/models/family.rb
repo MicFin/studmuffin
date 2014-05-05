@@ -1,4 +1,5 @@
 class Family < ActiveRecord::Base
+<<<<<<< HEAD
   belongs_to :head_of_family, :class_name => "User", :foreign_key => "user_id"
 
   attr_accessible :location, :name, :head_of_family_id
@@ -6,6 +7,19 @@ class Family < ActiveRecord::Base
   has_many :users, through: :user_families
   accepts_nested_attributes_for :users
   
+=======
+  belongs_to :head_of_family, :class_name => "User", :foreign_key => "head_of_family_id"
+  attr_accessible :location, 
+                    :name,
+                    :users_attributes
+  
+  has_many :user_families
+  has_many :users, through: :user_families
+
+  accepts_nested_attributes_for :users, :reject_if => :all_blank, :allow_destroy => true, :reject_if => :no_first_name
+  accepts_nested_attributes_for :user_families, :reject_if => :all_blank, :allow_destroy => true
+
+>>>>>>> cocoon
   def dietary_restrictions
     family_restrictions = []
     self.users.each do |family_member|
@@ -17,5 +31,10 @@ class Family < ActiveRecord::Base
     end
     return family_restrictions.uniq
   end
+
+## family can not create a user without a first name, see accepted_nested_attributes_for reject_if:
+def no_first_name(attributes)
+  attributes[:first_name].blank?
+end
 
 end

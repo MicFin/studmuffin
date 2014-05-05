@@ -1,0 +1,156 @@
+<div class="row text-center form-group">
+  <h1 class="bright-green">What makes your table <span class="cursive large orange">special?</span></h1>
+</div>
+<div class="col-xs-12 diet-question-div text-center">
+  <div class="diet-text-div">
+    <h1 style="padding-left: 2%; padding-right: 2%">Does your family have any food allergies, intolerances, diseases, or other conditions that require dietary restrictions?</h1>
+  </div>
+  <div class="row" style="margin-top: 5%">
+    <div class="col-xs-3"></div>
+    <div class="col-xs-4">
+      <button class="btn btn-block btn-success btn-circle restrictions-show-button"><span class="diet-yes-no">YES</button>
+    </div>
+    <div class="col-xs-4">
+      <button class="btn btn-block btn-success btn-circle no-restrictions-show-button"><span class="diet-yes-no">NO</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="row restrictions-div">
+  <div class="row">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-10">
+      <p>Please select the dietary restrictions in your family and then click 
+        <button class="btn btn-lg btn-success btn-circle next-question-button">Next</button>
+      </p>
+    </div>
+  </div>
+<%= form_for(@user_dietary_restriction) do |f| %>
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <div class="panel-group" id="accordion-allergy">
+      <% @allergies.each do |allergy| %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion-allergy" href="#collapse-<%=allergy.id%>" id="allergy-<%=allergy.id%>-popover" <data-container="body" data-toggle="popover" data-placement="top" data-content="<%=allergy.description%>">
+              <%= allergy.name %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapse-<%=allergy.id%>" class="panel-collapse collapse">
+          <div class="panel-body">
+            <ul style="list-style-type: none">
+              <% @family_members.each do |member| %>
+              <li>
+                <div class="checkbox">
+                  <input id="allergy-<%=member.id%>-checkbox" name="user[<%=member.id%>][allergies][]" type="checkbox" value="<%=allergy.id%>"> <%=member.first_name%>
+                </div> 
+                <% if allergy.input_option == true %>
+                  <div class="other-field" id="allergy-<%=member.id%>-div">
+                    <input id="allergy-<%=member.id%>-field" name="user[<%=member.id%>][other][<%=allergy.id%>]" type="text" placeholder=" Please specify"/>
+                  </div>
+                <% end %> 
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix hidden-xs"></div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <div class="panel-group" id="accordion-intolerance">
+      <% @intolerances.each do |allergy| %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion-intolerance" href="#collapse-<%=allergy.id%>" id="intolerance-<%=allergy.id%>-popover" <data-container="body" data-toggle="popover" data-placement="top" data-content="<%=allergy.description%>">
+              <%= allergy.name %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapse-<%=allergy.id%>" class="panel-collapse collapse">
+          <div class="panel-body">
+            <ul style="list-style-type: none">
+              <% @family_members.each do |member| %>
+                <li>
+                  <div class="checkbox">
+                    <input id="intolerance-<%=member.id%>-checkbox" name="user[<%=member.id%>][allergies][]" type="checkbox" value="<%=allergy.id%>"> <%=member.first_name%>
+                  </div>  
+                </li>
+                <% if allergy.input_option == true %>
+                  <li>
+                  <div class="other-field" id="intolerance-<%=member.id%>-div">
+                    <input id="intolerance-<%=member.id%>-field" input name="user[<%=member.id%>][other][<%=allergy.id%>]" type="text" placeholder=" Please specify"/>
+                    </div>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix hidden-xs"></div>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <div class="panel-group" id="accordion-disease">
+      <% @diseases.each do |allergy| %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion-disease" href="#collapse-<%=allergy.id%>" id="disease-<%=allergy.id%>-popover" <data-container="body" data-toggle="popover" data-placement="top" data-content="<%=allergy.description%>">
+              <%= allergy.name %>
+            </a>
+          </h4>
+        </div>
+        <div id="collapse-<%=allergy.id%>" class="panel-collapse collapse">
+          <div class="panel-body">
+            <ul style="list-style-type: none">
+              <% @family_members.each do |member| %>
+              <li>
+                <div class="checkbox">
+                  <input id="disease-<%=member.id%>-checkbox" name="user[<%=member.id%>][allergies][]" type="checkbox" value="<%=allergy.id%>"> <%=member.first_name%>
+                </div>  
+                <% if allergy.input_option == true %>
+                  <div class="other-field" id="disease-<%=member.id%>-div">
+                    <input id="disease-<%=member.id%>-field" name="user[<%=member.id%>][other][<%=allergy.id%>]" type="text" placeholder=" Please specify"/>
+                  </div>
+                <% end %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix hidden-xs"></div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="col-xs-12 other-issues-div text-center">
+  <div class="diet-text-div">
+    <h1 style="padding-left: 2%; padding-right: 2%">
+      Every person has their own combination of health concerns, habits, tastes, and circumstances that make their nutritional needs unique.  The more I know about your family in advance, the more prepared I will be to help.
+    </h1>
+  </div>
+  <ul style="list-style-type: none; text-align: left">
+    <% @family_members.each do |member| %>
+    <h2><%=member.first_name%></h2>
+    <li>
+      <div id="more-<%=member.id%>-div">
+       <textarea class="form-control" rows="3" id="more-<%=member.id%>-field" name="user[<%=member.id%>][more]" type="text" placeholder="Please explain <%=member.first_name%>'s unique needs."/></textarea>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class='actions create-diets-button text-center'>
+  <%= f.submit "Submit", class: "btn btn-lg btn-success btn-circle", style: "font-size: 30px"%>
+</div>
+<% end %>
