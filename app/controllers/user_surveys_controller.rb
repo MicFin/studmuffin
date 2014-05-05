@@ -37,8 +37,8 @@ class UserSurveysController < ApplicationController
     @user = current_user
     @user_survey = UserSurvey.new(params["user_survey"])
     @user_survey.save
-    if params["user_survey"]["survey_id"] == "2"
-      redirect_to new_user_survey_path(survey_id: 3)
+    if params["user_survey"]["survey_id"] == "1"
+      redirect_to new_user_survey_path(survey_id: 2)
     else
       render :survey_thanks 
     end
