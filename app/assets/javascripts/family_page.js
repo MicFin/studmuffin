@@ -65,13 +65,13 @@ $(document).ready(function() {
 
 
 
-	$(".restrictions-div").hide();
+	$("#restriction-columns").hide();
  	$(".create-diets-button").hide(); 
  	$(".other-issues-div").hide(); 
 
 	$(".restrictions-show-button").click(function() {
     $(".diet-question-div").hide();
-    $('.restrictions-div').show();
+    $('#restriction-columns').show();
   });
 
 	$(".no-restrictions-show-button").click(function() {
@@ -81,7 +81,7 @@ $(document).ready(function() {
   });
 
 	$(".next-question-button").click(function() {
-    $('.restrictions-div').hide();
+    $('#restriction-columns').hide();
     $(".other-issues-div").show();
    	$(".create-diets-button").show(); 
   });
