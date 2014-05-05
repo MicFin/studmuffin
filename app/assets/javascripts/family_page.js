@@ -65,7 +65,7 @@ $(document).ready(function() {
 
 
 
-	$("#restriction-columns").hide();
+	// $("#restriction-columns").hide();
  	$(".create-diets-button").hide(); 
  	$(".other-issues-div").hide(); 
 
