@@ -1,8 +1,12 @@
 ---
+Confused-kid.jpg: Confused-kid-753d4de6a2d0539117ae69e8e30d92dc.jpg
+Confused-kid/index.jpg: Confused-kid-753d4de6a2d0539117ae69e8e30d92dc.jpg
 bg.jpg: bg-9382bbbcc954baba1d672678b82a549e.jpg
 bg/index.jpg: bg-9382bbbcc954baba1d672678b82a549e.jpg
 callout.jpg: callout-8cc622efc2123b88a7c1c8a077663b00.jpg
 callout/index.jpg: callout-8cc622efc2123b88a7c1c8a077663b00.jpg
+kf_carrot_favicon.jpg: kf_carrot_favicon-e35e12141f95ea922b8e4a30cb66be4c.jpg
+kf_carrot_favicon/index.jpg: kf_carrot_favicon-e35e12141f95ea922b8e4a30cb66be4c.jpg
 logo.png: logo-ba0d27220cbd1a31d0d6af9479a0ee6b.png
 logo/index.png: logo-ba0d27220cbd1a31d0d6af9479a0ee6b.png
 portfolio-1.jpg: portfolio-1-dd66ba9105ea834d3816aab4c969d78a.jpg
@@ -13,14 +17,16 @@ portfolio-3.jpg: portfolio-3-b975a75ed8467e9620690849051e680d.jpg
 portfolio-3/index.jpg: portfolio-3-b975a75ed8467e9620690849051e680d.jpg
 portfolio-4.jpg: portfolio-4-24c74d4d6bb9d1022be14a17b568bc32.jpg
 portfolio-4/index.jpg: portfolio-4-24c74d4d6bb9d1022be14a17b568bc32.jpg
+tara.png: tara-0e949164e56e7b6e5a3d44a40132fded.png
+tara/index.png: tara-0e949164e56e7b6e5a3d44a40132fded.png
 active_admin.js: active_admin-44a1fac28d992172f11ef3bd53500d68.js
 active_admin/index.js: active_admin-44a1fac28d992172f11ef3bd53500d68.js
-application.js: application-658ddd1e4faa4c48524bf8628f8941b7.js
-application/index.js: application-658ddd1e4faa4c48524bf8628f8941b7.js
+application.js: application-1f76a3549ab16896dbb1d95c75636a9e.js
+application/index.js: application-1f76a3549ab16896dbb1d95c75636a9e.js
 active_admin.css: active_admin-656976116454d58a45e3601bac4f905e.css
 active_admin/index.css: active_admin-656976116454d58a45e3601bac4f905e.css
-application.css: application-3ece1f7195f15e9bc85a73b3e0c433e9.css
-application/index.css: application-3ece1f7195f15e9bc85a73b3e0c433e9.css
+application.css: application-6fc1db99313afea03f7fe1a2bf28198a.css
+application/index.css: application-6fc1db99313afea03f7fe1a2bf28198a.css
 FontAwesome.otf: FontAwesome-1b753859c011e89c9cc8e29a6ee33956.otf
 FontAwesome/index.otf: FontAwesome-1b753859c011e89c9cc8e29a6ee33956.otf
 fontawesome-webfont.eot: fontawesome-webfont-e742c0f297e307a74bdf4ca3c19073a2.eot
