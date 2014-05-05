@@ -1,153 +1,67 @@
-<div class="container">
-  <div class="row">
-    <div class="row text-center form-group">
-      <h1 class="green">Who makes your table <span class="cursive large orange">special?</span></h1>
-    </div>
-    <%= form_for(@family) do |f| %>
-      <% if @family.errors.any? %>
-        <div id='error_explanation'>
-          <h2><%= pluralize(@family.errors.count, 'error') %> prohibited this family from being saved:</h2>
-          <ul>
-            <% @family.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
 
-      <form class = 'form-horizontal' role = 'form'>
-        <div class="row text-center">
-          <div class="hidden-xs col-sm-4 col-md-4 col-lg-4"></div>
-          <div class='form-group col-xs-12 col-sm-4 col-md-4 col-lg-4'>
-            <%= f.label :family_name %>
-            <%= f.text_field :name, placeholder: @family.name %>
+  <div class="row form-group">
+    <form class = 'form-horizontal' role = 'form'>
+    <%#= form_for @family, url: families_path do |f| %>  
+    <%= form_for(@family, :url => families_path(@family), :html => { :method => "put" }, action: "create") do |f| %>
+      <div id="welcome-family-form" class="row">
+        <div class="row text-center form-group" >
+          <div class="row">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-8">
+            <%= image_tag("logo.png", class: "img-responsive") %>
+            </div>
+          </div>
+
+        </div>
+        <div class="row text-center"> 
+          <div class="hidden-xs col-sm-2 col-md-2 col-lg-2"></div>
+          <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+            <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2" style="margin-top: -5%; padding: 2%">
+              <%= image_tag("tara.png") %>
+            </div>
+            <div class="hidden-xs col-sm-10 col-md-10 col-lg-10" style="margin-left: -10%">
+              <span class="welcome-message">Hello and a big warm welcome to the entire <%=@family.name %>!</span>
+            </div>    
+            <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
+            <div class="col-xs-10 hidden-sm hidden-md hidden-lg">
+             <p class="welcome-message">Hello and a big warm welcome</p><p class="welcome-message"> to the entire <%=@family.name %>!</p>
+            </div>    
+          </div>      
+          <%= f.hidden_field :name, value: @family.name %>
+        </div>
+        <div class="row text-left">
+          <div class="col-xs-2"></div>
+          <div class="col-xs-8">
+            <p> 
+              I'm Tara McCarthy, your <span class="bright-green">KindRD</span><span class="dark-orange">Nutritionist</span>.  I'm also a certified RDN (Registered Dietitian Nutritionist) and am <u><b><i>so excited</i></b></u> to speak with you and provide you and your family with the nutritional guidance you need.  
+            </p>
+            <p> 
+              Help me get to know your family so that I can prepare for our upcoming conversation.  Please be open and honest, this information will not be shared and will make our time together more productive.  
+            </p>
+            <div class='form-group text-center'>
+              <button id="show-carousel-button" type="button" class="btn btn-lg btn-success btn-circle">Begin</button>
+            </div>
           </div>
         </div>
-        <div class="row text-center">
-          <button type="button" id="add-family-button" class="btn btn-warning">Add to your table</button>
-          <div class='form-group btn'>
-            <%= f.submit "Complete", class: "btn btn-success btn-lg" %>
-          </div>
-        </div>
-        <% (1..10).each do |i| %>
-        <div id="child-forms-div-<%=i%>" class='col-xs-12 col-sm-6 col-md-6 col-lg-6 member-form-green' >
-        <%= f.fields_for :users, @new_user do |ff| %>
-          <% if @new_user.errors.any? %>
-            <div id='error_explanation'>
-              <h2><%= pluralize(@new_user.errors.count, 'error') %> prohibited this table guest from being saved:</h2>
-              <ul>
-                <% @new_user.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
-          <div class="row form-group">
-            <div class="col-xs-6">
-              <%= label_tag :first_name %>
-              <%= ff.text_field :first_name, placeholder: 'First Name'%>
-            </div>
-            <div class="col-xs-6">
-              <%= label_tag :last_name %>
-              <%= ff.text_field :last_name, placeholder: 'Last Name'%>
-            </div>
-          </div>
-          <div class="row form-group">
-            <div class="col-xs-12">
-              <%= label_tag :birth_date %>
-            </div>
-            <div class="col-xs-3 col-sm-12 col-md-12 col-lg-12">
-            <%= ff.date_select :birth_date, prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, :class => "date-select" %>
-            </div>
-          </div>
-          <div class="col-xs-12" style="line-height: -10%">
-            <label class="control-label">Sex: </label>
-            <div class="radio-inline" style="margin-top: 6%; margin-left: 5%">
-              <label>
-                <input type="radio" name="family[users_attributes][0][sex]" id="sexRadios-0-1" value="Female">
-                <b>Female</b>
-              </label>
-            </div>
-            <div class="radio-inline" style="margin-top: 6%">
-              <label>
-                <input type="radio" name="family[users_attributes][0][sex]" id="sexRadios-0-2" value="Male">
-                <b>Male</b>
-              </label>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-xs-6">
-              <%= label_tag :height_inches %>
-              <%= ff.text_field :height_inches, placeholder: 'Enter Height'%>
-            </div>
-            <div class="col-xs-6">
-              <%= label_tag :weight_ounces %>
-              <%= ff.text_field :weight_ounces, placeholder: 'Enter Weight'%>
-            </div>
-          </div>
-        <% end %>
-      </div> 
-      <% end %>
-      <div id="child-forms-div-0" class='col-xs-12 col-sm-6 col-md-6 col-lg-6 member-form-green' >
-      <%= f.fields_for :users, @user do |ff| %>
-        <% if @user.errors.any? %>
-          <div id='error_explanation'>
-            <h2><%= pluralize(@user.errors.count, 'error') %> prohibited this table guest from being saved:</h2>
-            <ul>
-              <% @user.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-        <div class="row form-group">
-          <div class="col-xs-6">
-            <%= label_tag :first_name %>
-            <%= ff.text_field :first_name, placeholder: 'First Name'%>
-          </div>
-          <div class="col-xs-6">
-            <%= label_tag :last_name %>
-            <%= ff.text_field :last_name, placeholder: 'Last Name'%>
-          </div>
-        </div>
-        <div class="row form-group">
-          <div class="col-xs-12">
-           <%= label_tag :birth_date %>
-          </div>
-          <div class="col-xs-3 col-sm-12 col-md-12 col-lg-12">
-            <%= ff.date_select :birth_date, prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, :class => "date-select" %>
-          </div>
-        </div>
-        <div class="col-xs-12" style="line-height: -10%">
-          <label class="control-label">Sex: </label>
-          <div class="radio-inline" style="margin-top: 6%; margin-left: 5%">
-            <label>
-              <input type="radio" name="family[users_attributes][0][sex]" id="sexRadios-0-1" value="Female">
-              <b>Female</b>
-            </label>
-          </div>
-          <div class="radio-inline" style="margin-top: 6%">
-            <label>
-              <input type="radio" name="family[users_attributes][0][sex]" id="sexRadios-0-2" value="Male">
-              <b>Male</b>
-            </label>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-xs-6">
-            <%= label_tag :height_inches %>
-            <%= ff.text_field :height_inches, placeholder: 'Enter Height'%>
-          </div>
-          <div class="col-xs-6">
-            <%= label_tag :weight_ounces %>
-            <%= ff.text_field :weight_ounces, placeholder: 'Enter Weight'%>
-          </div>
-        </div>
-      <% end %>
       </div>
-    </form>
+      <div id="carousel-form-div" class="row">
+        <div id="carousel-form" class="row">
+          <div class="row text-center form-group">
+            <h1 class="green">Who makes your table <span class="cursive large orange">special?</span></h1>
+          </div>
+          <div class="row light-green-background">
+            <div class="hidden-xs col-sm-2 col-md-2 col-lg-2"></div>
+            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+              <%= render "carousel", f: f %>
+            </div>
+          </div>
+          <div class="row text-center orange-background" style="padding-top: 2%; padding-bottom: 2%">
+            <div class='form-group btn'>
+              <%= f.submit "Click here once all of your family members have been added", class: "btn btn-success btn-lg btn-tall" %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
+    </form>
   </div>
-</div>
-
-

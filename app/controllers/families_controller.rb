@@ -11,13 +11,18 @@ class FamiliesController < ApplicationController
   end
 
   def new
-    @user = current_user
-    @family = Family.new(name: "#{@user.last_name} Family")
-    @family.users.build
-    @new_user = User.new
-    respond_to do |format|
-      format.js
-      format.html
+    # famliies form is sending itself back to the new method when it should go to the create method, could not find bug so added if statement to redirect
+    if params["_method"]
+      create
+    else
+      @user = current_user
+      @family = Family.new(name: "#{@user.last_name} Family")
+      @family.users.build
+      @new_user = User.new
+      respond_to do |format|
+        format.js
+        format.html
+      end
     end
   end
 
@@ -33,7 +38,6 @@ class FamiliesController < ApplicationController
     @family.users << @user
     @family.head_of_family = @user
     @family.save
-    binding.pry
     redirect_to new_user_dietary_restriction_path
   end
 

@@ -1,0 +1,36 @@
+<div id="carousel-example-generic" class="carousel slide carousel-off-screen form-group" data-ride="carousel" data-interval="false">
+<!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <div class="new_html_code"></div>
+      <div class="carousel-caption">
+        <%= render "current_user_form", f: f %>
+      </div>
+    </div>
+
+    <% (1..10).each do |i| %>
+    <div class="item">
+      <div class="new_html_code"></div>
+      <div class="carousel-caption">
+        <%= render "new_member_form", f: f, i: i %>
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+  <!-- Controls -->
+  <a id="carousel-back-button" class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+    <span id="carousel-back-graphic" class="glyphicon glyphicon-chevron-left"></span>
+    <div id="start-with-you" class="text-center">
+      <p class="green">Let's start</p> 
+      <p class="green">with <span class="cursive">you</span></p>
+    </div>
+  </a>
+  <a id="carousel-next-button" class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+    <div class="add-member-button-text text-center">
+      <p>ADD A</p> 
+      <p>FAMILY MEMBER</p>
+      <p><span class="large-plus-sign">+</span></p>
+    </div>
+  </a>
+</div> <!-- carousel example generic -->

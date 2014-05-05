@@ -24,6 +24,16 @@ class UserSurveysController < ApplicationController
   end
 
   def create
+    ### cleans up input of text field for open response answers so they can be saved to user 
+    if params["user_survey"]["user_survey_answers_attributes"]["open_responses"]
+      num = 0
+      params["user_survey"]["user_survey_answers_attributes"]["open_responses"].each do |question_id, answer|
+        params["user_survey"]["user_survey_answers_attributes"][num.to_s]["user_input"] = answer
+        params["user_survey"]["user_survey_answers_attributes"][num.to_s]["question_id"]=question_id
+        num = num + 1 
+      end  
+      params["user_survey"]["user_survey_answers_attributes"].delete("open_responses")
+    end   
     @user = current_user
     @user_survey = UserSurvey.new(params["user_survey"])
     @user_survey.save

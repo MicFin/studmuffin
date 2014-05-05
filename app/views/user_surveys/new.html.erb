@@ -1,4 +1,6 @@
-<h1>Who makes your table special?</h1>
+<div class="row text-center form-group">
+  <h1 class="bright-green">What makes your table <span class="cursive large orange">special?</span></h1>
+</div>
 <%= form_for(@user_survey) do |f| %>
   <% if @user_survey.errors.any? %>
     <div id='error_explanation'>
@@ -14,53 +16,66 @@
   <%= f.hidden_field :survey_id, value: @survey.id %>
   
   <form class = 'form-horizontal' role = 'form'>
-
-    <% @survey.questions.each do |question| %>
-      <h3><%= question.content %></h3>
-      <%= f.fields_for :user_survey_answers, @user_survey_answer do |ff| %>
-          <% if @user_survey_answer.errors.any? %>
-            <div id='error_explanation'>
-              <h2><%= pluralize(@user_survey_answer.errors.count, 'error') %> prohibited this answer from being saved:</h2>
-              <ul>
-                <% @user_survey_answer.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-                <% end %>
-              </ul>
+    <div class="col-xs-12 orange-background">
+      <div class="hidden-xs col-sm-2 col-md-2 col-lg-2"></div>
+      <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+      <% @survey.questions.each do |question| %>
+        <h3><%= question.content %></h3>
+        <%= f.fields_for :user_survey_answers, @user_survey_answer do |ff| %>
+            <% if @user_survey_answer.errors.any? %>
+              <div id='error_explanation'>
+                <h2><%= pluralize(@user_survey_answer.errors.count, 'error') %> prohibited this answer from being saved:</h2>
+                <ul>
+                  <% @user_survey_answer.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          <% if question.answer_type == "open_response" %>
+            <div class="row">
+              <div class="col-xs-12">
+                <textarea class="form-control" rows="3" id="more" name="user_survey[user_survey_answers_attributes][open_responses][<%=question.id%>]" type="text" placeholder="Please explain 's unique needs."/></textarea>
+              </div>
+            </div>
+            <div class='form-group'>
+              <%= ff.hidden_field :question_id, value: question.id %>
+            </div>
+          <% elsif question.answer_type == "yes/no" %>
+            <div class="radio">
+              <label>
+                <input type="radio" name="user_survey[user_survey_answers_attributes][<%=question.id%>][choices]"  id="optionsRadios1" value="Yes">Yes
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="user_survey[user_survey_answers_attributes][<%=question.id%>][choices]"  id="optionsRadios2" value="No">No
+              </label>
+            </div>
+          <% elsif question.answer_type == "multiple_choice" %>
+            <div class='form-group'>
+              <% question.choices.each do |number, choice| %>
+              <div class="checkbox">
+                <input id="question-<%=question.id%>-checkbox" name="user_survey[user_survey_answers_attributes][<%=question.id%>][choices][<%=number%>]" type="checkbox" value="<%=choice%>"> 
+                <%=choice%>
+                <input type="hidden" name="user_survey[user_survey_answers_attributes][<%=question.id%>][question_id]" value="<%=question.id%>">
+              </div> 
+            <% end %>
             </div>
           <% end %>
-        <% if question.answer_type == "open_response" %>
-          <div class='form-group'>
-            <%= ff.text_field :user_input, placeholder: "Tell us more" %>
-            <%= ff.hidden_field :question_id, value: question.id %>
-          </div>
-        <% elsif question.answer_type == "yes/no" %>
-          <div class="radio">
-            <label>
-              <input type="radio" name="user_survey[user_survey_answers_attributes][<%=question.id%>][choices]"  id="optionsRadios1" value="Yes">Yes
-            </label>
-          </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="user_survey[user_survey_answers_attributes][<%=question.id%>][choices]"  id="optionsRadios2" value="No">No
-            </label>
-          </div>
-        <% elsif question.answer_type == "multiple_choice" %>
-          <div class='form-group'>
-            <% question.choices.each do |number, choice| %>
-            <div class="checkbox">
-              <input id="question-<%=question.id%>-checkbox" name="user_survey[user_survey_answers_attributes][<%=question.id%>][choices][<%=number%>]" type="checkbox" value="<%=choice%>"> 
-              <%=choice%>
-              <input type="hidden" name="user_survey[user_survey_answers_attributes][<%=question.id%>][question_id]" value="<%=question.id%>">
-            </div> 
-          <% end %>
-          </div>
+
         <% end %>
-
       <% end %>
-    <% end %>
-
-    <div class='form-group btn'>
-      <%= f.submit "Submit", class: "btn btn-success btn-lg" %>
+      </div>
+      <div class="col-xs-2"></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3 col-sm-5 col-md-5 col-lg-5"></div>
+      <div class="col-xs-2">
+        <div class='form-group btn'>
+          <%= f.submit "Submit", class: "btn btn-success btn-lg btn-circle", style: "font-size: 30px" %>
+        </div>
+      </div>
     </div>
   </form>
 <% end %>

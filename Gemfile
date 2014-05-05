@@ -17,6 +17,7 @@ gem "rolify"
 gem "cocoon"
 gem 'simple_form'
 gem 'activerecord-postgres-hstore'
+gem "unicorn-rails"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
