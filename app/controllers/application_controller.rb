@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  rescue_from ActionController::RoutingError, :with => :page_not_found
+  rescue_from StandardError, :with => :server_error
 
   def user_is_permitted
     unless (current_user.id == params[:user_id].to_i) || current_user.admin == true
@@ -15,19 +17,35 @@ class ApplicationController < ActionController::Base
     # add to sign in count every time user signs in
     if resource.class == User
       # resource.sign_in_count = resource.sign_in_count + 1
-      if resource.is_admin? == true
-        # send admin user to show page
-        :show_page
-      else
+      # if resource.is_rd? 
+      #   # send admin user to show page
+      #   :show_page
+      # else
         if resource.sign_in_count <= 1
-          # if first time then send to survey
-          :survey_page
+          # if first time then send to build family
+          new_family_path
         else
           # if not first time then send to waiting room
           :show_page
         end
-      end 
+      # end 
     end
   end 
+
+  protected
+
+  def page_not_found
+    respond_to do |format|
+      format.html { render template: 'errors/not_found_error', layout: 'layouts/application', status: 404 }
+      format.all  { render nothing: true, status: 404 }
+    end
+  end
+
+  def server_error
+    respond_to do |format|
+      format.html { render template: 'errors/not_found_error', layout: 'layouts/application', status: 500 }
+      format.all  { render nothing: true, status: 500}
+    end
+  end
 
 end

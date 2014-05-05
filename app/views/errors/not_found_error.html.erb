@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kindrdfood</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'kf_favicon.jpg' %>
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="row question-page-div">
+		<div class="col-xs-2"></div>
+		<div class="col-xs-8" style="text-align: center">
+			<h1 class="green cursive">Oopsy!</h1>
+			<h3>It looks like we made a mistake.  Don't start to cry just yet though. </br>Our technical team has been made aware of the problem.</br>Please press 'back' on your browser or email us at <a href="mailto:contact@kindrdfood.com">contact@kindrdfood.com</a> if you have any questions.</h3>
+		</div>
+		<div class="col-xs-2"></div>
+		<div class="col-xs-12">
+			<%=image_tag('Confused-kid.jpg', size: "800x532", class: "img-responsive")%>
+		</div>
+	</div>
+</div>
+</body>
+
+
+</html>

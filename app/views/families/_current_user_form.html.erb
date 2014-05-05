@@ -1,0 +1,49 @@
+<div id="child-forms-div-0" class='col-xs-12 member-form-green' >
+  <%= f.fields_for :users, @user do |ff| %>
+  <div class="row form-group">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-4">
+      <%= label_tag :first_name %>
+      <%= ff.text_field :first_name, placeholder: 'First Name'%>
+    </div>
+    <div class="col-xs-4">
+      <%= label_tag :last_name %>
+      <%= ff.text_field :last_name, placeholder: 'Last Name'%>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-xs-12">
+     <%= label_tag :birth_date %>
+    </div>
+    <div class="col-xs-3 col-sm-12 col-md-12 col-lg-12">
+      <%= ff.date_select :birth_date, prompt: { day: 'Day', month: 'Month', year: 'Year' }, start_year: Date.today.year, end_year: 1910, :class => "date-select" %>
+    </div>
+  </div>
+  <div class="col-xs-12" style="line-height: -10%">
+    <label class="control-label">Sex: </label>
+    <div class="radio-inline" style="margin-top: 2%; margin-left: 5%">
+      <label>
+        <input type="radio" name="family[users_attributes][0][sex]" id="sexRadios-0-1" value="Female">
+        <b>Female</b>
+      </label>
+    </div>
+    <div class="radio-inline" style="margin-top: 2%">
+      <label>
+        <input type="radio" name="family[users_attributes][0][sex]" id="sexRadios-0-2" value="Male">
+        <b>Male</b>
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-4">
+      <%= label_tag :height_inches %>
+      <%= ff.text_field :height_inches, placeholder: 'Enter Height'%>
+    </div>
+    <div class="col-xs-4">
+      <%= label_tag :weight_ounces %>
+      <%= ff.text_field :weight_ounces, placeholder: 'Enter Weight'%>
+    </div>
+  </div>
+  <% end %>
+</div>
