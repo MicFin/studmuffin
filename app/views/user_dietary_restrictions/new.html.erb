@@ -28,7 +28,7 @@
   </div>
 <%= form_for(@user_dietary_restriction) do |f| %>
   <div class="row">
-
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
       <div class="panel-group" id="accordion-allergy">
         <% @allergies.each do |allergy| %>
         <div class="panel panel-default">
@@ -62,7 +62,7 @@
       </div>
 
 
-
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
       <div class="panel-group" id="accordion-intolerance">
         <% @intolerances.each do |allergy| %>
         <div class="panel panel-default">
@@ -94,8 +94,9 @@
         </div>
         <% end %>
       </div>
+    </div> <!-- intolerances column  -->
 
-
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
       <div class="panel-group" id="accordion-disease">
         <% @diseases.each do |allergy| %>
         <div class="panel panel-default">
@@ -127,6 +128,7 @@
         </div>
         <% end %>
       </div>
+    </div> <!-- diseases column  -->
   </div> <!-- row for all columns -->
 </div> <!-- restriction columns -->
 
