@@ -36,7 +36,6 @@ $(document).ready(function() {
 		$('#allergy-'+i+'-popover').popover({ trigger: "hover" });
 		$('#intolerance-'+i+'-popover').popover({ trigger: "hover" });
 		$('#disease-'+i+'-popover').popover({ trigger: "hover" });
-		// hide other allergy/disease field until clicked
 
 	};
 
