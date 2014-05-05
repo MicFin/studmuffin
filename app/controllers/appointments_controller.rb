@@ -27,7 +27,7 @@ class AppointmentsController < ApplicationController
     @appointment.appointment_host_id = @user.id
     ## does not assign user and focus, only assigns focus as user
     @appointment.save
-    redirect_to new_user_survey_path(survey_id: 2)
+    redirect_to new_user_survey_path(survey_id: 1)
   end
 
   def update
