@@ -11,11 +11,6 @@ class FamiliesController < ApplicationController
   end
 
   def new
-<<<<<<< HEAD
-    @user = current_user
-    @family = Family.new(name: "#{@user.last_name} Family")
-    @new_user = User.new
-=======
     # famliies form is sending itself back to the new method when it should go to the create method, could not find bug so added if statement to redirect
     if params["_method"]
       create
@@ -29,7 +24,6 @@ class FamiliesController < ApplicationController
         format.html
       end
     end
->>>>>>> cocoon
   end
 
   def edit
@@ -44,11 +38,7 @@ class FamiliesController < ApplicationController
     @family.users << @user
     @family.head_of_family = @user
     @family.save
-<<<<<<< HEAD
-    redirect_to root_path
-=======
     redirect_to new_user_dietary_restriction_path
->>>>>>> cocoon
   end
 
   def update
