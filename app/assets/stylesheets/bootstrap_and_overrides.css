@@ -196,3 +196,9 @@ div.new_html_code {
 .orange-background{
   background-color: rgba(246, 141, 60, 1);
 }
+
+.accordion-columns{
+  margin-left: 5%;
+  margin-right: 5%;
+
+}
