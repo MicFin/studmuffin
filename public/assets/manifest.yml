@@ -1,6 +1,8 @@
 ---
 Confused-kid.jpg: Confused-kid-753d4de6a2d0539117ae69e8e30d92dc.jpg
 Confused-kid/index.jpg: Confused-kid-753d4de6a2d0539117ae69e8e30d92dc.jpg
+add_users.png: add_users-5c25d0137378d2f563f942598e2e018c.png
+add_users/index.png: add_users-5c25d0137378d2f563f942598e2e018c.png
 bg.jpg: bg-9382bbbcc954baba1d672678b82a549e.jpg
 bg/index.jpg: bg-9382bbbcc954baba1d672678b82a549e.jpg
 callout.jpg: callout-8cc622efc2123b88a7c1c8a077663b00.jpg
@@ -25,8 +27,8 @@ application.js: application-b229b9202640a721aa96020d80639fba.js
 application/index.js: application-b229b9202640a721aa96020d80639fba.js
 active_admin.css: active_admin-656976116454d58a45e3601bac4f905e.css
 active_admin/index.css: active_admin-656976116454d58a45e3601bac4f905e.css
-application.css: application-3efd7c8fd75c8aa2b7bdfc4650971477.css
-application/index.css: application-3efd7c8fd75c8aa2b7bdfc4650971477.css
+application.css: application-09a1fc13e56f9a697da66796cd026c5d.css
+application/index.css: application-09a1fc13e56f9a697da66796cd026c5d.css
 FontAwesome.otf: FontAwesome-1b753859c011e89c9cc8e29a6ee33956.otf
 FontAwesome/index.otf: FontAwesome-1b753859c011e89c9cc8e29a6ee33956.otf
 fontawesome-webfont.eot: fontawesome-webfont-e742c0f297e307a74bdf4ca3c19073a2.eot
