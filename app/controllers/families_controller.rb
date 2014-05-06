@@ -16,7 +16,7 @@ class FamiliesController < ApplicationController
       create
     else
       @user = current_user
-      @family = Family.new(name: "#{@user.last_name} Family")
+      @family = Family.new(name: @user.last_name)
       @family.users.build
       @new_user = User.new
       respond_to do |format|
@@ -31,6 +31,7 @@ class FamiliesController < ApplicationController
   end
 
   def create
+    binding.pry
     @user = current_user
     @user.update_attributes(params[:family][:users_attributes]["0"])
     params[:family][:users_attributes].delete("0")

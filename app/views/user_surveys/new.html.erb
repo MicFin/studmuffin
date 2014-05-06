@@ -1,5 +1,9 @@
 <div class="row text-center form-group">
-  <h1 class="bright-green">What makes your table <span class="cursive large orange">special?</span></h1>
+  <% if @survey.id == 1%>
+    <h1 class="bright-green">Let's get down to business!</h1>
+  <% elsif @survey.id == 2%>
+    <h1 class="bright-green">And one last thing, the tech stuff!</h1>
+  <% end %>
 </div>
 <%= form_for(@user_survey) do |f| %>
   <% if @user_survey.errors.any? %>
@@ -16,7 +20,7 @@
   <%= f.hidden_field :survey_id, value: @survey.id %>
   
   <form class = 'form-horizontal' role = 'form'>
-    <div class="col-xs-12 orange-background">
+    <div class="col-xs-12 orange-background survey-area">
       <div class="hidden-xs col-sm-2 col-md-2 col-lg-2"></div>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
       <% @survey.questions.each do |question| %>
@@ -35,7 +39,7 @@
           <% if question.answer_type == "open_response" %>
             <div class="row">
               <div class="col-xs-12">
-                <textarea class="form-control" rows="3" id="more" name="user_survey[user_survey_answers_attributes][open_responses][<%=question.id%>]" type="text" placeholder="Please explain 's unique needs."/></textarea>
+                <textarea class="form-control" rows="3" id="more" name="user_survey[user_survey_answers_attributes][open_responses][<%=question.id%>]" type="text" placeholder="Please be as specific as possible.  Use as much space as needed."/></textarea>
               </div>
             </div>
             <div class='form-group'>

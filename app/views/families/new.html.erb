@@ -19,7 +19,7 @@
               <%= image_tag("tara.png") %>
             </div>
             <div class="hidden-xs col-sm-10 col-md-10 col-lg-10" style="margin-left: -10%">
-              <span class="welcome-message">Hello and a big warm welcome to the entire <%=@family.name %>!</span>
+              <span class="welcome-message">Hello and a big warm welcome to the entire  <span class="green cursive" style="font-size: 30px"><%=@family.name %></span>  family!</span>
             </div>    
             <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
             <div class="col-xs-10 hidden-sm hidden-md hidden-lg">
@@ -55,8 +55,29 @@
             </div>
           </div>
           <div class="row text-center orange-background" style="padding-top: 2%; padding-bottom: 2%">
-            <div class='form-group btn'>
-              <%= f.submit "Click here once all of your family members have been added", class: "btn btn-success btn-lg btn-tall" %>
+            <button type="button" class="btn btn-success btn-lg btn-tall btn-circle" data-toggle="modal" data-target="#myModal" style="font-size: 30px">Submit</button>
+
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel"> It all starts at home!</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                      <%= image_tag("tara.png") %>
+                    </div>
+                    <div class="col-xs-9">
+                      It's very important that I understand your family's dynamics.  Did you add all of your family members?      
+                    </div>
+                  </div>
+                  <div class="modal-footer" style="border: none">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    <button class="btn btn-success">Yes</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

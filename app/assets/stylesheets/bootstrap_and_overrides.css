@@ -200,5 +200,9 @@ div.new_html_code {
 .accordion-columns{
   margin-left: 5%;
   margin-right: 5%;
+}
 
+.survey-area{
+  padding: 2%;
+  color: rgba(255,255,255,1);
 }

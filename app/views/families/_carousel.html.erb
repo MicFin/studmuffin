@@ -20,17 +20,24 @@
   </div>
   <!-- Controls -->
   <a id="carousel-back-button" class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-    <span id="carousel-back-graphic" class="glyphicon glyphicon-chevron-left"></span>
-    <div id="start-with-you" class="text-center">
-      <p class="green">Let's start</p> 
-      <p class="green">with <span class="cursive">you</span></p>
+    <div id="carousel-back-graphic">
+      <div style="margin-top: 15%">
+        <p>Previous</p>
+      </div>
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </div>
+    <div id="start-with-you" class="text-center btn-circle" style="background: white; font-size: 20px; line-height: 1.5;">
+      <div style="margin-top: 15%">
+        <p class="green">Let's start</p> 
+        <p class="green">with <span class="cursive">you</span></p>
+      </div>
     </div>
   </a>
   <a id="carousel-next-button" class="right carousel-control" href="#carousel-example-generic" data-slide="next">
     <div class="add-member-button-text text-center">
-      <p>ADD A</p> 
-      <p>FAMILY MEMBER</p>
-      <p><span class="large-plus-sign">+</span></p>
+      <p>Add</p> 
+      <p>Family Member</p>
+      <%= image_tag("add_users.png", class: "img-responsive") %>
     </div>
   </a>
 </div> <!-- carousel example generic -->

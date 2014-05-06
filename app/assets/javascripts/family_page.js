@@ -85,5 +85,6 @@ $(document).ready(function() {
     $(".other-issues-div").show();
    	$(".create-diets-button").show(); 
   });
-  
+
+
 });

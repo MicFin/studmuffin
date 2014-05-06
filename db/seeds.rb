@@ -4,7 +4,7 @@
 #   User.find_or_create_by_email email: email, password: 'changeme', fullname: name
 # end
 
-# User.create(email: "tara@kindrdfood.com", password: 'tararules', first_name: "Tara", last_name: "McCarthy", admin: true)
+User.create(email: "tara@kindrdfood.com", password: 'tararules', first_name: "Tara", last_name: "McCarthy", rd: true)
 
 # User.create(email: "david@kindrdfood.com", password: 'davidrules', first_name: "David", last_name: "Constantine", admin: true)
 
@@ -35,7 +35,7 @@ DietaryRestriction.create(name: "Crohn's Disease", category: "disease", order: 2
 DietaryRestriction.create(name: "Other Disease", input_option: true, category: "disease", order: 209, description: "If a disease affecting your family's diet isn't listed, please add it below!")
 DietaryRestriction.create(name: "Not Sure Yet", category: "none", order: 301)
 
-# Survey.create(title: "First_Appt_Survey").questions << Question.create(answer_type: "open_response", choices: {"0" => "open response"}, content: "In a typical day, list what your child eats", question_order: 1) << Question.create(answer_type: "open_response", choices: {"0" => "open response"}, content: "Describe the challenges that lead you to this appointment", question_order: 2) << Question.create(answer_type: "open_response", choices: {"0" => "open response"}, content: "What is the single most important goal you want accomplished in your upcoming appointment", question_order: 3)
+Survey.create(title: "First_Appt_Survey").questions << Question.create(answer_type: "open_response", choices: {"0" => "open response"}, content: "In a typical day, list what he/she eats:", question_order: 1) << Question.create(answer_type: "open_response", choices: {"0" => "open response"}, content: "Describe the challenges that lead you to this appointment:", question_order: 2) << Question.create(answer_type: "open_response", choices: {"0" => "open response"}, content: "What is the single most important goal you want accomplished in your upcoming appointment?", question_order: 3)
 
-# Survey.create(title: 'First_Tech_Survey').questions << Question.create(answer_type: 'multiple_choice', content: 'What web browser do you use?', question_order: 1, choices: {'1' => 'Chrome', '2' => 'FireFox', '3' => 'Safari', '4' => 'Internet Explorer', '4' => 'Not Sure'}) << Question.create(answer_type: 'yes/no', content: 'Do you have a webcam?', question_order: 2, choices: {'1' => 'Yes', '2' => 'No'}) << Question.create(answer_type: 'yes/no', content: 'Have you used your webcam before?', question_order: 3, choices: {'1' => 'Yes', '2' => 'No'})
+Survey.create(title: 'First_Tech_Survey').questions << Question.create(answer_type: 'multiple_choice', content: 'What web browser do you use?', question_order: 1, choices: {'1' => 'Chrome', '2' => 'FireFox', '3' => 'Safari', '4' => 'Internet Explorer', '4' => 'Not Sure'}) << Question.create(answer_type: 'yes/no', content: 'Do you have a webcam?', question_order: 2, choices: {'1' => 'Yes', '2' => 'No'}) << Question.create(answer_type: 'yes/no', content: 'Have you used your webcam before?', question_order: 3, choices: {'1' => 'Yes', '2' => 'No'})
 
