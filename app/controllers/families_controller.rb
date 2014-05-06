@@ -31,7 +31,6 @@ class FamiliesController < ApplicationController
   end
 
   def create
-    binding.pry
     @user = current_user
     @user.update_attributes(params[:family][:users_attributes]["0"])
     params[:family][:users_attributes].delete("0")
