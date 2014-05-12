@@ -73,7 +73,11 @@ class FamiliesController < ApplicationController
     # save family
     @family.save
     # create appointment with user as host and patient focus from building family 
-    @appointment = Appointment.new(patient_focus_id: @family.users.find_by_temp_flag(true).id, appointment_host_id: @user.id)
+    @appointment = Appointment.new(patient_focus_id: @family.users.where(temp_flag: true).first.id, appointment_host_id: @user.id)
+    # remove temp flag from user
+    flagged_user = @family.users.where(temp_flag: true).first
+    flagged_user.update_attributes(temp_flag: false)
+    flagged_user.save
     # save appointment.
     @appointment.save
     redirect_to new_user_dietary_restriction_path
