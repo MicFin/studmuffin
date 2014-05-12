@@ -25,11 +25,11 @@ Studmuffin::Application.routes.draw do
   get "/survey", to: "home#survey", as: :survey_page
   get "/show", to: "home#show", as: :show_page
 
-  if Rails.env.production?
-     get '404', :to => 'application#page_not_found'
-     get '500', :to => 'application#server_error'
-     get '422', :to => 'application#server_error'
-  end
+  # if Rails.env.production?
+  #    get '404', :to => 'application#page_not_found'
+  #    get '500', :to => 'application#server_error'
+  #    get '422', :to => 'application#server_error'
+  # end
 
 
 end

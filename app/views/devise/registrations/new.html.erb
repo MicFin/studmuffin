@@ -5,23 +5,25 @@
     </div>
   </div>
   <div class="row">
-
     <div class="col-xs-12 col-sm-12 col-md-6 col-g-6">
-      <h3 >THREE QUICK STEPS! </h3> 
-    
+      <h3 >Let's get you setup for your first session!</h3> 
         <ul>
-          <li style="color: green"><b>Create a login on this page.</b></li>
-          <li>Help your RDN prep for you with a health profile.</li>
-          <li>Make sure your technology works for an easy appointment.</li>
+          <li>Create your login</li>
+          <li>Enter relevant family and health information</li>
+          <li>And, check technological requirements </li>
         </ul>
-
-        <p>Let’s make sure that you have a great appointment with your Registered Dietitian Nutritionist (RDN)!
-        Your RDN needs to hear about you and what you need to that you need to eat safe, healthy, great tasting food.</p>
-
-        <p>This should only take a few short minutes!</p>
-    
+        <p>This should only take a few short minutes and will help your</p>
+        <p> 
+          <a data-toggle="modal" data-target="#rdModal" style="cursor: pointer" class="nutritionist-link tilt">
+            <span class="bright-green" style="font-size: 20px">KindRD</span><span class="orange" style="font-size: 20px">Nutritionist</span> 
+            <span class="glyphicon glyphicon-question-sign green"></span>
+          </a> prepare for your upcoming session
+        </p>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
+
+<%= render "/shared/kindrd_nutritionist_modal" %>
+
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center orange-background" style="padding-bottom: 2%; padding-top: 3%; border-radius: 20px">
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
         <form class='form-horizontal text-center' role='form'>
@@ -49,19 +51,21 @@
                 <div class='form-group'>
                   <%= f.password_field :password_confirmation, placeholder: 'Confirm Password', style: "padding-left: 5%" %>
                 </div>
-          <div class='actions text-center'>
-            <%= f.submit  "BEGIN", class: "btn-success btn-lg" %>
-          </div>
+                <div class='actions text-center'>
+                  <%= f.submit  "Create Login", class: "btn-success btn-block btn-lg" %>
+                </div>
               </div>
             </div>
           </div>
-
-          <div class='emphasized'>
-            For best results, we recommend using <a href='https://www.google.com/intl/en/chrome/browser/'>Google Chrome</a>
-          </div>
         </form>
       <% end %>
+    </div>  
+  </div>
+  <div class="row">
+    <div class="hidden-xs hidden-sm col-md-6 col-lg-6"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
       <%= render "devise/shared/links" %>
     </div>
   </div>
 </div>
+

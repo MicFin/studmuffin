@@ -24,12 +24,73 @@ $(document).ready(function() {
 		$("#carousel-form").show();
 	});
 
-	$("#carousel-back-graphic").hide();
+	// $("#carousel-back-graphic").hide();
+	// $("#new-indicators").hide();
+	// for (var i=0; i <= 10; i++) {
+	// 	$("#indicator-"+i).hide()
+	// };
 	$("#carousel-next-button").click(function() {
-		$("#carousel-back-graphic").show();
+		// $("#carousel-back-graphic").show();
 		$("#start-with-you").hide();
-		$("#carousel-back-button").addClass("orange-background");
+		// $("#carousel-back-button").addClass("orange-background");
+		$("#new-indicators-1").empty();
+		$("#new-indicators-2").empty();
+		for (var i=0; i <= 10; i++) {
+			if ($("#child-forms-div-"+i+" input[name='family[users_attributes]["+i+"][first_name]'").val() != "") {
+				$("#new-indicators-1").append("<li id='indicator-"+i+"' data-target='#carousel-example-generic' data-slide-to='"+i+"'>"+"<div class='row'><div class='col-xs-6'><img src='/assets/user.png' style='height: 30px;  class='img-responsive'/></div>"+"<div class='col-xs-6'><p>"+$("#child-forms-div-"+i+" input[name='family[users_attributes]["+i+"][first_name]'").val() +"</p></div></div></li>")
+			};
+		};
 	});
+
+
+	$(".patient-focus-forms").hide();
+	$(".patient-focus2").hide();
+	// each checkbox
+	$('.patient-focus').each(function(index, element){
+		// whenc clicked
+		$(element).click(function(){
+			// chenge its size
+			$("#new-html-"+index).toggleClass("new_html_code_large");	
+			$("#patient-focus-form-"+index).toggle();
+			// change checked status
+	   	$("#patient-focus-form-"+index).toggle(this.checked);	
+			var temp = 0;
+	  	if ($("#patient-focus-checkbox-"+index).checked) {
+	  		temp = 1;
+	  	};
+	  	$(".patient-focus").prop('checked', false);
+	  	if (temp === 1){  		
+	  		$("#patient-focus-form-"+index).prop("checked", true);	 
+	  	};
+
+	    // not checked chekced boxes hidden
+    	// $(".patient-focus:not(:checked)").hide();
+    	// // each not checked checked box
+    // 	$(".patient-focus:not(:checked)").each(function(index, element){
+    // 		// set variable span to text
+    // 		var span = $(element).parent().find('.patient-focus-text');
+    // 		// hide text
+    // 		span.hide();
+    // 		// show text2
+				// $(".patient-focus-text2").show(); 		
+    // 	});
+
+    	// $(this).parent().parent().show();
+		});
+	});
+
+// jQuery.fn.extend({
+//         toggleText: function (a, b){
+//             var isClicked = false;
+//             var that = this;
+//             this.click(function (){
+//                 if (isClicked) { that.text(a); isClicked = false; }
+//                 else { that.text(b); isClicked = true; }
+//             });
+//             return this;
+//         }
+//     });
+
 
 	for (var i=1; i <= 100; i++) {
 		// set popovers
@@ -38,6 +99,7 @@ $(document).ready(function() {
 		$('#disease-'+i+'-popover').popover({ trigger: "hover" });
 
 	};
+
 
 // ATTEMPTS AT HIDING THEN SHOWING INPUT DIV
  //  	// $("#intolerance-1-checkbox").click(function() {

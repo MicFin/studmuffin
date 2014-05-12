@@ -2,15 +2,15 @@
 <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <div class="new_html_code"></div>
-      <div class="carousel-caption">
+      <div id="new-html-0" class="new_html_code"></div>
+      <div class="carousel-caption orange-background" style="border-radius: 50px; width: 450px">
         <%= render "current_user_form", f: f %>
       </div>
     </div>
 
     <% (1..10).each do |i| %>
     <div class="item">
-      <div class="new_html_code"></div>
+      <div id="new-html-<%=i%>" class="new_html_code"></div>
       <div class="carousel-caption">
         <%= render "new_member_form", f: f, i: i %>
       </div>
@@ -18,26 +18,24 @@
     <% end %>
 
   </div>
-  <!-- Controls -->
-  <a id="carousel-back-button" class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-    <div id="carousel-back-graphic">
-      <div style="margin-top: 15%">
-        <p>Previous</p>
-      </div>
-      <span class="glyphicon glyphicon-chevron-left"></span>
+  <div class="left carousel-control indicators-div">
+    <div class="indicators-column col-xs-12">
+      <ul id="new-indicators-1" class="new-indicators">
+      </ul>
     </div>
-    <div id="start-with-you" class="text-center btn-circle" style="background: white; font-size: 20px; line-height: 1.5;">
+    <div id="start-with-you" class="text-center btn-circle" style="background: white; font-size: 20px; line-height: 1.5; margin-top: 50%">
       <div style="margin-top: 15%">
         <p class="green">Let's start</p> 
         <p class="green">with <span class="cursive">you</span></p>
       </div>
     </div>
-  </a>
+  </div>
+
+
   <a id="carousel-next-button" class="right carousel-control" href="#carousel-example-generic" data-slide="next">
     <div class="add-member-button-text text-center">
-      <p>Add</p> 
-      <p>Family Member</p>
-      <%= image_tag("add_users.png", class: "img-responsive") %>
+      <h4>Add</br>Family</br>Member</h4>
+      <%= image_tag("add_users_large.png", class: "img-responsive") %>
     </div>
   </a>
 </div> <!-- carousel example generic -->

@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
+  resourcify
   rolify
+
+  before_save :uppercase_name
+
   attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :phone_number, :sign_in_count, :encrypted_password, :created_at, :updated_at, :last_sign_in_at, :current_sign_in_at, :current_sign_in_ip, :last_sign_in_ip, :reset_password_token, :reset_password_sent_at, :remember_created_at, :rd, :age_months, :height_inches, :weight_ounces, :sex, :birth_date, :more_info
 
   devise :database_authenticatable, :registerable, :timeoutable, :trackable, :recoverable, :rememberable, :validatable, :timeoutable
@@ -47,6 +51,11 @@ class User < ActiveRecord::Base
     ## else
     false
     # end
+  end
+
+  def uppercase_name
+    self.first_name.capitalize!
+    self.last_name.capitalize!
   end
 
 end
