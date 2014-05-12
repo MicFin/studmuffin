@@ -42,7 +42,7 @@ class UserDietaryRestrictionsController < ApplicationController
       end
     end
     @user = current_user
-    redirect_to new_appointment_path
+    redirect_to new_user_survey_path(survey_id: 1)
   end
 
   def update

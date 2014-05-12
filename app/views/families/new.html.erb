@@ -19,11 +19,11 @@
               <%= image_tag("tara.png") %>
             </div>
             <div class="hidden-xs col-sm-10 col-md-10 col-lg-10" style="margin-left: -10%">
-              <span class="welcome-message">A warm welcome to you,<span class="green cursive" style="font-size: 30px"><%=@user.first_name %></span> , and the whole <span class="green cursive" style="font-size: 30px"><%=@family.name %></span>  family!</span>
+              <span class="welcome-message">A warm welcome to you<span class="green cursive" style="font-size: 30px"><%=@user.first_name %></span>  and the whole <span class="green cursive" style="font-size: 30px"><%=@family.name %></span>  family!</span>
             </div>    
             <div class="col-xs-1 hidden-sm hidden-md hidden-lg"></div>
             <div class="col-xs-10 hidden-sm hidden-md hidden-lg" style="margin-bottom: 2%">
-              <span class="welcome-message">A warm welcome to you,<span class="green cursive" style="font-size: 30px"><%=@user.first_name %></span> , and the whole <span class="green cursive" style="font-size: 30px"><%=@family.name %></span>  family!</span>
+              <span class="welcome-message">A warm welcome to you<span class="green cursive" style="font-size: 30px"><%=@user.first_name %></span>  and the whole <span class="green cursive" style="font-size: 30px"><%=@family.name %></span>  family!</span>
             </div>    
           </div>      
           <%= f.hidden_field :name, value: @family.name %>
@@ -52,26 +52,32 @@
       <div id="carousel-form-div" class="row">
         <div id="carousel-form" class="row">
           <div class="row text-center form-group">
-            <h1 class="green">Who makes your table <span class="cursive large orange">special?</span></h1>
+            <div class="col-xs-2">
+            <%= image_tag("carrot-large.png", style: "height: 100px") %>
+            </div>
+            <div class="col-xs-10">
+            <h1 style="margin-left: -20%" class="green">Who makes your table <span class="cursive large orange">special?</span></h1>
+            </div>
           </div>
-          <div class="row light-green-background" style="margin-left: 0px; margin-right: 0px">
+          <div class="row light-green-background" style="margin-left: 0px; margin-right: 0px; padding-top: 1%">
             <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8" style="margin-left: 15%">
               <%= render "carousel", f: f %>
             </div>
           </div>
-          <div class="row text-center orange-background" style="padding-top: 2%; padding-bottom: 2%">
+          <div class="row text-center" style="padding-top: 2%; padding-bottom: 2%">
             <div class="col-xs-5"></div>
-            <div class="col-xs-2">
+            <div class="col-xs-2" style="margin-left: -1%">
               <button type="button" class="btn-success btn-block btn-lg" data-toggle="modal" data-target="#myModal">Submit</button>
             </div>
           </div>
         </div>
       </div>
+      <%= render "add_family_warning"%>
     <% end %>
     </form>
   </div>
 
-<%= render "add_family_warning"%>
+
 <%= render "/shared/kindrd_nutritionist_modal" %>
 <%= render "/shared/rd_summary_modal" %>
 <%= render "/shared/privacy_policy" %>

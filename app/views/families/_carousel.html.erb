@@ -3,7 +3,7 @@
   <div class="carousel-inner">
     <div class="item active">
       <div id="new-html-0" class="new_html_code"></div>
-      <div class="carousel-caption orange-background" style="border-radius: 50px; width: 450px">
+      <div class="carousel-caption orange-background" style="border-radius: 50px; width: 450px; margin-left: auto; margin-right: auto">
         <%= render "current_user_form", f: f %>
       </div>
     </div>
@@ -11,7 +11,7 @@
     <% (1..10).each do |i| %>
     <div class="item">
       <div id="new-html-<%=i%>" class="new_html_code"></div>
-      <div class="carousel-caption">
+      <div class="carousel-caption orange-background" style="border-radius: 50px; width: 450px; margin-left: auto; margin-right: auto">
         <%= render "new_member_form", f: f, i: i %>
       </div>
     </div>

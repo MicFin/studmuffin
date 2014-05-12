@@ -1,32 +1,24 @@
 <div class="row text-center form-group">
-  <h1 class="bright-green">What makes your table <span class="cursive large orange">special?</span></h1>
-</div>
-<div class="col-xs-12 text-center diet-question-div">
-  <div class="diet-text-div">
-    <h1 style="padding-left: 2%; padding-right: 2%">Does your family have any food allergies, intolerances, diseases, or other conditions that require dietary restrictions?</h1>
+  <div class="col-xs-2">
+  <%= image_tag("carrot-large.png", style: "height: 100px") %>
   </div>
-  <div class="row" style="margin-top: 5%">
-    <div class="col-xs-3"></div>
-    <div class="col-xs-4">
-      <button class="btn btn-block btn-success btn-circle restrictions-show-button"><span class="diet-yes-no">YES</button>
-    </div>
-    <div class="col-xs-4">
-      <button class="btn btn-block btn-success btn-circle no-restrictions-show-button"><span class="diet-yes-no">NO</button>
-    </div>
+  <div class="col-xs-10">
+  <h1 style="margin-left: -20%" class="green">What makes your table <span class="cursive large orange">special?</span></h1>
   </div>
 </div>
 
 
 <div class="row restrictions-div" id="restriction-columns">
+<%= form_for(@user_dietary_restriction) do |f| %>
   <div class="row">
     <div class="col-xs-2"></div>
     <div class="col-xs-10">
-      <p>Please select the dietary restrictions in your family and then click 
-        <button class="btn btn-lg btn-success btn-circle next-question-button">Next</button>
+      <p><span style="background-color: white; font-size: 30px; padding: 1%; border-radius: 50px" class="green"><b>SELECT BELOW</b></span> any dietary restrictions in your family and then click 
+        <button class="btn-success btn-lg" style="width: 200px">Next</button>
       </p>
     </div>
   </div>
-<%= form_for(@user_dietary_restriction) do |f| %>
+
   <div class="row accordion-columns">
     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
       <div class="panel-group" id="accordion-allergy">
@@ -45,11 +37,11 @@
                 <% @family_members.each do |member| %>
                 <li>
                   <div class="checkbox">
-                    <input id="allergy-<%=member.id%>-checkbox" name="user[<%=member.id%>][allergies][]" type="checkbox" value="<%=allergy.id%>"> <%=member.first_name%>
+                    <input class="allergy-checkbox" id="allergy-<%=member.id%>-checkbox" name="user[<%=member.id%>][allergies][]" type="checkbox" value="<%=allergy.id%>"> <%=member.first_name%>
                   </div>
                   <% if allergy.input_option == true %>
                     <div class="other-field" id="allergy-<%=member.id%>-div">
-                      <input id="allergy-<%=member.id%>-field" name="user[<%=member.id%>][other][<%=allergy.id%>]" type="text" placeholder=" Please specify"/>
+                      <input id="allergy-<%=member.id%>-field" name="user[<%=member.id%>][other][<%=allergy.id%>]" type="text" placeholder="  example1, example2, etc."/>
                     </div>
                   <% end %>
                 </li>
@@ -61,7 +53,6 @@
         <% end %>
       </div>
     </div>
-
     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
       <div class="panel-group" id="accordion-intolerance">
         <% @intolerances.each do |allergy| %>
@@ -79,11 +70,11 @@
                 <% @family_members.each do |member| %>
                 <li>
                   <div class="checkbox">
-                    <input id="allergy-<%=member.id%>-checkbox" name="user[<%=member.id%>][allergies][]" type="checkbox" value="<%=allergy.id%>"> <%=member.first_name%>
+                    <input class="allergy-checkbox" id="allergy-<%=member.id%>-checkbox" name="user[<%=member.id%>][allergies][]" type="checkbox" value="<%=allergy.id%>"> <%=member.first_name%>
                   </div>
                   <% if allergy.input_option == true %>
                     <div class="other-field" id="allergy-<%=member.id%>-div">
-                      <input id="allergy-<%=member.id%>-field" name="user[<%=member.id%>][other][<%=allergy.id%>]" type="text" placeholder=" Please specify"/>
+                      <input id="allergy-<%=member.id%>-field" name="user[<%=member.id%>][other][<%=allergy.id%>]" type="text" placeholder="  example1, example2, etc."/>
                     </div>
                   <% end %>
                 </li>
@@ -113,11 +104,11 @@
                 <% @family_members.each do |member| %>
                 <li>
                   <div class="checkbox">
-                    <input id="allergy-<%=member.id%>-checkbox" name="user[<%=member.id%>][allergies][]" type="checkbox" value="<%=allergy.id%>"> <%=member.first_name%>
+                    <input class="allergy-checkbox" id="allergy-<%=member.id%>-checkbox" name="user[<%=member.id%>][allergies][]" type="checkbox" value="<%=allergy.id%>"> <%=member.first_name%>
                   </div>
                   <% if allergy.input_option == true %>
                     <div class="other-field" id="allergy-<%=member.id%>-div">
-                      <input id="allergy-<%=member.id%>-field" name="user[<%=member.id%>][other][<%=allergy.id%>]" type="text" placeholder=" Please specify"/>
+                      <input id="allergy-<%=member.id%>-field" name="user[<%=member.id%>][other][<%=allergy.id%>]" type="text" placeholder="  example1, example2, etc"/>
                     </div>
                   <% end %>
                 </li>
@@ -132,7 +123,7 @@
   </div> <!-- row for all columns -->
 </div> <!-- restriction columns -->
 
-<div class="col-xs-12 text-center other-issues-div">
+<!-- <div class="col-xs-12 text-center other-issues-div">
   <div class="diet-text-div">
     <h1 style="padding-left: 2%; padding-right: 2%">
       Every person has their own combination of health concerns, habits, tastes, and circumstances that make their nutritional needs unique.  The more I know about your family in advance, the more prepared I will be to help.
@@ -148,9 +139,9 @@
     </li>
     <% end %>
   </ul>
-</div>
+</div> -->
 
-<div class='actions create-diets-button text-center'>
+<!-- <div class='actions create-diets-button text-center'>
   <%= f.submit "Submit", class: "btn btn-lg btn-success btn-circle", style: "font-size: 30px"%>
-</div>
+</div> -->
 <% end %>

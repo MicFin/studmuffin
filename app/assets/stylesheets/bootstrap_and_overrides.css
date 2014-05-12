@@ -45,13 +45,17 @@
 
 div.new_html_code {
   width:100px;
-  height:325px;
+  height:350px;
   display:block;
+  margin-top: 1%;
 }
 
 div.new_html_code_large {
-  height:400px;
-  margin-top: 3%;
+  height: 500px;
+}
+
+div.new-html-margin {
+  margin-top: 5%;
 }
 
 .carousel-caption {
@@ -111,6 +115,14 @@ div.new_html_code_large {
   list-style-type: none;
 }
 
+.large-white-font{
+  color: white;
+  font-size: 30px;
+}
+
+.white-font{
+  color: white;
+}
 /*.new-indicator li{
   display: inline;
   width: 100%;
@@ -177,7 +189,7 @@ div.new_html_code_large {
 
 /*PANEL OF ALLERGIES*/
 
-.panel-default>.panel-heading {
+.panel-default > .panel-heading {
   color: white;
   background-color: rgba(246, 141, 60, 1);
   border-color: rgba(246, 141, 60, 1);
@@ -295,4 +307,15 @@ input[type=radio] {
 }
 
 
+.pointer:hover {
+  cursor: pointer;
+}
 
+.white-green-panel{
+  background-color: white;
+  color: rgba(17, 117, 59, 1);
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
