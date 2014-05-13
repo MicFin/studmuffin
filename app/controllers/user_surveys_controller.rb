@@ -17,6 +17,7 @@ class UserSurveysController < ApplicationController
     @survey_questions = @survey.questions
     @user_survey.user_survey_answers.build
     @user_survey_answer = UserSurveyAnswer.new
+    @family_members = @user.families.last.users
   end
 
   def edit
@@ -24,6 +25,14 @@ class UserSurveysController < ApplicationController
   end
 
   def create
+    # for more info given about user add it to user more info
+    if params["user"]
+      params["user"].each do |user, allergy_array|
+        if !params["user"][user]["more"].blank?
+          User.find(user.to_i).update_attributes(more_info: params["user"][user]["more"])
+        end
+      end
+    end
     ### cleans up input of text field for open response answers so they can be saved to user 
     if params["user_survey"]["user_survey_answers_attributes"]["open_responses"]
       num = 0

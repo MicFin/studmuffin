@@ -1,22 +1,22 @@
-<div class="appointment-div">
+<div class="appointment-div ">
   <div class="row text-center form-group">
     <h1><span class="cursive large orange">Thank you!</span>    <%= image_tag("tara.png") %></h1>
-    <h1 class="bright-green">I cannot wait to speak with you.</h1>
+    <h1 class="bright-green">I'm looking forward to getting to know you and your family.</h1>
   </div>
-  <div class="col-xs-12 diet-question-div text-center">
-    <div class="diet-text-div">
-      <h2 style="padding-left: 2%; padding-right: 2%"><p>I will email you a reminder to <%=@user.email%></p><p> 1 hour before our meeting.</p></h2>  
+  <div class="col-xs-12 text-center">
+    <div>
+      <h2 style="padding-left: 2%; padding-right: 2%"><p class="white-font">I will email you a reminder and link to <span class="green"><%=@user.email%></span></p><p class="white-font"> 1 hour before our meeting.</p></h2>  
     </div>
   </div>
-  <div class="row light-green-div text-center form-group">
+  <div class="row orange-background text-center form-group">
     <div class="col-xs-12">
-      <h3 style="padding-left: 2%; padding-right: 2%"class="green"><p>If your meeting is approaching, please click "Start" to enter the waiting room</p></h3>
     </div>
   </div>
   <div class='row form-group text-center'>
+    <h3 style="padding-left: 2%; padding-right: 2%"class="green"><p>If your meeting is approaching, please click "Start" to enter the waiting room</p></h3>
     <div class="col-xs-4"></div>
-    <div class="col-xs-4">
-      <%= link_to "Start", authenticated_root_path, class: "btn btn-success btn-lg btn-circle", style: "font-size: 30px" %>
+    <div class="col-xs-4" style="margin-top: 2%">
+      <%= link_to "Start", authenticated_root_path, class: "btn btn-success btn-lg", style: "font-size: 30px; width: 400px" %>
     </div>
   </div>
 </div>

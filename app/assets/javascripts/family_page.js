@@ -179,8 +179,7 @@ $(document).ready(function() {
 
 
 	// $("#restriction-columns").hide();
- 	$(".create-diets-button").hide(); 
- 	$(".other-issues-div").hide(); 
+
 
 	// $(".restrictions-show-button").click(function() {
     // $(".diet-question-div").hide();
@@ -221,5 +220,10 @@ $(document).ready(function() {
 		});
 	});
 
-
+	$("#chrome-div").hide();
+	$(".browser-checkbox").each(function(i8, e8){
+		$(e8).click(function(){
+			$("#chrome-div").show();
+		})
+	});
 });

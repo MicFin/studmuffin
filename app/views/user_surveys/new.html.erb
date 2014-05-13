@@ -1,8 +1,18 @@
 <div class="row text-center form-group">
   <% if @survey.id == 1%>
-    <h1 class="bright-green">Let's get down to business!</h1>
+  <div class="row text-center form-group">
+    <h1 class="bright-green">My goal is to help you become the </h1>
+    <h1 class="bright-green"><span class="cursive large orange">Chief Nutrition Officer</span> of your home!</h1>
+  </div>
   <% elsif @survey.id == 2%>
-    <h1 class="bright-green">And one last thing, the tech stuff!</h1>
+  <div class="row">
+    <div class="col-xs-2">
+      <%= image_tag("carrot-large.png", style: "height: 100px") %>
+    </div>
+    <div class="col-xs-10">
+      <h1 style="margin-left: -20%" class="bright-green">And <span class="cursive  orange">finally </span> let's check your technology</h1>
+    </div>
+  </div>
   <% end %>
 </div>
 <%= form_for(@user_survey) do |f| %>
@@ -24,7 +34,7 @@
       <div class="hidden-xs col-sm-2 col-md-2 col-lg-2"></div>
       <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
       <% @survey.questions.each do |question| %>
-        <h3><%= question.content %></h3>
+        <h3 class="form-group"><%= question.content %></h3>
         <%= f.fields_for :user_survey_answers, @user_survey_answer do |ff| %>
             <% if @user_survey_answer.errors.any? %>
               <div id='error_explanation'>
@@ -46,38 +56,85 @@
               <%= ff.hidden_field :question_id, value: question.id %>
             </div>
           <% elsif question.answer_type == "yes/no" %>
-            <div class="radio">
-              <label>
-                <input type="radio" name="user_survey[user_survey_answers_attributes][<%=question.id%>][choices]"  id="optionsRadios1" value="Yes">Yes
-              </label>
-            </div>
-            <div class="radio">
-              <label>
-                <input type="radio" name="user_survey[user_survey_answers_attributes][<%=question.id%>][choices]"  id="optionsRadios2" value="No">No
-              </label>
+            <div class="row">
+              <div class="col-xs-1"></div>
+              <div class="col-xs-11">
+                <div class="radio form-group">
+                  <label>
+                    <input type="radio" name="user_survey[user_survey_answers_attributes][<%=question.id%>][choices]"  id="optionsRadios1" value="Yes">Yes
+                  </label>
+                </div>
+                <div class="radio form-group"  style="margin-top: 3%">
+                  <label>
+                    <input type="radio" name="user_survey[user_survey_answers_attributes][<%=question.id%>][choices]"  id="optionsRadios2" value="No">No
+                  </label>
+                </div>
+              </div>
             </div>
           <% elsif question.answer_type == "multiple_choice" %>
-            <div class='form-group'>
+            <div class='form-group row'>
+              <div class="col-xs-6">
               <% question.choices.each do |number, choice| %>
-              <div class="checkbox">
-                <input id="question-<%=question.id%>-checkbox" name="user_survey[user_survey_answers_attributes][<%=question.id%>][choices][<%=number%>]" type="checkbox" value="<%=choice%>"> 
-                <%=choice%>
-                <input type="hidden" name="user_survey[user_survey_answers_attributes][<%=question.id%>][question_id]" value="<%=question.id%>">
-              </div> 
-            <% end %>
+                <div class="col-xs-2"></div>
+                <div class="col-xs-10">
+                  <div class="checkbox"  style="margin-top: 3%">
+                    <input class="browser-checkbox" id="question-<%=question.id%>-checkbox" name="user_survey[user_survey_answers_attributes][<%=question.id%>][choices][<%=number%>]" type="checkbox" value="<%=choice%>"> 
+                    <%=choice%>
+                    <input type="hidden" name="user_survey[user_survey_answers_attributes][<%=question.id%>][question_id]" value="<%=question.id%>">
+                  </div> 
+                </div>
+              <% end %>
+              </div>
+              <div class="col-xs-6 diet-text-div" id="chrome-div">
+                <h3 style="padding-left: 2%; padding-right: 2%">
+                  Please use <a href="http://www.google.com/chrome">Google Chrome</a> for your session while we continue to build for other browsers. 
+                </h3>  
+              </div>
             </div>
           <% end %>
-
         <% end %>
       <% end %>
+      <% if @survey.id == 1 %>
+      <div class="col-xs-12 text-center">
+        <div class="row diet-text-div">
+          <div class="col-xs-2">
+              <%= image_tag("carrot-large.png", style: "height: 200px") %>
+          </div>
+          <div class="col-xs-10">
+            <h3 style="padding-left: 2%; padding-right: 2%">
+              Every person has their own health 
+            </h3>
+            <h3 style="padding-left: 2%; padding-right: 2%">
+            concerns, habits, tastes, and nutritional needs. 
+            </h3>
+            <h3 style="padding-left: 2%; padding-right: 2%">
+              Is there anything else about your family members 
+            </h3>
+            <h3 style="padding-left: 2%; padding-right: 2%">
+              that might be helpful for me to know?
+            </h3>
+          </div>
+        </div>
+        <ul style="list-style-type: none; text-align: left">
+          <% @family_members.each do |member| %>
+          <h2><%=member.first_name%></h2>
+          <li>
+            <div id="more-<%=member.id%>-div">
+             <textarea class="form-control" rows="3" id="more-<%=member.id%>-field" name="user[<%=member.id%>][more]" type="text" placeholder="Please explain <%=member.first_name%>'s unique needs."/></textarea>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
       </div>
       <div class="col-xs-2"></div>
     </div>
-    <div class="row">
+    <div class="row form-group">
       <div class="col-xs-3 col-sm-5 col-md-5 col-lg-5"></div>
-      <div class="col-xs-2">
+      <div class="col-xs-2 form-group">
         <div class='form-group btn'>
-          <%= f.submit "Submit", class: "btn btn-success btn-lg btn-circle", style: "font-size: 30px" %>
+          <%= f.submit "Submit", class: "btn btn-success btn-lg btn-block", style: "font-size: 30px; width: 200px" %>
         </div>
       </div>
     </div>

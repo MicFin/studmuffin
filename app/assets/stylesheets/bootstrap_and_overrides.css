@@ -170,11 +170,13 @@ div.new-html-margin {
 
 /*ALLERGIES OR NOT*/
 .diet-text-div{
-  color: white;
-  background-color:  rgba(246, 141, 60, 1);
+  color: rgba(57, 158, 72, 1);
+  background-color: white;
   padding: 2%;
+  margin-top: 2%;
   margin-left: -5%;
   margin-right: -5%;
+  border-radius: 50px;
 }
 
 .btn-circle {
@@ -287,7 +289,7 @@ a.nutritionist-link:hover{
   font-size: 20px;
 }
 
-input[type=checkbox].patient-focus
+input[type=checkbox]
 {
   /* Double-sized Checkboxes */
   -ms-transform: scale(2,2); /* IE */

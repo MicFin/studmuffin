@@ -36,11 +36,34 @@
   </div>
 <% else %>
   <div class="col-xs-12 text-center">
-  <h1>Thank you for waiting patiently,</h1>
-  <h1>your appointment will begin shortly!</h1>
+    <div class="col-xs-3">
+      <%= image_tag("tara.png") %>
+    </div>
+    <div class="col-xs-9 text-left">
+      <h1>Greetings <span class="cursive green"><%= @user.first_name %></span> !</h1>
+      <p>Welcome to the Kindrdcare Waiting Room.  As you know, I’m Tara McCarthy and I’ll be your KindRDNutritionist today.  </p>
+      <p>While we are still building our software, there are a few items I’d like you to check for me: </p> 
+      <ol>
+        <li>Please review the email I sent you to confirm our session is at this time</li>  
+        <li>Be sure that you are using the <a href="ww.google.com/chrome">Google Chrome</a> web browser </li>
+        <li>Test your web cam and microphone</li>
+        <li>And, have a phone nearby that you can use in case of poor reception</li>
+      </ol>
+      <p>Please stay on this page.  You will receive a video conference call from me at the time of our scheduled session.  The incoming call will prompt you to activate your webcam and then we can begin.  I recommend that you find a well lit and quiet area to have our conversation.</p>
+      <p>In the meantime, click on my photo to learn more about why I became a           
+        <a data-toggle="modal" data-target="#rdModal" style="cursor: pointer" class="nutritionist-link tilt">
+          <span class="bright-green" style="font-size: 20px">KindRD</span><span class="orange" style="font-size: 20px">Nutritionist</span> 
+          <span class="glyphicon glyphicon-question-sign green"></span>
+        </a>
+      </p>
+      <p>I look forward to meeting you!</p>
+      <p><span class="cursive orange" style="font-size: 20px">Tara McCarthy</span></p>
+      <p><span>Tara McCarthy RDN, LDN</p>
+    </div>
   </div>
 <% end %>
 
+<%= render "/shared/kindrd_nutritionist_modal" %>
 <!-- Vline javascript -->
 <script type="text/javascript">
   var loginToken = "<%= Vline.create_login_token(current_user.id) %>";
