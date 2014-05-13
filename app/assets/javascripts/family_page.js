@@ -1,34 +1,16 @@
 $(document).ready(function() {
 	
-	// for (var i=1; i <= 10; i++) {
-	// 	$("#child-forms-div-"+i).hide()
-	// };
-
-	// var family_clicks = 10;
-	// $("#add-family-button").click(function(){
-	// 		var last_form = family_clicks + 1
-	// 		$("#child-forms-div-"+family_clicks).show();
-	// 		$("#child-forms-div-0").addClass("member-form-white");
-	// 		$("#child-forms-div-"+last_form).addClass("member-form-white");
-	// 		family_clicks = family_clicks - 1;
-	// });
-
-	// $(".date-picker").datepicker();
-	// $('.carousel').carousel({
-	//   wrap: true
-	// });
-
+	// hide carousel 
 	$("#carousel-form").hide();
+	// when butotn is clicked
 	$("#show-carousel-button").click(function() {
+		// hide question
 		$("#welcome-family-form").hide();
+		// show carousel
 		$("#carousel-form").show();
 	});
 
-	// $("#carousel-back-graphic").hide();
-	// $("#new-indicators").hide();
-	// for (var i=0; i <= 10; i++) {
-	// 	$("#indicator-"+i).hide()
-	// };
+
 	$("#carousel-next-button").click(function() {
 		// $("#carousel-back-graphic").show();
 		$("#start-with-you").hide();
@@ -100,103 +82,21 @@ $(document).ready(function() {
 				// show all text 1
 				$(".patient-focus-text").show();
 			};
-			// $("#patient-focus-form-"+index).prop("checked", true);
-	  //  	$("#patient-focus-form-"+index).toggle(this.checked);	
-	   	// $(element).parent().parent().hide();
-
-
-			// var temp = 0;
-	  // 	if ($("#patient-focus-checkbox-"+index).checked) {
-	  // 		temp = 1;
-	  // 	};
-	  // 	$(".patient-focus").prop('checked', false);
-	  // 	if (temp === 1){  		
-	  // 		$("#patient-focus-form-"+index).prop("checked", true);	 
-	  // 	};
-
-	    // not checked chekced boxes hidden
-    	// $(".patient-focus:not(:checked)").hide();
-    	// // each not checked checked box
-    // 	$(".patient-focus:not(:checked)").each(function(index, element){
-    // 		// set variable span to text
-    // 		var span = $(element).parent().find('.patient-focus-text');
-    // 		// hide text
-    // 		span.hide();
-    // 		// show text2
-				// $(".patient-focus-text2").show(); 		
-    // 	});
-
-    	// $(this).parent().parent().show();
 		});
 	});
 
-// jQuery.fn.extend({
-//         toggleText: function (a, b){
-//             var isClicked = false;
-//             var that = this;
-//             this.click(function (){
-//                 if (isClicked) { that.text(a); isClicked = false; }
-//                 else { that.text(b); isClicked = true; }
-//             });
-//             return this;
-//         }
-//     });
 
 
-	for (var i=1; i <= 100; i++) {
-		// set popovers
-		$('#allergy-'+i+'-popover').popover({ trigger: "hover" });
-		$('#intolerance-'+i+'-popover').popover({ trigger: "hover" });
-		$('#disease-'+i+'-popover').popover({ trigger: "hover" });
+	// for (var i=1; i <= 100; i++) {
+	// 	// set popovers
+	// 	$('#allergy-'+i+'-popover').popover({ trigger: "hover" });
+	// 	$('#intolerance-'+i+'-popover').popover({ trigger: "hover" });
+	// 	$('#disease-'+i+'-popover').popover({ trigger: "hover" });
 
-	};
+	// };
 
-
-// ATTEMPTS AT HIDING THEN SHOWING INPUT DIV
- //  	// $("#intolerance-1-checkbox").click(function() {
- //   //  	$("#intolerance-1-field")[this.checked ? "show" : "hide"]();
-
- //  	// });
-
+	$('.allergy-popover').popover({ trigger: "hover" });
 	$(".other-field").hide();
-
-	// // for (var i=1; i <= 100; i++) {
-	// 	// if ($('#disease-"+i+"-checkbox').is(':checked')) {
-	// 	// // $("#disease-"+i+"-checkbox").click(function(){
-	// 	// 	$("#disease-"+i+"-div").show();
-	// 	// };
-
- //    $('#disease-1-checkbox').change(function(){
- //        var checked = $(this).attr('checked');
- //        if (checked) {
- //           $('#disease-1-div').show();             
- //        } else {
- //          $('#disease-1-div').hide(); 
- //        }
- //    }); 
-	// // };
-
-
-
-	// $("#restriction-columns").hide();
-
-
-	// $(".restrictions-show-button").click(function() {
-    // $(".diet-question-div").hide();
-  // $('#restriction-columns').show();
-  // });
-
-	// $(".no-restrictions-show-button").click(function() {
- //    $(".diet-question-div").hide();
- //    $(".other-issues-div").show();
- //   	$(".create-diets-button").show(); 
- //  });
-
-	// $(".next-question-button").click(function() {
- //    $('#restriction-columns').hide();
- //    $(".other-issues-div").show();
- //   	$(".create-diets-button").show(); 
- //  });
 
 	$(".allergy-checkbox").each(function(i4, e4){
 		$(e4).click(function(){
