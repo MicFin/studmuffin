@@ -94,8 +94,11 @@ $(document).ready(function() {
 	// 	$('#disease-'+i+'-popover').popover({ trigger: "hover" });
 
 	// };
-
 	$('.allergy-popover').popover({ trigger: "hover" });
+	
+	// $('.allergy-popover').each(function(i10, e10){
+	// 	$(e10).popover({ trigger: "hover" });
+	// });
 	$(".other-field").hide();
 
 	$(".allergy-checkbox").each(function(i4, e4){
