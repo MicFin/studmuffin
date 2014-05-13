@@ -158,7 +158,7 @@ $(document).ready(function() {
 
  //  	// });
 
-	// $(".other-field").hide();
+	$(".other-field").hide();
 
 	// // for (var i=1; i <= 100; i++) {
 	// 	// if ($('#disease-"+i+"-checkbox').is(':checked')) {
@@ -202,6 +202,8 @@ $(document).ready(function() {
 		$(e4).click(function(){
 			if ($(e4).prop("checked")){
 				$(e4).parent().parent().parent().parent().parent().parent().first(".panel-heading").children(":first").addClass("white-green-panel").removeClass("panel-heading");
+				debugger;
+				$(e4).parent().parent().children(":nth-child(2)").show();
 			}else{
 				var checkornot = "not";
 				$(e4).parent().parent().parent().each(function(i5, e5){
@@ -216,6 +218,7 @@ $(document).ready(function() {
 				if (checkornot === "not"){
 					$(e4).parent().parent().parent().parent().parent().parent().first(".panel-heading").children(":first").removeClass("white-green-panel").addClass("panel-heading")	
 				};
+				$(e4).parent().parent().children(":nth-child(2)").hide();
 			};
 		});
 	});
