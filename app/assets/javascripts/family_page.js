@@ -131,4 +131,57 @@ $(document).ready(function() {
 			$("#chrome-div").show();
 		})
 	});
+
+  $('#user-sign-up-form').validate({
+	 	rules: {
+    	"user[first_name]":{
+          required: true,
+          minlength: 2
+      },
+    	"user[last_name]":{
+          required: true,
+          minlength: 2
+      },
+      "user[email]":{
+          required: true,
+          email: true
+      },
+      "user[password]":{
+          required: true,
+          minlength: 8
+      },
+      "user[password_confirmation]":{
+          required: true,
+          minlength: 8,
+          equalTo: "#user_password"
+      }
+  	},
+	  	messages: {
+	      "user[first_name]":{
+	          required: "Enter your first name",
+	          minlength: "Must be at least 2 letters"
+	      },
+	      "user[last_name]":{
+	          required: "Enter your last name",
+	          minlength: "Must be at least 2 letters"
+	      },
+	      "user[email]":{
+	          required: "Enter your email",
+	          email: "Valid email address is required"
+	      },
+	      "user[password]":{
+	          required: "Enter a password",
+	          minlength: "Must be at least 7 characters"
+	      },
+	      "user[password_confirmation]":{
+	          required: "Enter a confirmation password",
+	          minlength: "Must be at least 7 characters",
+	          equalTo: "Confirmation password does not match password"
+	      }
+	  }
+	});
+
+
+
+
 });

@@ -321,3 +321,21 @@ input[type=radio] {
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
 }
+
+/*ERROR MESSAGES*/
+.alert-danger {
+  background-color:  #f27234;
+  border-color: #ebccd1;
+  color: white;
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 15px;
+} 
+/* client side error messages */
+label.error{
+  color: white;
+}
