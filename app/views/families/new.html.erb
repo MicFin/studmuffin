@@ -1,7 +1,7 @@
   <div class="row form-group">
     <form class = 'form-horizontal' role = 'form'>
     <%#= form_for @family, url: families_path do |f| %>  
-    <%= form_for(@family, :url => families_path(@family), :html => { :method => "put" }, action: "create") do |f| %>
+    <%= form_for(@family, :url => families_path(@family), :html => { :method => "put", :id => "create-family-form" }, action: "create") do |f| %>
       <div id="welcome-family-form" class="row">
         <div class="row text-center form-group" >
           <div class="row">

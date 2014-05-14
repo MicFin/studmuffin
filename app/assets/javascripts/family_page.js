@@ -15,14 +15,59 @@ $(document).ready(function() {
 		// $("#carousel-back-graphic").show();
 		$("#start-with-you").hide();
 		// $("#carousel-back-button").addClass("orange-background");
+		// empty family lists
 		$("#new-indicators-1").empty();
 		$("#new-indicators-2").empty();
+		// if a form has a 1st name then add to list
 		for (var i=0; i <= 10; i++) {
 			if ($("#child-forms-div-"+i+" input[name='family[users_attributes]["+i+"][first_name]'").val() != "") {
 				$("#new-indicators-1").append("<li class='pointer' id='indicator-"+i+"' data-target='#carousel-example-generic' data-slide-to='"+i+"'>"+"<div class='row'><div class='col-xs-6'><img src='/assets/carrot-large.png' style='height: 30px;  class='img-responsive'/></div>"+"<div class='col-xs-6'><p>"+$("#child-forms-div-"+i+" input[name='family[users_attributes]["+i+"][first_name]'").val() +"</p></div></div></li>")
 			};
 		};
 	});
+
+	// validate that the 
+	$('#carousel-example-generic').on('slid.bs.carousel', function (e) {
+		var complete = true;
+		$(".item").each(function(i11,e12){
+			if ($(e12).hasClass("active")){
+				// check first name field filled
+				if ($(e12).prev().find("input:first").val() === ""){
+       		$(e12).prev().find("input:first").addClass("green-highlight");
+					$(e12).prev().find("input:first").tooltip("show");
+       		complete = false;
+				} else{
+       		$(e12).prev().find("input:first").removeClass("green-highlight");
+					$(e12).prev().find("input:first").tooltip("destroy");
+				};
+				// check last name field
+				if ($(e12).prev().find("input").eq(1).val() === ""){
+       		$(e12).prev().find("input").eq(1).addClass("green-highlight");
+					$(e12).prev().find("input").eq(1).tooltip("show");
+       		complete = false;
+				} else{
+       		$(e12).prev().find("input").eq(1).removeClass("green-highlight");
+       		$(e12).prev().find("input").eq(1).tooltip("destroy");
+
+				};
+			// debugger;
+			// $(e12).prev().find("input").eq(2).attr("name");
+				// if ($(e12).prev().find("input").eq(2).is(":checked")) {
+				//   console.log("1st checked");
+				// } else if($(e12).prev().find("input").eq(3).is(":checked")) {
+				//   console.log("2nd checked");
+				// } else {
+				//   complete = false;
+				//   console.log("none checked");
+				// };
+			};
+		});
+		if (complete === false){
+			$('.carousel').carousel('prev');
+		};
+	});
+
+
 
 	// hide all text 2
 	$(".patient-focus-text2").hide();
@@ -101,13 +146,19 @@ $(document).ready(function() {
 	// });
 	$(".other-field").hide();
 
+	// change heading of allergy when a user is selected
 	$(".allergy-checkbox").each(function(i4, e4){
 		$(e4).click(function(){
+			// if checking 
 			if ($(e4).prop("checked")){
+				// change color
 				$(e4).parent().parent().parent().parent().parent().parent().first(".panel-heading").children(":first").addClass("white-green-panel").removeClass("panel-heading");
+				// show input field 
 				$(e4).parent().parent().children(":nth-child(2)").show();
 			}else{
+				// if not checking
 				var checkornot = "not";
+				// see if other users are selected
 				$(e4).parent().parent().parent().each(function(i5, e5){
 					$(e5).each(function(i6, e6){
 						$(e6).find("input").each(function(i7, e7){
@@ -117,14 +168,17 @@ $(document).ready(function() {
 						});				
 					});
 				});
+				// if no other users are selected then change color
 				if (checkornot === "not"){
 					$(e4).parent().parent().parent().parent().parent().parent().first(".panel-heading").children(":first").removeClass("white-green-panel").addClass("panel-heading")	
 				};
+				// hide input field
 				$(e4).parent().parent().children(":nth-child(2)").hide();
 			};
 		});
 	});
 
+	// use chrome warning 
 	$("#chrome-div").hide();
 	$(".browser-checkbox").each(function(i8, e8){
 		$(e8).click(function(){
@@ -132,6 +186,8 @@ $(document).ready(function() {
 		})
 	});
 
+
+ // SIGN UP FORM VALIDATINONS // 
   $('#user-sign-up-form').validate({
 	 	rules: {
     	"user[first_name]":{
@@ -178,8 +234,9 @@ $(document).ready(function() {
 	          minlength: "Must be at least 7 characters",
 	          equalTo: "Confirmation password does not match password"
 	      }
-	  }
+	  },
 	});
+
 
 
 

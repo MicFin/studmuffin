@@ -2,11 +2,11 @@
   <%= f.fields_for :users, @user do |ff| %>
   <div class="row form-group">
     <div class="col-xs-1"></div>
-    <div class="col-xs-5">
+    <div class="col-xs-5" data-toggle="tooltip" data-placement="bottom" title="Oops">
       <%= label_tag :first_name, "First Name", class: "large-white-font" %>
       <%= ff.text_field :first_name, placeholder: 'First Name', style: "padding-left: 5%"%>
     </div>
-    <div class="col-xs-5">
+    <div class="col-xs-5" data-toggle="tooltip" data-placement="bottom" title="Oops">
       <%= label_tag :last_name, "Last Name", class: "large-white-font" %>
       <%= ff.text_field :last_name, placeholder: 'Last Name', style: "padding-left: 5%"%>
     </div>
@@ -21,7 +21,7 @@
   </div>
   <div class="col-xs-12 large-white-font form-group">
     <div class="radio-inline" style="margin-left: 5%">
-      <input type="radio" name="family[users_attributes][0][sex]" id="sexRadios-0-1" value="Female">
+      <input type="radio" name="family[users_attributes][0][sex]" id="sexRadios-0-1" value="Female" checked="checked">
       <label class="radio inline control-label" style="line-height: 0.4">
         <b>Female</b>
       </label>
