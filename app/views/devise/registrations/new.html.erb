@@ -6,19 +6,19 @@
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-g-6">
-      <h3 >Let's get you setup for your first session!</h3> 
-        <ul>
-          <li>Create your login</li>
-          <li>Enter relevant family and health information</li>
-          <li>And, check technological requirements </li>
-        </ul>
-        <p>This should only take a few short minutes and will help your</p>
-        <p> 
-          <a data-toggle="modal" data-target="#rdModal" style="cursor: pointer" class="nutritionist-link tilt">
-            <span class="bright-green" style="font-size: 20px">KindRD</span><span class="orange" style="font-size: 20px">Nutritionist</span> 
-            <span class="glyphicon glyphicon-question-sign green"></span>
-          </a> prepare for your upcoming session
-        </p>
+      <h2 >Let's get you setup for your first session!</h2> 
+      <ul style="font-size: 20px">
+        <li>Create your account</li>
+        <li>Enter relevant family and health information</li>
+        <li>Check technological requirements </li>
+      </ul>
+      <p style="font-size: 20px">This should only take a few short minutes and will help your</p>
+      <p style="font-size: 20px"> 
+        <a data-toggle="modal" data-target="#rdModal" style="cursor: pointer" class="nutritionist-link tilt">
+          <span class="bright-green" style="font-size: 20px">KindRD</span><span class="orange" style="font-size: 20px">Nutritionist</span> 
+          <span class="glyphicon glyphicon-question-sign green"></span>
+        </a> prepare for your upcoming session.
+      </p>
     </div>
 
 <%= render "/shared/kindrd_nutritionist_modal" %>
@@ -53,7 +53,7 @@
                   <%= f.password_field :password_confirmation, placeholder: 'Confirm Password', style: "padding-left: 5%" %>
                 </div>
                 <div class='actions text-center'>
-                  <%= f.submit  "Create Login", class: "btn-success btn-block btn-lg" %>
+                  <%= f.submit  "Create Account", class: " btn-block tilt kindrd-button" %>
                 </div>
               </div>
             </div>

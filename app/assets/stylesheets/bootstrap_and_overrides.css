@@ -251,7 +251,7 @@ div.new-html-margin {
 
 a.nutritionist-link:hover{
   text-decoration: none;
-  font-size: 25px;
+  font-size: 30px;
 
 }
 
@@ -283,6 +283,7 @@ a.nutritionist-link:hover{
   color: rgba(57, 158, 72, 1);
   font-weight: bold;
   font-size: 30px;
+  text-decoration: none;
 }
 
 #sign-in-button{
@@ -372,3 +373,64 @@ div h4 .tooltip.top .tooltip-inner {
   left: 35px !important;
 }
 
+
+input[type="text"] {
+   height: 60px;
+   width: 100%;
+   border-color: rgba(241, 101, 33, 0.5);
+   border-width: 1px;
+   border-radius: 5px;
+}
+input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="password"]:focus{
+  -moz-box-shadow: 0 1px 1px rgba(0, 147, 68, 1) inset, 0 0px 10px rgba(0, 147, 68, 1);
+  -webkit-box-shadow: 0 1px 1px rgba(0, 147, 68, 1) inset, 0 0px 10px rgba(0, 147, 68, 1);
+  box-shadow: 0 1px 1px rgba(0, 147, 68, 1) inset, 0 0px 10px rgba(0, 147, 68, 1);
+  border-color: rgba(0, 147, 68, 1);
+}
+
+input[type="email"]{
+   height: 60px;
+   width: 100%;
+   border-color: rgba(241, 101, 33, 0.5);
+   border-width: 1px;
+   border-radius: 5px;
+}
+
+input[type="number"]{
+   height: 60px;
+   width: 100%;
+   border-color: rgba(241, 101, 33, 0.5);
+   border-width: 1px;
+   border-radius: 5px;
+}
+
+input[type="password"]{
+   height: 60px;
+   width: 100%;
+   border-color: rgba(241, 101, 33, 0.5);
+   border-width: 1px;
+   border-radius: 5px;
+}
+
+input, button, select, textarea {
+  font-family: inherit;
+  font-size: 25px;
+  line-height: inherit;
+}
+
+.kindrd-button{
+  height:60px;
+  font-size: 25px;
+  color: white;
+  background-color: rgba(57, 158, 72, 1);
+  border-radius: 5px;  
+  border: rgba(57, 158, 72, 1) solid 1px;
+}
+
+.kindrd-button:hover{
+  font-weight: bold;
+  font-size: 30px;
+  color: rgba(57, 158, 72, 1);
+  background-color: white; 
+  border: white solid 1px; 
+}
