@@ -346,7 +346,7 @@ label.error{
 }
 
 
-div.tooltip-inner {
+div h4 .tooltip.top .tooltip-inner {
     text-align: center;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
@@ -355,3 +355,20 @@ div.tooltip-inner {
     background-color: #505050;
     font-size: 14px;
 }
+
+.carousel-caption .tooltip.top .tooltip-inner {
+    text-align: center;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    margin-bottom: 6px;
+    background-color: white;
+    font-size: 14px;
+    color: red;
+}
+
+.tooltip-adjust-bottom{
+  top: auto !important;
+  left: 35px !important;
+}
+

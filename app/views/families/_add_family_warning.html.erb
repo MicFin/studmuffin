@@ -1,9 +1,9 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header text-center">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h2 class="modal-title green" id="myModalLabel">Good <span class="cursive orange" style="font-size: 30px">health</span> starts at <span class="cursive orange" style="font-size: 30px">home</span>  !</h2>
+        <h1 class="modal-title green" id="myModalLabel">Good <span class="cursive orange" style="font-size: 40px">health</span> starts at <span class="cursive orange" style="font-size: 40px">home</span>  !</h1>
       </div>
       <div class="modal-body">
         <div class="row" style="margin-bottom: -10%">
@@ -11,13 +11,14 @@
             <%= image_tag("tara.png", class: "img-responsive") %>
           </div>
           <div class="col-xs-9 text-center">
-            <h4>It helps me to know who you are eating with. </h4>  
-            <h4>Did you enter everybody in your family? </h4>
-
+            <h4>It helps me to know who you are eating with. </h4>
+            <div class="orange-background" style="border-radius: 15px; padding: 1%">  
+            <h2 style="color: white">Did you enter everybody in your family? </h2>
+            </div>
           </div>
         </div>
       </div>
-      <div class="modal-footer" style="border: none">
+      <div class="modal-footer" style="border: none; margin-top: 5%">
         <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
         <button class="btn btn-success">Yes</button>
       </div>

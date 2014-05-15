@@ -25,8 +25,8 @@
         <% @allergies.each do |allergy| %>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion-allergy" href="#collapse-<%=allergy.id%>" data-container="body" data-placement="top" data-content="<%=allergy.description%>" class="allergy-popover"> 
+            <h4 class="panel-title" data-toggle="tooltip" data-placement="top" title="<%=allergy.description%>">
+              <a data-toggle="collapse" data-parent="#accordion-allergy" href="#collapse-<%=allergy.id%>"> 
                   <%= allergy.name %>
                 </a>
             </h4>
@@ -58,7 +58,7 @@
         <% @intolerances.each do |allergy| %>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4 class="panel-title">
+            <h4 class="panel-title" data-toggle="tooltip" data-placement="top" title="<%=allergy.description%>">
               <a data-toggle="collapse" data-parent="#accordion-intolerance" href="#collapse-<%=allergy.id%>" data-toggle="popover" data-container="body" data-placement="top" data-content="<%=allergy.description%>"> 
                   <%= allergy.name %>
                 </a>
@@ -92,7 +92,7 @@
         <% @diseases.each do |allergy| %>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4 class="panel-title">
+            <h4 class="panel-title" data-toggle="tooltip" data-placement="top" title="<%=allergy.description%>">
               <a data-toggle="collapse" data-parent="#accordion-disease" href="#collapse-<%=allergy.id%>" data-toggle="popover" data-container="body" data-placement="top" data-content="<%=allergy.description%>"> 
                   <%= allergy.name %>
                 </a>

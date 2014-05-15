@@ -26,6 +26,7 @@ $(document).ready(function() {
 		};
 	});
 
+
 	// validate that the 
 	$('#carousel-example-generic').on('slid.bs.carousel', function (e) {
 		var complete = true;
@@ -34,7 +35,10 @@ $(document).ready(function() {
 				// check first name field filled
 				if ($(e12).prev().find("input:first").val() === ""){
        		$(e12).prev().find("input:first").addClass("green-highlight");
-					$(e12).prev().find("input:first").tooltip("show");
+					// $(e12).prev().find("input:first").tooltip("show", {placement: "bottom"});
+					$(e12).prev().find("input:first").tooltip({
+  					template: '<div class="tooltip tooltip-adjust-bottom"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+						}).tooltip("show");
        		complete = false;
 				} else{
        		$(e12).prev().find("input:first").removeClass("green-highlight");
@@ -43,23 +47,21 @@ $(document).ready(function() {
 				// check last name field
 				if ($(e12).prev().find("input").eq(1).val() === ""){
        		$(e12).prev().find("input").eq(1).addClass("green-highlight");
-					$(e12).prev().find("input").eq(1).tooltip("show");
+					// $(e12).prev().find("input").eq(1).tooltip("show", {placement: "bottom"});
+					$(e12).prev().find("input").eq(1).tooltip({
+  					template: '<div class="tooltip tooltip-adjust-bottom"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
+						}).tooltip("show");
        		complete = false;
+       		// $(e12).find(".tooltip").addClass("tooltip-adjust-bottom");
+       		debugger;
+       	// $(e12).children().children().children().first().find(".tooltip-family");
+       		
+
+
 				} else{
        		$(e12).prev().find("input").eq(1).removeClass("green-highlight");
        		$(e12).prev().find("input").eq(1).tooltip("destroy");
-
 				};
-			// debugger;
-			// $(e12).prev().find("input").eq(2).attr("name");
-				// if ($(e12).prev().find("input").eq(2).is(":checked")) {
-				//   console.log("1st checked");
-				// } else if($(e12).prev().find("input").eq(3).is(":checked")) {
-				//   console.log("2nd checked");
-				// } else {
-				//   complete = false;
-				//   console.log("none checked");
-				// };
 			};
 		});
 		if (complete === false){
@@ -67,11 +69,10 @@ $(document).ready(function() {
 		};
 	});
 
-
-
+	// patient focus forms
 	// hide all text 2
 	$(".patient-focus-text2").hide();
-	// hid eall forms
+	// hide all forms
 	$(".patient-focus-forms").hide();
 	// each checkbox
 	$('.patient-focus').each(function(index, element){
@@ -139,7 +140,11 @@ $(document).ready(function() {
 	// 	$('#disease-'+i+'-popover').popover({ trigger: "hover" });
 
 	// };
-	$('.allergy-popover').popover({ trigger: "hover" });
+	$(".panel-title").each(function(i30, e30){
+		$(e30).tooltip({ trigger: "hover" });
+	});
+
+	// $('.allergy-popover').popover({ trigger: "hover" });
 	
 	// $('.allergy-popover').each(function(i10, e10){
 	// 	$(e10).popover({ trigger: "hover" });
