@@ -53,11 +53,8 @@ $(document).ready(function() {
 						}).tooltip("show");
        		complete = false;
        		// $(e12).find(".tooltip").addClass("tooltip-adjust-bottom");
-       		debugger;
        	// $(e12).children().children().children().first().find(".tooltip-family");
        		
-
-
 				} else{
        		$(e12).prev().find("input").eq(1).removeClass("green-highlight");
        		$(e12).prev().find("input").eq(1).tooltip("destroy");
