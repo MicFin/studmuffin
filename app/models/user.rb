@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
   has_many :user_families
   has_many :families, through: :user_families
   has_many :users
-  has_many :appointments
   has_many :family_leader_ship_roles, :class_name => "Family", :foreign_key => "head_of_family_id"
   
   has_many :patient_focus, :class_name => "Appointment", :foreign_key => "patient_focus_id"

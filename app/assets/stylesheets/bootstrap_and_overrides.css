@@ -279,17 +279,26 @@ a.nutritionist-link:hover{
 }
 
 
-#sign-in-button:hover{
+.sign-in-button:hover{
   color: rgba(57, 158, 72, 1);
   font-weight: bold;
   font-size: 30px;
   text-decoration: none;
 }
 
-#sign-in-button{
+.sign-in-button{
   font-size: 20px;
 }
 
+.grow-text{
+  font-size: 20px;
+}
+
+.grow-text:hover{
+  font-weight: bold;
+  font-size: 30px;
+  text-decoration: none;
+}
 input[type=checkbox]
 {
   /* Double-sized Checkboxes */

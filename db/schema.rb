@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140512194159) do
+ActiveRecord::Schema.define(:version => 20140519194450) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -47,15 +47,15 @@ ActiveRecord::Schema.define(:version => 20140512194159) do
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
   create_table "appointments", :force => true do |t|
-    t.integer  "user_id"
     t.integer  "patient_focus_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.integer  "appointment_host_id"
+    t.datetime "date"
   end
 
   add_index "appointments", ["appointment_host_id"], :name => "index_appointments_on_appointment_host_id"
-  add_index "appointments", ["user_id"], :name => "index_appointments_on_user_id"
+  add_index "appointments", ["date"], :name => "index_appointments_on_date"
 
   create_table "dietary_restrictions", :force => true do |t|
     t.string   "name"

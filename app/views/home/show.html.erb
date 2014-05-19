@@ -15,7 +15,6 @@
   </div>
 </div>
 
-
 <% if @user.first_name == "Tara"%>
   <div class="col-md-6 col-md-offset-3 text-center">
     <h2>Online Users</h2>
@@ -48,16 +47,16 @@
       </a> today.  </p>
       <p>While we are still building our software, there are a few items I’d like you to check for me: </p> 
       <ol>
-        <li>Please review the email I sent you to confirm our session is at this time</li>  
-        <li>Be sure that you are using the <a href="ww.google.com/chrome">Google Chrome</a> web browser </li>
-        <li>Test your web cam and microphone</li>
+        <li>Please review the email I sent you to confirm our session is at this time:<span class="green" style="font-size: 2em"> <%= @user.appointment_hosts.last.date.strftime("%B %d, %Y %I:%M %p")%></span></li>  
+        <li>Be sure that you are using the <a href="www.google.com/chrome" target="_blank">Google Chrome</a> web browser (unsure? check <a href="http://whatbrowser.org/" target="_blank">here</a>)</li>
+        <li>Test your web cam and microphone (unsure? check <a href="http://www.onlinemictest.com/" target="_blank">here</a>)</li>
         <li>And, have a phone nearby that you can use in case of poor reception</li>
       </ol>
       <p>Please stay on this page.  You will receive a video conference call from me at the time of our scheduled session.  The incoming call will prompt you to activate your webcam and then we can begin.  I recommend that you find a well lit and quiet area to have our conversation.</p>
       <p>In the meantime, click on my photo or 
-      <a data-toggle="modal" data-target="#profileModal" style="cursor: pointer" class="cursive bright-green tilt" id="sign-in-button">here</a> to learn more about me.</p>
+      <a data-toggle="modal" data-target="#profileModal" style="cursor: pointer" class="cursive bright-green tilt sign-in-button">here</a> to learn more about me.</p>
       <p>I look forward to meeting you!</p>
-      <p><span class="cursive orange" style="font-size: 20px">Tara McCarthy</span></p>
+      <p><span data-toggle="modal" data-target="#profileModal" style="cursor: pointer" class="cursive orange tilt grow-text">Tara McCarthy</span></p>
       <p><span>Tara McCarthy RDN, LDN</p>
     </div>
   </div>

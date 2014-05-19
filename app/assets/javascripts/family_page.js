@@ -239,8 +239,58 @@ $(document).ready(function() {
 	  },
 	});
 
+ // SIGN IN FORM VALIDATINONS // 
+  $('#user-sign-in-form').validate({
+	 	rules: {
+      "user[email]":{
+          required: true,
+          email: true
+      },
+      "user[password]":{
+          required: true,
+          minlength: 8
+      },
+  	},
+	  	messages: {
+	      "user[email]":{
+	          required: "Enter your email",
+	          email: "Valid email address is required"
+	      },
+	      "user[password]":{
+	          required: "Enter a password",
+	          minlength: "Must be at least 7 characters"
+	      },
+	  },
+	});
+
+	// setInterval(function(){myTimer()},2000);
+
+	// function myTimer()
+	// {
+	// 	var appointment_time = document.getElementById("sign-up-button");
+	// 	var current_time = 
+	// 	if (button.value == "Absolutely!"){
+	// 		button.value = "Bring it on!";
+	// 	} else if (button.value == "Bring it on!"){
+	// 		button.value = "Let's do it!";
+	// 	} else if (button.value == "Let's do it!"){
+	// 		button.value = "I'm in!";
+	// 	} else if (button.value == "I'm in!"){
+	// 		button.value = "Heck yes!";
+	// 	}	else {
+	// 		button.value = "Absolutely!";
+	// 	}; 
+	// };
+
+  // $('#getting-started').countdown('2015/01/01', function(event) {
+  //   $(this).html(event.strftime('%w weeks %d days %H:%M:%S'));
+  // });
 
 
-
+$(function() {
+    $('#getting-started').countdown({
+        date: "June 7, 2087 15:03:26"
+    });
+});
 
 });
