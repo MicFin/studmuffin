@@ -1,4 +1,4 @@
-class Devise::SessionsController < DeviseController
+class SessionsController < DeviseController
   prepend_before_filter :require_no_authentication, only: [ :new, :create ]
   prepend_before_filter :allow_params_authentication!, only: :create
   prepend_before_filter :verify_signed_out_user, only: :destroy
@@ -6,6 +6,8 @@ class Devise::SessionsController < DeviseController
 
   # GET /resource/sign_in
   def new
+    sign_out :user
+    sign_out :dietitian
     self.resource = resource_class.new(sign_in_params)
     clean_up_passwords(resource)
     respond_with(resource, serialize_options(resource))
@@ -13,6 +15,16 @@ class Devise::SessionsController < DeviseController
 
   # POST /resource/sign_in
   def create
+    unless User.find_by_email(params[:user][:email])
+      auth_options = {scope: :dietitian, recall: 'sessions#new'}
+      resource_name = :dietitian
+      warden.config[:default_scope] = :dietitian
+      params[:dietitian] = params.delete(:user)
+      resource_name = :dietitian
+    else
+      resource_name = :user 
+      auth_options = {scope: :user, recall: 'sessions#new'}
+    end
     self.resource = warden.authenticate!(auth_options)
     set_flash_message(:notice, :signed_in) if is_flashing_format?
     sign_in(resource_name, resource)

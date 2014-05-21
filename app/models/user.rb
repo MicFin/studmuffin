@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
   # end
 
   def password_required?
+    ### until roles are created to define what needs validation, the password and email requirements are handled on the front end with JS so that child users can be created by main users without needing to add a password or email to the child
     # if user roll x then
     # !persisted? || !password.nil? || !password_confirmation.nil?
     # else

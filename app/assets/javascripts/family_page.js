@@ -240,7 +240,7 @@ $(document).ready(function() {
 	});
 
  // SIGN IN FORM VALIDATINONS // 
-  $('#user-sign-in-form').validate({
+  $('#sign-in-form').validate({
 	 	rules: {
       "user[email]":{
           required: true,
@@ -263,6 +263,55 @@ $(document).ready(function() {
 	  },
 	});
 
+ // SIGN UP FORM VALIDATINONS // 
+  $('#rd-sign-up-form').validate({
+	 	rules: {
+    	"dietitian[first_name]":{
+          required: true,
+          minlength: 2
+      },
+    	"dietitian[last_name]":{
+          required: true,
+          minlength: 2
+      },
+      "dietitian[email]":{
+          required: true,
+          email: true
+      },
+      "dietitian[password]":{
+          required: true,
+          minlength: 8
+      },
+      "dietitian[password_confirmation]":{
+          required: true,
+          minlength: 8,
+          equalTo: "#dietitian_password"
+      }
+  	},
+	  	messages: {
+	      "dietitian[first_name]":{
+	          required: "Enter your first name",
+	          minlength: "Must be at least 2 letters"
+	      },
+	      "dietitian[last_name]":{
+	          required: "Enter your last name",
+	          minlength: "Must be at least 2 letters"
+	      },
+	      "dietitian[email]":{
+	          required: "Enter your email",
+	          email: "Valid email address is required"
+	      },
+	      "dietitian[password]":{
+	          required: "Enter a password",
+	          minlength: "Must be at least 7 characters"
+	      },
+	      "dietitian[password_confirmation]":{
+	          required: "Enter a confirmation password",
+	          minlength: "Must be at least 7 characters",
+	          equalTo: "Confirmation password does not match password"
+	      }
+	  },
+	});
 	// setInterval(function(){myTimer()},2000);
 
 	// function myTimer()

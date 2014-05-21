@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+    <%= image_tag("logo.png", class: "img-responsive") %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-g-6">
+      <h2 >Sign in for your upcoming session!</h2> 
+      <ul style="font-size: 20px">
+        <li>Make sure you have already created an account </li>
+        <li>Have a working web camera and microphone</li>
+        <li>Be prepared to learn </li>
+      </ul>
+      <p style="font-size: 20px">Enjoy your time with your </p>
+      <p style="font-size: 20px"> 
+        <a data-toggle="modal" data-target="#rdModal" style="cursor: pointer" class="nutritionist-link tilt">
+          <span class="bright-green" style="font-size: 20px">KindRD</span><span class="orange" style="font-size: 20px">Nutritionist</span> 
+          <span class="glyphicon glyphicon-question-sign green"></span>
+        </a> personalized session!
+      </p>
+    </div>
+    <%= render "/shared/kindrd_nutritionist_modal" %>
+    <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:id => "user-sign-in-form"}) do |f| %>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="errorBox">        
+      <%= render 'layouts/messages' %>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center orange-background" style="padding-bottom: 2%; padding-top: 3%; border-radius: 20px">
+        <form class='form-horizontal text-center' role='form'>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+              <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <div class='form-group'>  
+                  <%= f.text_field :email, placeholder: 'Email', style: "padding-left: 5%"  %>
+                </div>
+                <div class='form-group'>      
+                  <%= f.password_field :password, style: "padding-left: 5%", placeholder: 'Password'  %>
+                </div>
+                <div class='form-group'> 
+                    <%= f.input :remember_me, :as => :boolean, style: "padding-left: 5%" if devise_mapping.rememberable? %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class='col-xs-5 actions text-center' style="margin-left: 30%">
+              <%= f.submit  "BEGIN", class: " btn-block tilt kindrd-button" %>
+            </div>
+          </div>
+          <div class='emphasized large-white-font'>
+            Please use only <a href='https://www.google.com/intl/en/chrome/browser/'>Google Chrome</a>
+          </div>
+        </form>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="hidden-xs hidden-sm col-md-6 col-lg-6"></div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
+				<%= render "dietitians/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

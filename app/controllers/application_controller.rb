@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  protect_from_forgery with: :exception
   # rescue_from ActionController::RoutingError, :with => :page_not_found
   # rescue_from StandardError, :with => :server_error
 
@@ -16,11 +16,6 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     # add to sign in count every time user signs in
     if resource.class == User
-      # resource.sign_in_count = resource.sign_in_count + 1
-      # if resource.is_rd? 
-      #   # send admin user to show page
-      #   :show_page
-      # else
         if resource.sign_in_count <= 1
           # if first time then send to build family
           new_family_path
@@ -29,6 +24,8 @@ class ApplicationController < ActionController::Base
           :show_page
         end
       # end 
+    else
+      :show_page
     end
   end 
 
