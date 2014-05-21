@@ -54,7 +54,7 @@
       </a> today.  </p>
       <p>While we are still building our software, there are a few items I’d like you to check for me: </p> 
       <ol>
-        <% if @user.appointment_hosts.last.date %>
+        <% if @user.appointment_hosts && @user.appointment_hosts.last.date %>
         <li>Please review the email I sent you to confirm our session is at this time:<span class="green" style="font-size: 2em"> <%= @user.appointment_hosts.last.date.strftime("%B %d, %Y %I:%M %p")%></span></li>  
         <% end %>
         <li>Be sure that you are using the <a href="www.google.com/chrome" target="_blank">Google Chrome</a> web browser (unsure? check <a href="http://whatbrowser.org/" target="_blank">here</a>)</li>
