@@ -7,7 +7,7 @@ Studmuffin::Application.routes.draw do
   match '_vline/launch' => 'vline#launch', :via => :get
   mount Vline::API => '_vline/api'
 
-  devise_for :users, :controllers => { :confirmations => "confirmations", registrations: "devise/registrations", sessions: "sessions" } 
+  devise_for :users, :controllers => { :confirmations => "confirmations", registrations: "devise/registrations", sessions: "sessions", passwords: "passwords" } 
 
   devise_scope :user do
     authenticated :user do
@@ -21,9 +21,10 @@ Studmuffin::Application.routes.draw do
       root :to => 'devise/registrations#new', as: :unauthenticated_root
     end
     match '/sign_in' => 'sessions#new' 
+    match '/forgot_password' => 'passwords#new' 
   end
 
-  devise_for :dietitians, :controllers => { :confirmations => "confirmations", registrations: "devise/registrations", session: "sessions" } 
+  devise_for :dietitians, :controllers => { :confirmations => "confirmations", registrations: "devise/registrations", session: "sessions", passwords: "passwords" } 
 
   devise_scope :dietitian do
     authenticated :dietitian do
