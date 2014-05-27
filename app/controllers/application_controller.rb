@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     # add to sign in count every time user signs in
+    binding.pry
     if resource.class == User
         if resource.sign_in_count <= 1
           # if first time then send to build family
@@ -24,8 +25,11 @@ class ApplicationController < ActionController::Base
           :show_page
         end
       # end 
-    else
+    elsif resource.class == Dietitian
       :show_page
+    elsif resource.class == AdminUser
+      binding.pry
+      admin_dashboard
     end
   end 
 
