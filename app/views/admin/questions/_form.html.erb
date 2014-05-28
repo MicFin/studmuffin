@@ -1,0 +1,15 @@
+<%= semantic_form_for [:admin, @question] do |f| %>
+<h2>Survey: <%= @question.survey.title %> </h2>
+  <%= f.inputs :content, :answer_type, :question_order %>
+
+<fieldset class="inputs">
+  <%= f.fields_for :choices do |choice| %>
+	<ol>
+		<li class="string input optional stringish" id="question_choices_input">
+			<label class="label" for="question_choices">Answers/Choices</label>
+    	<%= choice.input f.object.choices.inspect, :input_html => {:choices => :choices } %>
+  <% end %>
+  	</ol>
+</fieldset>
+  <%= f.actions :submit %>
+<% end %>

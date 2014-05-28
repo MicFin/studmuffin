@@ -1,15 +1,17 @@
 ActiveAdmin.register Question do
 
-  # form do |f|
-  #     f.inputs "Details" do
-  #       f.input :title
-  #       f.input :published_at, :label => "Publish Post At"
-  #       f.input :category
-  #     end
-  #     f.inputs "Content" do
-  #       f.input :body
-  #     end
-  #     f.actions
-  #   end
+  form :partial => "form"
   
-end
+  controller do 
+    def update
+      question = Question.find(params["id"].to_i)
+      unless params["question"]["choices"].first.last == ""
+        new_choice = eval(params["question"]["choices"].first.last) 
+        question.choices = new_choice
+        question.save!
+      end 
+      params["question"].delete("choices")
+    super
+    end 
+  end 
+end 
