@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'therubyracer'
 gem 'foreman'
 gem "libv8"
+gem "opentok"
 gem 'newrelic_rpm'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'phony_rails'
@@ -18,7 +19,7 @@ gem "cocoon"
 gem 'simple_form'
 gem 'activerecord-postgres-hstore'
 gem "unicorn-rails"
-gem "opentok", "~> 2.2"
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
