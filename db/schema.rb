@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140602030249) do
+ActiveRecord::Schema.define(:version => 20140602185221) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20140602030249) do
     t.datetime "updated_at",          :null => false
     t.integer  "appointment_host_id"
     t.datetime "date"
+    t.integer  "dietitian_id"
   end
 
   add_index "appointments", ["appointment_host_id"], :name => "index_appointments_on_appointment_host_id"

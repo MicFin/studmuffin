@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   has_many :patient_focus, :class_name => "Appointment", :foreign_key => "patient_focus_id"
   has_many :appointment_hosts, :class_name => "Appointment", :foreign_key => "appointment_host_id"
 
+  has_many :rooms
+
   validates_presence_of :first_name, {message: "can't be blank" }
 
   # saves phone number in normalized US format

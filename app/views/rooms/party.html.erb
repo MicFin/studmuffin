@@ -28,7 +28,7 @@ TB.setLogLevel(TB.DEBUG);
     session.connect(apiKey, token);
 
 
- var publisher;
+    var publisher;
     function sessionConnectedHandler(event) {
       publisher = TB.initPublisher(apiKey, 'videobox');
       session.publish(publisher);

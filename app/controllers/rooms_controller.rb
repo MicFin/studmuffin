@@ -6,7 +6,7 @@ before_filter :config_opentok,:except => [:index]
   end
 
   def create
-    #commented onut to trouble shoot, could add in
+    #commented out to trouble shoot, could add in
     # session = @opentok.create_session request.remote_addr
     @new_session = @opentok.create_session 
     params[:room][:sessionId] = @new_session.session_id
