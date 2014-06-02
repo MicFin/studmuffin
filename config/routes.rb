@@ -16,12 +16,14 @@ Studmuffin::Application.routes.draw do
       resources :user_dietary_restrictions
       resources :appointments
       resources :user_surveys
+      resources :rooms
     end
     unauthenticated :user do
       root :to => 'devise/registrations#new', as: :unauthenticated_root
     end
     match '/sign_in' => 'sessions#new' 
     match '/forgot_password' => 'passwords#new' 
+    match '/party/:id', :to => "rooms#party", :as => :party, :via => :get
   end
 
   devise_for :dietitians, :controllers => { :confirmations => "confirmations", registrations: "devise/registrations", session: "sessions", passwords: "passwords" } 
@@ -33,11 +35,13 @@ Studmuffin::Application.routes.draw do
       resources :user_dietary_restrictions
       resources :appointments
       resources :user_surveys
+      resources :rooms
     end
     unauthenticated :dietitian do
       root :to => 'devise/registrations#new', as: :unauthenticated_root
     end   
     match '/dietitians' => 'devise/registrations#new'
+    match '/party/:id', :to => "rooms#party", :as => :party, :via => :get
   end
 
   get "/show", to: "home#show", as: :show_page
