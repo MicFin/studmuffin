@@ -18,6 +18,7 @@ gem "cocoon"
 gem 'simple_form'
 gem 'activerecord-postgres-hstore'
 gem "unicorn-rails"
+gem "opentok", "~> 2.2"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
