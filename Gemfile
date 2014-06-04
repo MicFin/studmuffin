@@ -20,6 +20,9 @@ gem 'simple_form'
 gem 'activerecord-postgres-hstore'
 gem "unicorn-rails"
 
+## for datepickers
+gem 'momentjs-rails', '~> 2.5.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

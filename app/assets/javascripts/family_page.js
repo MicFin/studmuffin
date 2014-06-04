@@ -336,10 +336,11 @@ $(document).ready(function() {
   // });
 
 
-$(function() {
-    $('#getting-started').countdown({
-        date: "June 7, 2087 15:03:26"
-    });
-});
+// $(function() {
+//     $('#getting-started').countdown({
+//         date: "June 7, 2087 15:03:26"
+//     });
+// });
+
 
 });

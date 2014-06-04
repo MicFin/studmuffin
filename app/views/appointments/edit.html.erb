@@ -1,0 +1,35 @@
+<h1>Assign Appointment</h1>
+<%= form_for(@appointment) do |f| %>
+
+  <ul>
+    <li>  Appointment with: <%= @appointment.appointment_host.first_name%> <%= @appointment.appointment_host.last_name%>  </li> 
+    <li>  Appointment about: <%= @appointment.patient_focus.first_name %> <%=@appointment.appointment_host.last_name %>  </li>
+    <li>  Appointment created: <%= @appointment.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
+  </ul>
+  <div class="row text-center form-group">
+    <div class='col-xs-6 form-group'>
+      <%= f.select(:dietitian_id, options_for_select(@dietitians.map { |dietitian| ["#{dietitian.first_name} #{dietitian.last_name}", dietitian.id ] }), {}, {class: "form-control", html: "data-format='dd/MM/yyyy hh:mm'"}) %>
+    </div>
+  </div>
+  <div class="row text-center form-group">
+    <div class='col-xs-6 form-group'>
+      <input type='text' name="appointment[date]"class="form-control" id='datetimepicker'/>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-xs-6 form-group">
+      <%= f.submit  "Update", class: " btn-block tilt kindrd-button" %>
+    </div>
+  </div>
+<% end %>
+
+
+<script type="text/javascript" src="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://eonasdan.github.io/bootstrap-datetimepicker/scripts/bootstrap-datetimepicker.js"></script>
+
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker').datetimepicker();
+
+            });
+</script>

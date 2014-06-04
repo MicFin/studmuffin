@@ -33,6 +33,7 @@ class AppointmentsController < ApplicationController
 
   def edit
     @appointment = Appointment.find(params[:id])
+    @dietitians = Dietitian.all
   end
 
   def create
@@ -50,9 +51,23 @@ class AppointmentsController < ApplicationController
 
   def update
     @appointment = Appointment.find(params[:id])
+    ## if updating from EST
+    if params[:appointment][:date]  
+      params[:appointment][:date] = params[:appointment][:date] + " EST"
+    end
+    ## 
     @appointment.update_attributes(params[:appointment])
+    ## if no room created for dietitian
+    if Room.where(dietitian_id: @appointment.dietitian_id).count == 0
+    ## create room
+      new_room = Room.new(dietitian_id:  @appointment.dietitian_id, public: true, name: "One on One Room")
+      new_room.save!
+    end
+    # set appointment to room (1st and only for now)
+    @appointment.room_id = Room.where(dietitian_id: @appointment.dietitian_id).first.id
+    # save appointment
     @appointment.save
-    redirect_to root_path(anchor: 'profile')
+    redirect_to appointments_path
   end
 
   def destroy

@@ -16,6 +16,8 @@
 // Loads all Bootstrap javascripts
 //= require bootstrap
 //= require cocoon
+//= require moment
+//= require bootstrap-datetimepicker
 //= require family_page
 //= require_tree .
 
