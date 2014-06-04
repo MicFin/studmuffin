@@ -23,6 +23,7 @@ before_filter :config_opentok,:except => [:index]
   end
 
   def party
+    binding.pry
     @room = Room.find(params[:id])
      @tok_token =  @opentok.generate_token Room.find(params[:id]).sessionId  
   end

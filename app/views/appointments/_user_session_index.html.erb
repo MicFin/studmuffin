@@ -1,0 +1,32 @@
+<h1>Appointments</h1>
+<h3>Upcoming Appointments</h3>
+<ol>
+<% @my_upcoming_appointments.all.each do |appointment| %>
+	<li>
+		<ul>
+			<li>	Appointment with: <%= appointment.dietitian.first_name%> <%= appointment.dietitian.last_name%>  </li> 
+			<li>  Appointment about: <%= appointment.patient_focus.first_name %> <%=appointment.appointment_host.last_name %>  </li>
+			<li>  Appointment Created: <%= appointment.created_at.in_time_zone("Eastern Time (US & Canada)")%> </li>
+			<li>  Appointment Date: <%= appointment.date.in_time_zone("Eastern Time (US & Canada)")%> </li>
+			<% if (((DateTime.now.in_time_zone("Eastern Time (US & Canada)") - appointment.date) / 60 / 60) > -1)%>
+				<li><a href="/party/<%= appointment.room_id %>">Enter Room</a></li>
+			<% else %>
+				<h5>Return 1 hour before appointment to sign in</h5>
+			<% end %>
+		</ul>
+	</li>
+<% end %>
+</ol>
+<h3>Past Appointments</h3>
+<ol>
+<% @my_previous_appointments.all.each do |appointment| %>
+	<li>
+		<ul>
+			<li>	Appointment with: <%= appointment.dietitian.first_name%> <%= appointment.dietitian.last_name%>  </li> 
+			<li>  Appointment about: <%= appointment.patient_focus.first_name %> <%=appointment.appointment_host.last_name %>  </li>
+			<li>  Appointment Created: <%= appointment.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
+			<li>  Appointment Date: <%= appointment.date.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
+		</ul>
+	</li>
+<% end %>
+</ol>
