@@ -17,7 +17,6 @@ class AppointmentsController < ApplicationController
       @upcoming_appointments = Appointment.where("date > ?", DateTime.now).order('date ASC, created_at ASC')
       @previous_appointments = Appointment.where("date < ?", DateTime.now).order('date ASC, created_at ASC')
     end
-    binding.pry
   end
 
   def show
@@ -51,11 +50,14 @@ class AppointmentsController < ApplicationController
 
   def update
     @appointment = Appointment.find(params[:id])
-    ## if updating from EST
-    if params[:appointment][:date]  
+    ## clean datetime input
+    if params[:appointment][:date] 
+      ## add EST to datetime 
       params[:appointment][:date] = params[:appointment][:date] + " EST"
+      ## switch month/day to day/month to match format for saving
+      params[:appointment][:date] = params[:appointment][:date].gsub(%r{(.*)/(.*)/(.*)}, '\2/\1/\3')
     end
-    ## 
+    ## update 
     @appointment.update_attributes(params[:appointment])
     ## if no room created for dietitian
     if Room.where(dietitian_id: @appointment.dietitian_id).count == 0

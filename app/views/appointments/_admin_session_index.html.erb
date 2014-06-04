@@ -8,7 +8,7 @@
 			<li>  Appointment about: <%= appointment.patient_focus.first_name %> <%=appointment.appointment_host.last_name %>  </li>
 			<li>  Appointment Created: <%= appointment.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
 			<% if appointment.date %>
-			<li>  Appointment Date: <%= appointment.date.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
+			<li>  Appointment Date: <%= appointment.date.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p")%> </li>
 			<% else %>
 			<li>  Appointment Date:  </li>	
 			<% end %>
@@ -47,8 +47,8 @@
 			<li>	Dietitian: <%= appointment.dietitian.first_name%> <%= appointment.dietitian.last_name%>  </li> 
 			<li>	Appointment with: <%= appointment.appointment_host.first_name%> <%= appointment.appointment_host.last_name%>  </li> 
 			<li>  Appointment about: <%= appointment.patient_focus.first_name %> <%=appointment.appointment_host.last_name %>  </li>
-			<li>  Appointment Created: <%= appointment.created_at %> </li>
-			<li>  Appointment Date:<%= appointment.date %> </li>
+			<li>  Appointment Created: <%= appointment.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
+			<li>  Appointment Date: <%= appointment.date.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
 		</ul>
 	</li>
 <% end %>
