@@ -1,4 +1,6 @@
 class AppointmentsController < ApplicationController
+before_filter :config_opentok,:except => [:index, :show, :new, :edit, :create, :destroy]
+
   def index
     if current_user
       @user = current_user
@@ -33,6 +35,16 @@ class AppointmentsController < ApplicationController
   def edit
     @appointment = Appointment.find(params[:id])
     @dietitians = Dietitian.all
+    if @appointment.dietitian_id
+      @dietitian_id = @appointment.dietitian.id
+    else
+      @dietitian_id = nil
+    end
+    if @appointment.date
+      @appointment_date = @appointment.date.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p")
+    else
+      @appointment_date = nil
+    end
   end
 
   def create
@@ -53,7 +65,7 @@ class AppointmentsController < ApplicationController
     ## clean datetime input
     if params[:appointment][:date] 
       ## add EST to datetime 
-      params[:appointment][:date] = params[:appointment][:date] + " EST"
+      params[:appointment][:date] = params[:appointment][:date] + " EDT"
       ## switch month/day to day/month to match format for saving
       params[:appointment][:date] = params[:appointment][:date].gsub(%r{(.*)/(.*)/(.*)}, '\2/\1/\3')
     end
@@ -61,9 +73,11 @@ class AppointmentsController < ApplicationController
     @appointment.update_attributes(params[:appointment])
     ## if no room created for dietitian
     if Room.where(dietitian_id: @appointment.dietitian_id).count == 0
-    ## create room
-      new_room = Room.new(dietitian_id:  @appointment.dietitian_id, public: true, name: "One on One Room")
-      new_room.save!
+      @new_session = @opentok.create_session 
+
+      @new_room = Room.new(dietitian_id:  @appointment.dietitian_id, public: true, sessionId: @new_session.session_id, name: "One on One Room")
+      @tok_token = @new_session.generate_token :session_id =>@new_session.session_id  
+      @new_room.save!
     end
     # set appointment to room (1st and only for now)
     @appointment.room_id = Room.where(dietitian_id: @appointment.dietitian_id).first.id
@@ -77,4 +91,13 @@ class AppointmentsController < ApplicationController
     @appointment.destroy
     redirect_to appointments_path
   end
+
+  private
+
+  def config_opentok
+    if @opentok.nil?
+     @opentok = OpenTok::OpenTok.new ENV["API_KEY"], ENV["API_SECRET"]
+    end
+  end
+
 end

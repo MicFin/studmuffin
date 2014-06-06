@@ -1,5 +1,7 @@
 class RoomsController < ApplicationController
 before_filter :config_opentok,:except => [:index]
+# only admin can view rooms pages
+before_filter :authenticate_admin_user!, only: [:index]
   def index
     @rooms = Room.where(:public => true).order("created_at DESC")
     @new_room = Room.new
@@ -23,9 +25,20 @@ before_filter :config_opentok,:except => [:index]
   end
 
   def party
-    binding.pry
     @room = Room.find(params[:id])
-     @tok_token =  @opentok.generate_token Room.find(params[:id]).sessionId  
+    @tok_token =  @opentok.generate_token Room.find(params[:id]).sessionId  
+    @appointment = Appointment.find(params[:appointment])
+    if current_user
+      @user = current_user
+    elsif current_dietitian
+      @user = current_dietitian
+      @tech_survey_questions = Survey.where(id: 2).first.questions 
+      @tech_survey_responses = @appointment.appointment_host.user_surveys.where(survey_id: 2).last.user_survey_answers
+      @appt_survey_questions = Survey.where(id: 1).first.questions 
+      @appt_survey_responses = @appointment.appointment_host.user_surveys.where(survey_id: 1).last.user_survey_answers
+    elsif current_admin_user
+      @user = current_admin_user
+    end
   end
 
   private
@@ -34,4 +47,13 @@ before_filter :config_opentok,:except => [:index]
      @opentok = OpenTok::OpenTok.new ENV["API_KEY"], ENV["API_SECRET"]
     end
   end
+
+  # def authenticate_admin!
+  #   binding.pry
+  #   if current_admin_user
+  #     return true
+  #   else
+  #     false
+  #   end
+  # end
 end

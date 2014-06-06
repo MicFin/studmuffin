@@ -13,14 +13,18 @@
   <legend>Existing party rooms</legend>
   <table cellpadding="2" cellspacing="5">
     <tr>
+      <th>Room ID</th>
       <th>Name</th>
       <th>Started</th>
+      <th>Dietitian</th>
     </tr>
 
     <% @rooms.each do |room| %>
       <tr>
+        <td><%= room.id %> <%= room.dietitian.last_name %></td>
         <td align="center" width="300px"><a href="/party/<%= room.id %>"><%= room.name %></a></td>
-        <td><%= room.created_at %></td>
+        <td width="200px"><%= room.created_at %></td>
+        <td width="200px"><%= room.dietitian.first_name %> <%= room.dietitian.last_name %></td>
       </tr>
     <% end %>
   </table>

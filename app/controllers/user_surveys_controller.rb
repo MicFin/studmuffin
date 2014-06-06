@@ -43,6 +43,7 @@ class UserSurveysController < ApplicationController
       end  
       params["user_survey"]["user_survey_answers_attributes"].delete("open_responses")
     end   
+          binding.pry
     @user = current_user
     @user_survey = UserSurvey.new(params["user_survey"])
     @user_survey.save

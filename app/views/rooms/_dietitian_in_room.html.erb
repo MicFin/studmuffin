@@ -1,0 +1,114 @@
+<div class="row">
+	<div class="col-xs-6">
+		<div class="col-xs-12 form-group" id="videobox2">
+		</div>
+		<div class="col-xs-12 in-session-rd-bio" style="height:150px; overflow:scroll ">
+			<h3>Technical Survey</h3>
+			<% @tech_survey_questions.each do |question| %>
+				<h5><%= question.content %></h5>
+				<% @tech_survey_responses.each do |response| %>
+					<% if response.question_id == question.id %>
+						<h5><%= response.choices %></h5>
+					<% end %>
+				<% end %>
+			<% end %>
+			<h3>Appointment Prep Survey</h3>
+			<% @appt_survey_questions.each do |question| %>
+				<h5><%= question.content %></h5>
+				<% @appt_survey_responses.each do |response| %>
+					<% if response.question_id == question.id %>
+						<h5><%= response.user_input %></h5>
+					<% end %>
+				<% end %>
+			<% end %>		
+		</div>
+	</div>
+	<div class="col-xs-6">
+		<div class="family-bio col-xs-12" id="family-bio-<%=@appointment.appointment_host.id %>" value="<%=@appointment.appointment_host.id%>">
+			<div class="col-xs-12">
+				<h1> <%= @appointment.appointment_host.first_name%> <%= @appointment.appointment_host.last_name %> </h1>			
+			</div>
+			<div class="in-session-user-bio col-xs-12 green-background form-group" id="">
+				<ul>
+					<li><%#= @appointment.appointment_host.location%></li>
+					<li><%= @appointment.appointment_host.sex%></li>
+					<li><%#= @appointment.appointment_host.age%></li>
+					<li><%#= @appointment.appointment_host.height%></li>
+					<li><%#= @appointment.appointment_host.weight%></li>
+					<h4>Dietary Restrictions</h4>
+					<% if @appointment.appointment_host.dietary_restrictions.count > 0 %>
+						<% @appointment.appointment_host.dietary_restrictions.each do |allergy| %>
+							<li><%= allergy.name %></li>
+						<% end %>
+					<% else %>
+					<p> none </p>
+					<% end %>
+					<% if @appointment.appointment_host.more_info != nil %>
+						<h4>More Info</h4>
+						<li><%= @appointment.appointment_host.more_info %></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+
+		<% @appointment.appointment_host.families.first.users.each do |family_member| %>
+			<% if family_member.id != @appointment.appointment_host.id %>
+			<div class="family-bio col-xs-12" id="family-bio-<%=family_member.id %>" value="<%=family_member.id%>">
+				<div class="col-xs-12">
+					<h1> <%= family_member.first_name%> <%= family_member.last_name %> </h1>			
+				</div>
+				<div class="in-session-user-bio col-xs-12 green-background form-group" id="">
+					<ul>
+						<li><%#= family_member.location%></li>
+						<li><%= family_member.sex%></li>
+						<li><%#= family_member.age%></li>
+						<li><%#= family_member.height%></li>
+						<li><%#= family_member.weight%></li>
+						<h4>Dietary Restrictions</h4>
+						<% if family_member.dietary_restrictions.count > 0 %>
+							<% family_member.dietary_restrictions.each do |allergy| %>
+								<li><%= allergy.name %></li>
+							<% end %>
+						<% else %>
+							<p> none </p>
+						<% end %>
+						<% if family_member.more_info != nil %>
+							<h4>More Info</h4>
+							<li> <%= family_member.more_info %></li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+			<% end %>
+		<% end %>
+
+		<div class="col-xs-6">
+			<h3>Client</h3>
+			<button id="family-bio-button-<%=@appointment.appointment_host.id%>" value="<%=@appointment.appointment_host.id%>" class="btn family-bio-button"><%=  @appointment.appointment_host.first_name %>		
+					</button>
+			<h3>Family</h3>
+			<% @appointment.appointment_host.families.first.users.each do |family_member| %>
+				<% if family_member.id != @appointment.appointment_host.id %>
+	  			<button id="family-bio-button-<%=family_member.id%>" value="<%=family_member.id%>" class="btn  family-bio-button"><%= family_member.first_name %>		
+					</button>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="col-xs-6">
+		</div>
+	</div>
+</div>
+
+
+<div class="row text-center" style="position: relative">
+	<div class="col-xs-3 "  style="margin-top: -20%; position: absolute; right: 0" id="user-video">
+		<div class="col-xs-12" id="videobox">
+	  </div>
+	  <div class="col-xs-12">
+	  	<button id="hide-video" class="btn-block tilt kindrd-button">Pause Video</button>
+	  	<button id="show-video" class="btn-block tilt kindrd-button">Resume Video</button>
+	  </div>
+	</div>
+</div>
+
+

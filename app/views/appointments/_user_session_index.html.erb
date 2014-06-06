@@ -1,32 +1,57 @@
-<h1>Appointments</h1>
-<h3>Upcoming Appointments</h3>
-<ol>
-<% @my_upcoming_appointments.all.each do |appointment| %>
-	<li>
+<div class="container">	
+	<div class="row">
+		<div class="col-xs-12">
+	    <%= image_tag("logo.png", class: "img-responsive") %>
+	  </div>
+	</div>
+	<div class="row form-group">
+		<h3>Upcoming Appointments</h3>
+	</div>
+	<div class="row">
+	<% if @my_upcoming_appointments.count > 0 %>		
+		<% @my_upcoming_appointments.all.each do |appointment| %>
+		<div class="col-xs-3 appointment-div upcoming-appointment">
+			<ul>
+				<li> <%= appointment.date.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
+				<li class="green">	Dietitian: <span class="size-25 white-font"><%= appointment.dietitian.first_name%> <%= appointment.dietitian.last_name%></span>  </li> 
+				<li class="size-15 form-group">  Created: <%= appointment.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
+				<% if (((DateTime.now.in_time_zone("Eastern Time (US & Canada)") - appointment.date) / 60 / 60) > -1)%>
+					<li class="enter-room-li"><%= link_to 'Enter Room', {:controller => "rooms", :action => "party", :id => appointment.room_id, appointment: appointment.id }, class: "text-center action kindrd-button btn-block tilt"%> </li>
+				<% else %>
+					<h5>Return 1 hour before appointment to sign in</h5>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+	<% else %>
 		<ul>
-			<li>	Appointment with: <%= appointment.dietitian.first_name%> <%= appointment.dietitian.last_name%>  </li> 
-			<li>  Appointment about: <%= appointment.patient_focus.first_name %> <%=appointment.appointment_host.last_name %>  </li>
-			<li>  Appointment Created: <%= appointment.created_at.in_time_zone("Eastern Time (US & Canada)")%> </li>
-			<li>  Appointment Date: <%= appointment.date.in_time_zone("Eastern Time (US & Canada)")%> </li>
-			<% if (((DateTime.now.in_time_zone("Eastern Time (US & Canada)") - appointment.date) / 60 / 60) > -1)%>
-				<li><a href="/party/<%= appointment.room_id %>">Enter Room</a></li>
-			<% else %>
-				<h5>Return 1 hour before appointment to sign in</h5>
-			<% end %>
+			<li>
+				<p>No upcoming appointments</p>
+			</li>
 		</ul>
-	</li>
-<% end %>
-</ol>
-<h3>Past Appointments</h3>
-<ol>
-<% @my_previous_appointments.all.each do |appointment| %>
-	<li>
+	<% end %>
+	</div>
+	<div class="row form-group">
+		<h3>Previous Appointments</h3>
+	</div>
+	<div class="row">
+	<% if @my_previous_appointments.count > 0 %>		
+		<% @my_previous_appointments.all.each do |appointment| %>
+		<div class="col-xs-3 appointment-div orange-background">
+			<ul>
+				<li> <%= appointment.date.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
+				<li class="green"><span class="size-25 white-font"><%= appointment.dietitian.first_name%> <%= appointment.dietitian.last_name%></span>  </li> 
+				<li class="size-15">  Created: <%= appointment.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
+				<li > See Notes</li>
+			</ul>
+		</div>
+		<% end %>
+	<% else %>
 		<ul>
-			<li>	Appointment with: <%= appointment.dietitian.first_name%> <%= appointment.dietitian.last_name%>  </li> 
-			<li>  Appointment about: <%= appointment.patient_focus.first_name %> <%=appointment.appointment_host.last_name %>  </li>
-			<li>  Appointment Created: <%= appointment.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
-			<li>  Appointment Date: <%= appointment.date.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
+			<li>
+				<p>No upcoming appointments</p>
+			</li>
 		</ul>
-	</li>
-<% end %>
-</ol>
+	<% end %>
+	</div>
+</div>

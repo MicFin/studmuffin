@@ -443,7 +443,7 @@ input, button, select, textarea {
   background-color: white; 
   border: white solid 1px; 
 }
-
+/* Video conferencing with tokbox*/
 #videobox {
   width: 100%;
   height: 100%;
@@ -457,4 +457,86 @@ input, button, select, textarea {
 
 #videobox object {
   float: left;
+}
+
+.appointment-div{
+  border-radius: 15px;
+  color: white;
+  font-size: 20px;
+  margin: 2%;
+}
+
+.upcoming-appointment{
+  background-color: rgba(57, 158, 72, 0.6);
+}
+
+.appointment-div .kindrd-button{
+  background-color: rgba(255, 255, 72, 0.0); 
+  border: none;
+  line-height: 2.2;
+  margin-left: -3%;
+}
+
+.appointment-div .kindrd-button:hover{
+  background-color: white; 
+  text-decoration: none;
+}
+
+.appointment-div ul {
+  list-style-type: none;
+  margin-left: -10%;
+  padding-top: 10%;
+}
+
+#edit-details-list{
+  padding: 2%;
+  margin: 0;
+}
+
+.size-15 {
+  font-size: 15px;
+}
+
+.size-25 {
+  font-size: 25px;
+}
+
+.select-drop-down{
+   height: 60px;
+   width: 100%;
+   border-color: rgba(241, 101, 33, 0.5);
+   border-width: 1px;
+   border-radius: 5px;
+}
+
+.select-drop-down:focus{
+  -moz-box-shadow: 0 1px 1px rgba(0, 147, 68, 1) inset, 0 0px 10px rgba(0, 147, 68, 1);
+  -webkit-box-shadow: 0 1px 1px rgba(0, 147, 68, 1) inset, 0 0px 10px rgba(0, 147, 68, 1);
+  box-shadow: 0 1px 1px rgba(0, 147, 68, 1) inset, 0 0px 10px rgba(0, 147, 68, 1);
+  border-color: rgba(0, 147, 68, 1);
+}
+
+/*DURING SESSION*/
+
+.in-session-rd-bio {
+  border-radius: 5px;
+  background-color: rgba(246, 141, 60, 1);
+  color: white;
+}
+
+.in-session-user-bio{
+  border-radius: 5px;
+  color: white;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.in-session-user-bio ul{
+    list-style-type: none;
+}
+
+.family-bio{
+  margin-top: -5%;
+  height: 300px; 
+  overflow:scroll;
 }

@@ -341,6 +341,29 @@ $(document).ready(function() {
 //         date: "June 7, 2087 15:03:26"
 //     });
 // });
+	$("#show-video").hide();
+	$("#hide-video").click(function(){
+		$("#user-video").children().first().toggle();
+		$("#hide-video").hide();
+		$("#show-video").show();
+	});
 
+	$("#show-video").click(function(){
+		$("#user-video").children().first().toggle();
+		$("#show-video").hide();
+		$("#hide-video").show();
+	});
+
+	$(".family-bio").each(function(i20, e20){
+		$("#family-bio-button-"+$(e20).attr("value")).click(function(){
+			$(".family-bio").each(function(i21,e21){
+	  		$(e21).hide();
+	  	});
+			$("#family-bio-"+$(e20).attr("value")).show();
+		});
+		$(e20).hide();
+	});
+
+	$(".family-bio").first().show();
 
 });
