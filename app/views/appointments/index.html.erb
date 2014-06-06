@@ -1,9 +1,12 @@
-<% if @user.class == User %>
-  <%= render "user_session_index"%>
-<% elsif @user.class == Dietitian %>
-  <%= render "dietitian_session_index"%>
-<% elsif @user.class == AdminUser %>
-  <%= render "admin_session_index"%>
-<% end %>
+<div class="container">	
+	<%= render "/shared/log_out_button"%>
+	<% if @user.class == User %>
+	  <%= render "user_session_index"%>
+	<% elsif @user.class == Dietitian %>
+	  <%= render "dietitian_session_index"%>
+	<% elsif @user.class == AdminUser %>
+	  <%= render "admin_session_index"%>
+	<% end %>
+</div>
 
 

@@ -18,10 +18,11 @@ Studmuffin::Application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root :to => 'home#show', as: :authenticated_root
+      root :to => 'appointments#index', as: :user_authenticated_root
       resources :families
       resources :user_dietary_restrictions
       resources :appointments
+      get "/appointments", to: "appointments#index", as: :appointments
       resources :user_surveys
       resources :rooms
       match '/party/:id', :to => "rooms#party", :as => :party, :via => :get
@@ -39,10 +40,11 @@ Studmuffin::Application.routes.draw do
 
   devise_scope :dietitian do
     authenticated :dietitian do
-      root :to => 'home#show', as: :authenticated_root
+      root :to => 'appointments#index', as: :dietitian_authenticated_root
       resources :families
       resources :user_dietary_restrictions
       resources :appointments
+      get "/appointments", to: "appointments#index", as: :appointments
       resources :user_surveys
       resources :rooms
       match '/party/:id', :to => "rooms#party", :as => :party, :via => :get
@@ -56,8 +58,8 @@ Studmuffin::Application.routes.draw do
   ### routes for admin on main site pages
 
   devise_scope :admin_user do
+    ## allow authenticated admin to access the web routes
     authenticated :admin_user do
-      root :to => 'home#show', as: :authenticated_root
       resources :families
       resources :user_dietary_restrictions
       resources :appointments
@@ -72,7 +74,6 @@ Studmuffin::Application.routes.draw do
   end
 
   get "/show", to: "home#show", as: :show_page
-
   # if Rails.env.production?
   #    get '404', :to => 'application#page_not_found'
   #    get '500', :to => 'application#server_error'

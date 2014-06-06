@@ -1,4 +1,8 @@
 <div class="container"> 
+
+
+  <%= render "/shared/log_out_button"%>
+
   <div class="row form-group">
     <div class="col-xs-12" z>
       <%= image_tag("logo.png", style: "height: 100px", class: "img-responsive") %>
@@ -13,6 +17,10 @@
   
     <%= render "dietitian_in_room"%>
 
+  <% elsif @user.class == AdminUser %>
+
+    <%= render "admin_in_room"%>
+  
   <% end %>
   </div>
 </div>

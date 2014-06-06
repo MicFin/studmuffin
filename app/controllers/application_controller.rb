@@ -14,6 +14,9 @@ class ApplicationController < ActionController::Base
   # end
 
   def after_sign_in_path_for(resource)
+
+    ##### should just go to user_authenticated_root ####
+    ##### but is not so needed to direct to :appointments ####
     # if person signing in is a user
     if resource.class == User
         if resource.sign_in_count <= 1
@@ -21,16 +24,17 @@ class ApplicationController < ActionController::Base
           new_family_path
         else
           # if not first time then send to waiting room
-          :show_page
+          user_authenticated_root_path
         end
     # if person signing in is a dietitian
     elsif resource.class == Dietitian
       # send to waiting room
-      :show_page
+      dietitian_authenticated_root_path
+
     # if person signing in is an Admin
     elsif resource.class == AdminUser
       # send to admin dashboard
-      admin_dashboard_path
+      admin_root_path
     end
   end 
 
