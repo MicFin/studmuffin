@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140603205338) do
+ActiveRecord::Schema.define(:version => 20140609203218) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20140603205338) do
     t.datetime "date"
     t.integer  "dietitian_id"
     t.integer  "room_id"
+    t.text     "note"
   end
 
   add_index "appointments", ["appointment_host_id"], :name => "index_appointments_on_appointment_host_id"
@@ -91,6 +92,10 @@ ActiveRecord::Schema.define(:version => 20140603205338) do
     t.string   "last_name"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "dietitians", ["confirmation_token"], :name => "index_dietitians_on_confirmation_token", :unique => true

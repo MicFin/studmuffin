@@ -14,7 +14,7 @@
     <%= f.input :password_confirmation, :required => false %>
     <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
   </div>
-
+      <%= f.file_field :avatar %>
   <div class="form-actions">
     <%= f.button :submit, "Update" %>
   </div>

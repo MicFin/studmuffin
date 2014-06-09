@@ -80,7 +80,9 @@ before_filter :config_opentok,:except => [:index, :show, :new, :edit, :create, :
       @new_room.save!
     end
     # set appointment to room (1st and only for now)
-    @appointment.room_id = Room.where(dietitian_id: @appointment.dietitian_id).first.id
+    if @appointment.room_id == nil
+      @appointment.room_id = Room.where(dietitian_id: @appointment.dietitian_id).first.id
+    end
     # save appointment
     @appointment.save
     redirect_to appointments_path

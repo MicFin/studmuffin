@@ -22,6 +22,22 @@ class Family < ActiveRecord::Base
     return family_restrictions.uniq
   end
 
+  def first_names
+    first_names = []
+    self.users.each do |user|
+      first_names << user.first_name
+    end
+    count = self.users.count
+    if count > 2
+      first_names.map! { |x| x + "," } 
+      first_names[count-1].gsub!(/\,/,'')
+    end
+    if count > 1
+      first_names.insert(-2, "and")
+    end
+    first_names = first_names.join(" ")
+  end
+
 ## family can not create a user without a first name, see accepted_nested_attributes_for reject_if:
 def no_first_name(attributes)
   attributes[:first_name].blank?

@@ -19,6 +19,8 @@ gem "cocoon"
 gem 'simple_form'
 gem 'activerecord-postgres-hstore'
 gem "unicorn-rails"
+## uploading pictures
+gem "paperclip", "~> 4.1"
 
 ## for datepickers
 gem 'momentjs-rails', '~> 2.5.0'

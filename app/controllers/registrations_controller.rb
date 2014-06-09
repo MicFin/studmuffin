@@ -125,8 +125,22 @@ class RegistrationsController < DeviseController
   # The default url to be used after updating a resource. You need to overwrite
   # this method in your own RegistrationsController.
   def after_update_path_for(resource)
-    signed_in_root_path(resource)
+    if resource.class == User
+      user_authenticated_root_path
+    # if person updating in is a dietitian
+    elsif resource.class == Dietitian
+      # send to appointments index
+      appointments_path
+
+    # if person signing in is an Admin
+    elsif resource.class == AdminUser
+      # send to admin dashboard
+      admin_root_path
+    end
+  
+    # signed_in_root_path(resource)
   end
+
 
   # Authenticates the current scope and gets the current resource from the session.
   def authenticate_scope!

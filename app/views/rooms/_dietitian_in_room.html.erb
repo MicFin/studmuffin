@@ -2,25 +2,82 @@
 	<div class="col-xs-6">
 		<div class="col-xs-12 form-group" id="videobox2">
 		</div>
-		<div class="col-xs-12 in-session-rd-bio" style="height:150px; overflow:scroll ">
-			<h3>Technical Survey</h3>
+			<h4 class="text-center dark-orange" id="client-video-placeholder">When <%= @appointment.appointment_host.first_name%> is ready, <%= @appointment.appointment_host.singular_possessive%> video stream will appear here.  When you can see <%= @appointment.appointment_host.first_name%> then the session has begun.</h4>
+		<div class="col-xs-12">
+			<button id="welcome-rd-button" class="btn  rd-tab">
+				Welcome		
+			</button>
+			<button id="tech-survey-button" class="btn  rd-tab">
+				Technology		
+			</button>
+			<button id="appointment-survey-button" class="btn  rd-tab">
+				Appointment		
+			</button>
+			<button id="notes-button" class="btn  rd-tab">
+				Notes		
+			</button>
+		</div>
+
+		<div class="col-xs-12 in-session-rd-bio welcome-rd-container-large" id="welcome-rd-container" >
+			<div class="col-xs-12 welcome-rd-page" id="welcome-rd-1">
+				<h1>Welcome  <span class="green cursive large"><%=@user.first_name%></span> ,</h1>
+				<h2>Your session begins at <%=@appointment.date.in_time_zone("Eastern Time (US & Canada)").strftime("%I:%M %p")%>. It is currently <%=DateTime.now.in_time_zone("Eastern Time (US & Canada)").strftime("%I:%M %p")%>.  Please follow these steps to prepare for your video conference with <%= @appointment.appointment_host.first_name%> <%= @appointment.appointment_host.last_name %>.
+				 </h2>
+				 <div class="col-xs-12 text-center">
+				 	<h2>Please click</h2>
+				 	<button id="welcome-rd-button-1" type="button" class=" btn-lg tilt kindrd-button form-group" data-toggle="modal" >Next</button>
+				 </div>
+			</div>
+			<div class="col-xs-12 welcome-rd-page" id="welcome-rd-2">
+				<h2 class="text-left">Let's get your camera set up!</h2>
+				<h2 class="text-left">Please click the "Allow" button that is in the mini screen to the right above the "Pause Video" button.</h2>
+			 <div class="col-xs-12 text-center">
+				 	<h2>Then click</h2>
+				 	<button id="welcome-rd-button-2" type="button" class=" btn-lg tilt kindrd-button form-group" data-toggle="modal" >Next</button>
+				 </div>
+			</div>
+			<div class="col-xs-12 welcome-rd-page" id="welcome-rd-3">
+				<h2 class="text-left">Learn about
+				<%= @appointment.appointment_host.families.first.first_names %> by selecting their names to the right.</h2>
+			 	<div class="col-xs-12 text-center">
+				 	<h2>Then click</h2>
+				 	<button id="welcome-rd-button-3" type="button" class=" btn-lg tilt kindrd-button form-group" data-toggle="modal" >Next</button>
+				 </div>
+			</div>
+			<div class="col-xs-12 welcome-rd-page" id="welcome-rd-4">
+				<h2 class="text-left">Read <%=@appointment.appointment_host.first_name%>'s responses to the technology requirements survey and the pre-appointment survey by clicking on the "Technology" and "Appointment" buttons above.</h2>
+			</div>
+		</div>
+
+		<div class="col-xs-12 in-session-rd-bio welcome-rd-container-large" id="tech-survey-container">
 			<% @tech_survey_questions.each do |question| %>
-				<h5><%= question.content %></h5>
+				<h2 class="green"><%= question.content %></h2>
 				<% @tech_survey_responses.each do |response| %>
 					<% if response.question_id == question.id %>
-						<h5><%= response.choices %></h5>
+						<h2><%= response.list_of_choices %></h2>
 					<% end %>
 				<% end %>
 			<% end %>
-			<h3>Appointment Prep Survey</h3>
+		</div>
+
+		<div class="col-xs-12 in-session-rd-bio welcome-rd-container-large" id="appointment-survey-container">
 			<% @appt_survey_questions.each do |question| %>
-				<h5><%= question.content %></h5>
+				<h2 class="green"><%= question.content %></h2>
 				<% @appt_survey_responses.each do |response| %>
 					<% if response.question_id == question.id %>
-						<h5><%= response.user_input %></h5>
+						<h2><%= response.user_input %></h2>
 					<% end %>
 				<% end %>
 			<% end %>		
+		</div>
+		<div class="col-xs-12 in-session-rd-bio welcome-rd-container-large" id="notes-container">
+			<%= form_for(@appointment) do |f| %>
+			<div class="col-xs-12" style="margin-top:5%; padding: 2%">
+				<textarea class="form-control form-group" name="appointment[note]" rows="10" placeholder="<%=@appointment.note%>"></textarea>
+				<h3 class="large-white-font">Do not save notes until session has ended!  Saving notes will redirect to upcoming appointments list.</h3>
+        <%= f.submit  "Save Notes", class: " btn-block tilt kindrd-button" %>
+       </div>
+			<% end %>
 		</div>
 	</div>
 	<div class="col-xs-6">
@@ -101,12 +158,12 @@
 
 
 <div class="row text-center" style="position: relative">
-	<div class="col-xs-3 "  style="margin-top: -20%; position: absolute; right: 0" id="user-video">
+	<div class="col-xs-3 "  style="margin-top: -20%; position: absolute; right: 0" id="dietitian-video">
 		<div class="col-xs-12" id="videobox">
 	  </div>
 	  <div class="col-xs-12">
-	  	<button id="hide-video" class="btn-block tilt kindrd-button">Pause Video</button>
-	  	<button id="show-video" class="btn-block tilt kindrd-button">Resume Video</button>
+	  	<button id="hide-dietitian" class="btn-block tilt kindrd-button-dark-orange">Pause Video</button>
+	  	<button id="show-dietitian" class="btn-block tilt kindrd-button-dark-orange">Pause Video</button>
 	  </div>
 	</div>
 </div>

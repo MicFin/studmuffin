@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   before_save :uppercase_name
 
-  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :phone_number, :sign_in_count, :encrypted_password, :created_at, :updated_at, :last_sign_in_at, :current_sign_in_at, :current_sign_in_ip, :last_sign_in_ip, :reset_password_token, :reset_password_sent_at, :remember_created_at, :rd, :age_months, :height_inches, :weight_ounces, :sex, :birth_date, :more_info, :temp_flag
+  attr_accessible :email, :password, :password_confirmation, :first_name, :last_name, :phone_number, :sign_in_count, :encrypted_password, :created_at, :updated_at, :last_sign_in_at, :current_sign_in_at, :current_sign_in_ip, :last_sign_in_ip, :reset_password_token, :reset_password_sent_at, :remember_created_at, :rd, :age_months, :height_inches, :weight_ounces, :sex, :birth_date, :more_info, :temp_flag, :avatar
 
   devise :database_authenticatable, :registerable, :timeoutable, :trackable, :recoverable, :rememberable, :validatable, :timeoutable
 
@@ -22,6 +22,9 @@ class User < ActiveRecord::Base
 
   has_many :rooms
 
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
   validates_presence_of :first_name, {message: "can't be blank" }
 
   # saves phone number in normalized US format
@@ -37,7 +40,13 @@ class User < ActiveRecord::Base
   #     return false
   #   end
   # end
-
+  def singular_possessive
+    if self.sex == "Male"
+      return "his"
+    elsif self.sex == "Female"
+      return "her"
+    end
+  end
   def password_required?
     ### until roles are created to define what needs validation, the password and email requirements are handled on the front end with JS so that child users can be created by main users without needing to add a password or email to the child
     # if user roll x then

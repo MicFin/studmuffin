@@ -354,6 +354,20 @@ $(document).ready(function() {
 		$("#hide-video").show();
 	});
 
+	$("#show-dietitian").hide();
+	$("#hide-dietitian").click(function(){
+		$("#user-dietitian").children().first().toggle();
+		$("#hide-dietitian").hide();
+		$("#show-dietitian").show();
+	});
+
+	$("#show-video").click(function(){
+		$("#user-video").children().first().toggle();
+		$("#show-video").hide();
+		$("#hide-video").show();
+	});
+
+
 	$(".family-bio").each(function(i20, e20){
 		$("#family-bio-button-"+$(e20).attr("value")).click(function(){
 			$(".family-bio").each(function(i21,e21){
@@ -365,5 +379,70 @@ $(document).ready(function() {
 	});
 
 	$(".family-bio").first().show();
+	$("#user-video").hide();
+	$(".dietitian-info").hide();
+	$("#intro-container-2").hide();
+	$("#intro-container-3").hide();
+	$("#intro-container-4").hide();
+	$("#intro-container-1-button").click(function(){
+		$("#intro-container-1").hide();	
+		$("#intro-container-2").show();
+		$("#user-video").show();
+	});
+	$("#intro-container-2-button").click(function(){
+		$("#intro-container-2").hide();	
+		$("#intro-container-3").show();
+	});
+	$("#intro-container-3-button").click(function(){
+		$("#intro-container-3").hide();	
+		$("#intro-container-4").show();
+	});
+	// $("#intro-container-4-button").click(function(){
+	// 	$("#intro-container-4").hide();
+	// 	$(".dietitian-info").show();	
+	// });
+
+	$("#tech-survey-container").hide();
+	$("#appointment-survey-container").hide();
+	$("#notes-container").hide();
+
+	$("#appointment-survey-button").click(function(){
+		$("#tech-survey-container").hide();	
+		$("#welcome-rd-container").hide();	
+		$("#appointment-survey-container").show();
+	});		
+	$("#tech-survey-button").click(function(){
+		$("#appointment-survey-container").hide();	
+		$("#welcome-rd-container").hide();
+		$("#tech-survey-container").show();
+	});		
+	$("#welcome-rd-button").click(function(){
+		$("#appointment-survey-container").hide();	
+		$("#tech-survey-container").hide();
+		$("#welcome-rd-container").show();
+	});	
+	$("#notes-button").click(function(){
+		$("#tech-survey-container").hide();	
+		$("#welcome-rd-container").hide();	
+		$("#appointment-survey-container").hide();
+		$("#notes-container").show();
+	});		
+
+	$("#dietitian-video").hide();
+	$(".welcome-rd-page").hide();
+	$("#welcome-rd-1").show();
+	$("#welcome-rd-button-1").click(function(){
+		$("#welcome-rd-1").hide();
+		$("#welcome-rd-2").show();
+		$("#dietitian-video").show();
+	});
+	$("#welcome-rd-button-2").click(function(){
+		$("#welcome-rd-2").hide();
+		$("#welcome-rd-3").show();
+	});
+	$("#welcome-rd-button-3").click(function(){
+		$("#welcome-rd-3").hide();
+		$("#welcome-rd-4").show();
+	});
 
 });

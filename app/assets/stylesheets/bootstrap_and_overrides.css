@@ -540,3 +540,36 @@ input, button, select, textarea {
   height: 300px; 
   overflow:scroll;
 }
+
+.kindrd-button-dark-orange{
+  height:60px;
+  font-size: 25px;
+  color: white;
+  background-color: #f27234;
+  border-radius: 5px;  
+  border: #f27234 solid 1px;
+}
+
+.kindrd-button-dark-orange:hover{
+  font-weight: bold;
+  font-size: 30px;
+  color: #f27234; 
+  background-color: white; 
+  border: white solid 1px; 
+}
+
+.rd-tab{
+  background-color: rgba(246, 141, 60, 1);
+  color: white;
+  font-size: 20px;
+  margin-right: 1%;
+}
+
+.welcome-rd-container-large{
+  height:450px; 
+  overflow:scroll;
+}
+.welcome-rd-container-small{
+   height:250; 
+  overflow:scroll; 
+}

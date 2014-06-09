@@ -28,8 +28,8 @@ class ApplicationController < ActionController::Base
         end
     # if person signing in is a dietitian
     elsif resource.class == Dietitian
-      # send to waiting room
-      dietitian_authenticated_root_path
+      # send to appointments index
+      appointments_path
 
     # if person signing in is an Admin
     elsif resource.class == AdminUser

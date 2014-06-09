@@ -50,6 +50,7 @@ TB.setLogLevel(TB.DEBUG);
     session.addEventListener('streamCreated', streamCreatedHandler);
     session.connect(apiKey, token);
 
+    // function subscribe_to_stream
 
     var publisher;
     function sessionConnectedHandler(event) {
@@ -57,7 +58,22 @@ TB.setLogLevel(TB.DEBUG);
       session.publish(publisher);
 
       // Subscribe to streams that were in the session when we connected
+      // subscribeToStreams(event.streams);
+    function addStream(event){
       subscribeToStreams(event.streams);
+    }
+
+    $("#intro-container-4-button").click(function(){
+      $("#intro-container-4").hide();
+      $(".dietitian-info").show();
+      $("#client-video-placeholder").hide();
+      debugger;
+      $(".welcome-rd-container-large").each(function(i30,e30){
+        $(e30).addClass("welcome-rd-container-small").removeClass("welcome-rd-container-large");
+      });
+      addStream(event);
+    });
+
     }
 
     function streamCreatedHandler(event) {
@@ -83,4 +99,5 @@ TB.setLogLevel(TB.DEBUG);
         session.subscribe(streams[i], div.id, subscriberProps);
       }
     }
+
 </script>
