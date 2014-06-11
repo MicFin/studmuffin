@@ -1,27 +1,56 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container">
+  <div class="row"> 
+    <div class="col-xs-6">
+      <div class="row">
+        <div class="col-xs-10">
+          <%= image_tag("logo.png", class: "img-responsive") %>
+        </div>
+      </div>
+      <h2>Edit Your Profile</h2>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= f.error_notification %>
+      <%= simple_form_for(resource, :url => dietitian_registration_path, html: { method: :put, :multipart => true }) do |f| %>
+        <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, :required => true, :autofocus => true %>
+        <div class="form-inputs">
+          <div class="form-group col-xs-12">
+            <%= f.input :email, :required => true, :autofocus => true, input_html: {class: "form-indent"} %>
+          </div>
+          <div class="form-group col-xs-12">
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+            <% end %>
+          </div>
+          <div class="form-group col-xs-12">
+            <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false, label: "Change Password", input_html: {class: "form-indent"} %>
+          </div>
+          <div class="form-group col-xs-12">
+          <%= f.input :password_confirmation, :required => false, label: "Confirm New Password", input_html: {class: "form-indent"} %>
+          </div>
+          <div class="form-group col-xs-12">
+            <% if resource.avatar %>
+              <%= image_tag resource.avatar.url %>
+              <h3>Want to change your photo?</h3>
+            <% else %>
+              <h3>Add a photo</h3>
+            <% end %>
+          </div>
+          <div class="form-group col-xs-12">
+                  <%= f.file_field :avatar, style: "padding: 5%" %>
+          </div>
+          <div class="form-group col-xs-12">
+            <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true, input_html: {class: "form-indent"} %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3"></div>
+          <div class="form-group col-xs-6">
+            <%= f.submit  "Update Account", class: " btn-block tilt kindrd-button" %>
+          </div>
+        </div>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+      <% end %>
 
-    <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
-    <%= f.input :password_confirmation, :required => false %>
-    <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
+      <%= link_to "Back", :back %>
+    </div>
   </div>
-      <%= f.file_field :avatar %>
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

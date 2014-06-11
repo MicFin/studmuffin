@@ -129,9 +129,8 @@ class RegistrationsController < DeviseController
       user_authenticated_root_path
     # if person updating in is a dietitian
     elsif resource.class == Dietitian
-      # send to appointments index
+      # send to appointments indexz
       appointments_path
-
     # if person signing in is an Admin
     elsif resource.class == AdminUser
       # send to admin dashboard

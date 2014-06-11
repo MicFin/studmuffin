@@ -3,7 +3,7 @@
 	<div class="row text-center" style="position: relative">
 		<div class="col-xs-3"></div>
 		<div class="col-xs-6" id="intro-container-1">
-			<%= image_tag("tara.png") %>
+			<%= image_tag(@appointment.dietitian.avatar.url(:thumb), class: "img-circle") %>
 			<h2 class="text-left">Hello <span class="green cursive" style="font-size: 30px"><%=@user.first_name %></span>,</h2>
 			<h2 class="text-left">My name is <%= @appointment.dietitian.first_name%> <%= @appointment.dietitian.last_name %> and I am your       </h2>
 			<a data-toggle="modal" data-target="#rdModal" style="cursor: pointer" class="nutritionist-link tilt">
@@ -17,7 +17,7 @@
     </div>
 
 		<div class="col-xs-6" id="intro-container-2">
-			<%= image_tag("tara.png") %>
+			<%= image_tag(@appointment.dietitian.avatar.url(:thumb), class: "img-circle") %>
 			<h2 class="text-left">Let's get your camera set up!</h2>
 			<h2 class="text-left">Please click the "Allow" button that is in the mini screen to the right above the "Pause Video" button.</h2>
 	
@@ -27,7 +27,7 @@
     </div>
 
 		<div class="col-xs-6" id="intro-container-3">
-			<%= image_tag("tara.png") %>
+			<%= image_tag(@appointment.dietitian.avatar.url(:thumb), class: "img-circle") %>
 			<h2 class="text-left">You should now be able to see yourself in the mini screen to the right.  </h2>
 			<h2 class="text-left">If at any time you need to turn off your camera but do not want to leave the session, use the "Pause Video" button. </h2>
 			<h2 class="text-left">To turn the camera on again, you can press the "Allow" button and the video will resume.</h2>
@@ -38,7 +38,7 @@
     </div>
 
 		<div class="col-xs-6" id="intro-container-4">
-			<%= image_tag("tara.png") %>
+			<%= image_tag(@appointment.dietitian.avatar.url(:thumb), class: "img-circle") %>
 			<h2 class="text-left">Get to know me better by viewing my profile to the left.</h2>
 			<h2 class="text-left">When we begin the session, my video will appear above in place of my picture. </h2>
 	

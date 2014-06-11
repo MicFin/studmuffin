@@ -36,7 +36,7 @@ Studmuffin::Application.routes.draw do
 
   ### routes for dietitians
 
-  devise_for :dietitians, :controllers => { :confirmations => "confirmations", registrations: "devise/registrations", session: "sessions", passwords: "passwords" } 
+  devise_for :dietitians, :controllers => { :confirmations => "confirmations", session: "sessions", passwords: "passwords", registrations: "registrations" } 
 
   devise_scope :dietitian do
     authenticated :dietitian do
@@ -52,7 +52,7 @@ Studmuffin::Application.routes.draw do
     unauthenticated :dietitian do
       root :to => 'devise/registrations#new', as: :unauthenticated_root
     end   
-    match '/dietitians' => 'devise/registrations#new'
+    match '/join' => 'registrations#new'
   end
 
   ### routes for admin on main site pages
@@ -70,7 +70,7 @@ Studmuffin::Application.routes.draw do
     unauthenticated :admin_user do
       root :to => 'devise/registrations#new', as: :unauthenticated_root
     end   
-    match '/dietitians' => 'devise/registrations#new'
+    match '/join' => 'registrations#new'
   end
 
   get "/show", to: "home#show", as: :show_page
