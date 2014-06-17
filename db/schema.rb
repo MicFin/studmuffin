@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140609203218) do
+ActiveRecord::Schema.define(:version => 20140617185524) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "namespace"
@@ -96,6 +96,17 @@ ActiveRecord::Schema.define(:version => 20140609203218) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "undergrad"
+    t.string   "graduate"
+    t.text     "certifs"
+    t.string   "fav_eat"
+    t.string   "fav_cook"
+    t.string   "fav_snack"
+    t.text     "family_bio"
+    t.text     "dietary_bio"
+    t.text     "why_nutrition"
+    t.integer  "years_exp"
+    t.text     "specialties"
   end
 
   add_index "dietitians", ["confirmation_token"], :name => "index_dietitians_on_confirmation_token", :unique => true

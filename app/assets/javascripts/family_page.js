@@ -341,31 +341,26 @@ $(document).ready(function() {
 //         date: "June 7, 2087 15:03:26"
 //     });
 // });
-	$("#show-video").hide();
-	$("#hide-video").click(function(){
-		$("#user-video").children().first().toggle();
-		$("#hide-video").hide();
-		$("#show-video").show();
-	});
+	// $("#show-video").hide();
 
-	$("#show-video").click(function(){
-		$("#user-video").children().first().toggle();
-		$("#show-video").hide();
-		$("#hide-video").show();
-	});
+	// $("#hide-video").click(function(){
+	// 	$("#user-video").children().first().toggle();
+	// 	$("#hide-video").hide();
+	// 	$("#show-video").show();
+	// });
 
-	$("#show-dietitian").hide();
-	$("#hide-dietitian").click(function(){
-		$("#user-dietitian").children().first().toggle();
-		$("#hide-dietitian").hide();
-		$("#show-dietitian").show();
-	});
+	// $("#show-video").click(function(){
+	// 	$("#user-video").children().first().toggle();
+	// 	$("#show-video").hide();
+	// 	$("#hide-video").show();
+	// });
 
-	$("#show-video").click(function(){
-		$("#user-video").children().first().toggle();
-		$("#show-video").hide();
-		$("#hide-video").show();
-	});
+	// $("#show-dietitian").hide();
+	// $("#hide-dietitian").click(function(){
+	// 	$("#user-dietitian").children().first().toggle();
+	// 	$("#hide-dietitian").hide();
+	// 	$("#show-dietitian").show();
+	// });
 
 
 	$(".family-bio").each(function(i20, e20){
@@ -379,28 +374,17 @@ $(document).ready(function() {
 	});
 
 	$(".family-bio").first().show();
+
 	$("#user-video").hide();
 	$(".dietitian-info").hide();
 	$("#intro-container-2").hide();
-	$("#intro-container-3").hide();
 	$("#intro-container-4").hide();
 	$("#intro-container-1-button").click(function(){
 		$("#intro-container-1").hide();	
 		$("#intro-container-2").show();
 		$("#user-video").show();
 	});
-	$("#intro-container-2-button").click(function(){
-		$("#intro-container-2").hide();	
-		$("#intro-container-3").show();
-	});
-	$("#intro-container-3-button").click(function(){
-		$("#intro-container-3").hide();	
-		$("#intro-container-4").show();
-	});
-	// $("#intro-container-4-button").click(function(){
-	// 	$("#intro-container-4").hide();
-	// 	$(".dietitian-info").show();	
-	// });
+
 
 	$("#tech-survey-container").hide();
 	$("#appointment-survey-container").hide();
@@ -444,5 +428,13 @@ $(document).ready(function() {
 		$("#welcome-rd-3").hide();
 		$("#welcome-rd-4").show();
 	});
+
+	$("#change-password-fields").hide();
+
+	$("#change-password").click(function(e){
+		e.preventDefault();
+		$("#change-password-fields").toggle();
+	})
+
 
 });

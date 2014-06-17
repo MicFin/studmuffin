@@ -1,85 +1,85 @@
 <div class="col-xs-12">
+	<div class="row text-center orange-background" id="orange-bar" style="height: 20px; margin-left: -20%; margin-right: -20%">
+
+	</div>
 
 	<div class="row text-center" style="position: relative">
-		<div class="col-xs-3"></div>
-		<div class="col-xs-6" id="intro-container-1">
-			<%= image_tag(@appointment.dietitian.avatar.url(:thumb), class: "img-circle") %>
-			<h2 class="text-left">Hello <span class="green cursive" style="font-size: 30px"><%=@user.first_name %></span>,</h2>
-			<h2 class="text-left">My name is <%= @appointment.dietitian.first_name%> <%= @appointment.dietitian.last_name %> and I am your       </h2>
-			<a data-toggle="modal" data-target="#rdModal" style="cursor: pointer" class="nutritionist-link tilt">
-        <span class="bright-green" style="font-size: 20px">KindRD</span><span class="orange" style="font-size: 20px">Nutritionist</span> 
-        <span class="glyphicon glyphicon-question-sign green"></span>
-      </a>
-      <h2 class="text-left">Thank you for meeting with me today!  I would like to share a few things with you before we begin.   
-    	</h2>
-    	<h2>Please click</h2>
-    	<button id="intro-container-1-button" type="button" class=" btn-lg tilt kindrd-button" data-toggle="modal" >Next</button>
+		<div class="row" id="intro-container-1">
+			<div class="row">
+				<div class="col-xs-2" style="margin-top: 2%; margin-bottom: 2%">
+								<%= image_tag(@appointment.dietitian.avatar.url, class: "img-circle", style: "height: 150%; width: 150%") %>
+				</div>
+				<div class="col-xs-8 form-group">
+					<div class="col-xs-12 form-group">
+						<h2 class="text-center">Thank you for joining me <span class="green cursive" style="font-size: 50px"><%=@user.first_name %></span></h2>
+						<h2 class="text-center">My name is <%= @appointment.dietitian.first_name%> <%= @appointment.dietitian.last_name %> and I am your       
+						<a data-toggle="modal" data-target="#rdModal" style="cursor: pointer" class="nutritionist-link tilt">
+			        <span class="bright-green" style="font-size: 50px">KindRD</span><span class="orange" style="font-size: 50px">Nutritionist</span> 
+			        <span class="glyphicon glyphicon-question-sign green"></span>
+			      </a> </h2>
+			      <h2 class="text-center">Let's get you set up for your session!   
+			    	</h2>
+		    	</div>
+		    </div>
+		  </div>
+	    <div class="row orange-background full-row">
+	  		<h1 class="white-font">Please click</h1>
+	  		<button id="intro-container-1-button" type="button" class=" btn-lg tilt kindrd-button" data-toggle="modal" >Next</button>
+	  	</div>
+	  </div>
+		<div class="row" id="intro-container-2">
+			<div class="row">
+				<div class="col-xs-2" style="margin-top: 2%; margin-bottom: 2%">
+								<%= image_tag(@appointment.dietitian.avatar.url, class: "img-circle", style: "height: 150%; width: 150%") %>
+				</div>
+				<div class="col-xs-1"></div>
+				<div class="col-xs-8 form-group">
+						<h2 class="text-center">When you are ready to begin, please click the "Allow" button to turn on your computer's webcam and we can begin our session!</h2>
+		    </div>
+		  </div>
+		  <div class="row" style="height: 100px"></div>
+	  </div>
+		<div class="row" id="intro-container-4">
+			<div class="row">
+				<div class="col-xs-2" style="margin-top: 2%; margin-bottom: 2%">
+								<%= image_tag(@appointment.dietitian.avatar.url, class: "img-circle", style: "height: 150%; width: 150%") %>
+				</div>
+				<div class="col-xs-1"></div>
+				<div class="col-xs-8 form-group">
+						<h2 class="text-center">Oops! You did not turn on your webcam.  Please click the "Allow" button to turn on your computer's webcam.</h2>
+		    </div>
+		  </div>
+		  <div class="row" style="height: 100px"></div>
     </div>
-
-		<div class="col-xs-6" id="intro-container-2">
-			<%= image_tag(@appointment.dietitian.avatar.url(:thumb), class: "img-circle") %>
-			<h2 class="text-left">Let's get your camera set up!</h2>
-			<h2 class="text-left">Please click the "Allow" button that is in the mini screen to the right above the "Pause Video" button.</h2>
-	
-
-    	<h2>Then click</h2>
-    	<button id="intro-container-2-button" type="button" class=" btn-lg tilt kindrd-button" data-toggle="modal" >Next</button>
-    </div>
-
-		<div class="col-xs-6" id="intro-container-3">
-			<%= image_tag(@appointment.dietitian.avatar.url(:thumb), class: "img-circle") %>
-			<h2 class="text-left">You should now be able to see yourself in the mini screen to the right.  </h2>
-			<h2 class="text-left">If at any time you need to turn off your camera but do not want to leave the session, use the "Pause Video" button. </h2>
-			<h2 class="text-left">To turn the camera on again, you can press the "Allow" button and the video will resume.</h2>
-	
-
-    	<h2>Please click</h2>
-    	<button id="intro-container-3-button" type="button" class=" btn-lg tilt kindrd-button" data-toggle="modal" >Next</button>
-    </div>
-
-		<div class="col-xs-6" id="intro-container-4">
-			<%= image_tag(@appointment.dietitian.avatar.url(:thumb), class: "img-circle") %>
-			<h2 class="text-left">Get to know me better by viewing my profile to the left.</h2>
-			<h2 class="text-left">When we begin the session, my video will appear above in place of my picture. </h2>
-	
-
-    	<h2 class="text-left">Please click start when you are ready to begin!</h2>
-    	<button id="intro-container-4-button" type="button" class=" btn-lg tilt kindrd-button" data-toggle="modal" >Start</button>
-    </div>
-
 
 
 <%= render "/shared/kindrd_nutritionist_modal" %> 
-		<div class="col-xs-6" id="videobox2">
-		</div>
-		<div class="col-xs-3" style="bottom: 0; position: absolute; right: 0" id="user-video">
-			<div class="col-xs-12" id="videobox">
-		  </div>
-		  <div class="col-xs-12">
-		  	<button id="hide-video" class="btn-block tilt kindrd-button-dark-orange">Pause Video</button>
-		  	<button id="show-video" class="btn-block tilt kindrd-button-dark-orange">Pause Video</button>
-		  </div>
+		<div class="row">
+			<div class="col-xs-4 dietitian-info" style="margin-left: -5%">
+				<div class="col-xs-12 in-session-rd-bio">
+					<div class="col-xs-4">
+					 <h5>Education</h5>
+					</div>
+					<div class="col-xs-4">
+					 <h5>Specialties</h5>
+					</div>
+					<div class="col-xs-4">
+					 <h5>Family's Diet</h5>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-6 in-session-rd-video" id="videobox2">
+			</div>
+			<div class="col-xs-3 video-center" id="user-video">
+				<div class="col-xs-12" id="videobox">
+				</div>
+			</div>
 		</div>
 	</div>
 
-	<div class="row text-center dietitian-info">
+	<div class="row text-center dietitian-info" style="margin-left: 5%">
 		<h1> <%= @appointment.dietitian.first_name%> <%= @appointment.dietitian.last_name %> </h1>
-	</div>
-
-	<div class="row dietitian-info">
-		<div class="col-xs-3">
-		</div>
-		<div class="col-xs-6 in-session-rd-bio">
-			<div class="col-xs-4">
-			 <h3>Education</h3>
-			</div>
-			<div class="col-xs-4">
-			 <h3>Specialties</h3>
-			</div>
-			<div class="col-xs-4">
-			 <h3>Family's Diet</h3>
-			</div>
-		</div>
 	</div>
 
 

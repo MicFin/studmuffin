@@ -5,8 +5,8 @@ class Dietitian < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :timeoutable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :avatar
-  # attr_accessible :title, :body
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :avatar, :undergrad, :graduate, :certifs, :fav_eat, :fav_cook, :fav_snack, :family_bio, :dietary_bio, :why_nutrition, :years_exp, :specialties
+
   has_many :appointments
   has_many :rooms
 

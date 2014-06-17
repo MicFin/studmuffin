@@ -61,6 +61,13 @@ textarea {
   z-index: 1;
 }
 
+#edit-profile {
+  position: fixed;
+  top: 0;
+  margin: 5px 0 0 5px;
+  z-index: 1;
+}
+
 /* Responsive */
 
 @media (max-width: 768px) {

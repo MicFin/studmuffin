@@ -577,3 +577,29 @@ input, button, select, textarea {
 .form-indent{
   padding-left: 5%;
 }
+
+/*ROOMS*/
+.video-center{
+  bottom: 10%%; 
+  position: absolute; 
+  right: 29%;
+}
+
+.video-right{
+  bottom: 0; 
+  position: absolute; 
+  right: 0;
+}
+
+.full-row{
+  margin-left: -20%;
+  margin-right: -20%;
+  padding-bottom: 2%;
+}
+
+.in-session-rd-video {
+/*  left: 25%;*/
+/*  right: 50%;*/
+/*  position: absolute; */
+  
+}

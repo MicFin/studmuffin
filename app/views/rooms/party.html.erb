@@ -57,29 +57,69 @@ TB.setLogLevel(TB.DEBUG);
       publisher = TB.initPublisher(apiKey, 'videobox');
       session.publish(publisher);
 
+      // publisher.on({
+      //   accessAllowed: function accessAllowedHandler(event) {
+      //     console.log(event);
+      //   },
+      //   accessDenied: function accessDeniedHandler (event) {
+      //     console.log(event);
+      //   }
+      // });
+
+      // set listeners for video acces pop ups
+      publisher.addEventListener('accessAllowed', accessAllowedHandler);
+
+      publisher.addEventListener('accessDenied', accessDeniedHandler);
+
+      // publisher.addEventListener('accessDialogOpened', accessDialogOpenedHandler);
+
+      // publisher.addEventListener('accessDialogClosed', accessDialogClosedHandler);
+
+      function accessAllowedHandler(e) {
+        $("#intro-container-2").hide(); 
+        $("#intro-container-4").hide(); 
+        $("#user-video").removeClass("video-center").addClass("video-right");
+        $("#intro-container-3").hide();
+        $("#orange-bar").hide();
+        $(".dietitian-info").show();
+        $("#client-video-placeholder").hide();
+        $(".welcome-rd-container-large").each(function(i30,e30){
+          $(e30).addClass("welcome-rd-container-small").removeClass("welcome-rd-container-large");
+        });
+        addStream(event);
+      };
+
+      function accessDeniedHandler(e){
+        $("#intro-container-2").hide(); 
+        $("#intro-container-3").hide();
+        $("#intro-container-4").show();
+      };
+
+      // function accessDialogOpenedHandler(event) {
+      //   // when "allow video" prompt pops up
+      // };
+
+      // function accessDialogClosedHandler(event){
+      //   // when "allow video" prompt closes
+      // };
+
       // Subscribe to streams that were in the session when we connected
       // subscribeToStreams(event.streams);
-    function addStream(event){
-      subscribeToStreams(event.streams);
-    }
 
-    $("#intro-container-4-button").click(function(){
-      $("#intro-container-4").hide();
-      $(".dietitian-info").show();
-      $("#client-video-placeholder").hide();
-      debugger;
-      $(".welcome-rd-container-large").each(function(i30,e30){
-        $(e30).addClass("welcome-rd-container-small").removeClass("welcome-rd-container-large");
-      });
-      addStream(event);
-    });
+      function addStream(event){
+        subscribeToStreams(event.streams);
+      };
 
-    }
+      // $("#intro-container-4-button").click(function(){
+
+      // });
+
+    };
 
     function streamCreatedHandler(event) {
       // Subscribe to any new streams that are created
       subscribeToStreams(event.streams);
-    }
+    };
 
     function subscribeToStreams(streams) {
       for (var i = 0; i < streams.length; i++) {
@@ -99,5 +139,16 @@ TB.setLogLevel(TB.DEBUG);
         session.subscribe(streams[i], div.id, subscriberProps);
       }
     }
+
+  //   $("#check-camera").click(function(event){
+  //     debugger;
+  //     if (!stream.hasAudio) {
+  // // You may want to adjust the user interface
+  //     }
+  //     if (!stream.hasVideo) {
+  //       // You may want to adjust the user interface
+  //     }
+  //   })
+    
 
 </script>
