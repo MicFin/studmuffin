@@ -73,7 +73,7 @@ Studmuffin::Application.routes.draw do
     match '/join' => 'registrations#new'
   end
 
-  get "/show", to: "home#show", as: :show_page
+  # get "/dietitians", to: "home#show", as: :dietitian_sign_up
   # if Rails.env.production?
   #    get '404', :to => 'application#page_not_found'
   #    get '500', :to => 'application#server_error'
