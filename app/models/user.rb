@@ -47,6 +47,7 @@ class User < ActiveRecord::Base
       return "her"
     end
   end
+
   def password_required?
     ### until roles are created to define what needs validation, the password and email requirements are handled on the front end with JS so that child users can be created by main users without needing to add a password or email to the child
     # if user roll x then
@@ -67,6 +68,35 @@ class User < ActiveRecord::Base
   def uppercase_name
     self.first_name.capitalize!
     self.last_name.capitalize!
+  end
+
+  def age
+    age = DateTime.now.year - self.birth_date.year
+    return age
+  end
+
+  def height
+    feet = self.height_inches / 12
+    inches = self.height_inches % 12
+    if feet <= 0
+      return "#{inches} inches"
+    elsif inches > 0
+      return "#{feet}ft #{inches}in"
+    else
+      return "#{feet}ft"
+    end
+  end
+
+  def weight
+    pounds = self.weight_ounces / 16
+    ounces = self.weight_ounces % 16
+    if pounds <= 0
+      return "#{ounces} ounces"
+    elsif ounces > 0
+      return "#{pounds} pounds #{ounces} ounces"
+    else
+      return "#{pounds} pounds"
+    end
   end
 
 end

@@ -394,16 +394,19 @@ $(document).ready(function() {
 		$("#tech-survey-container").hide();	
 		$("#welcome-rd-container").hide();	
 		$("#appointment-survey-container").show();
+		$("#notes-container").hide();
 	});		
 	$("#tech-survey-button").click(function(){
 		$("#appointment-survey-container").hide();	
 		$("#welcome-rd-container").hide();
 		$("#tech-survey-container").show();
+		$("#notes-container").hide();
 	});		
 	$("#welcome-rd-button").click(function(){
 		$("#appointment-survey-container").hide();	
 		$("#tech-survey-container").hide();
 		$("#welcome-rd-container").show();
+		$("#notes-container").hide();
 	});	
 	$("#notes-button").click(function(){
 		$("#tech-survey-container").hide();	
@@ -420,10 +423,10 @@ $(document).ready(function() {
 		$("#welcome-rd-2").show();
 		$("#dietitian-video").show();
 	});
-	$("#welcome-rd-button-2").click(function(){
-		$("#welcome-rd-2").hide();
-		$("#welcome-rd-3").show();
-	});
+	// $("#welcome-rd-button-2").click(function(){
+	// 	$("#welcome-rd-2").hide();
+	// 	$("#welcome-rd-3").show();
+	// });
 	$("#welcome-rd-button-3").click(function(){
 		$("#welcome-rd-3").hide();
 		$("#welcome-rd-4").show();

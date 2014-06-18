@@ -580,7 +580,7 @@ input, button, select, textarea {
 
 /*ROOMS*/
 .video-center{
-  bottom: 10%%; 
+  bottom: 10%; 
   position: absolute; 
   right: 29%;
 }
@@ -589,6 +589,12 @@ input, button, select, textarea {
   bottom: 0; 
   position: absolute; 
   right: 0;
+}
+
+.video-left{
+  top: 0; 
+  position: absolute; 
+  left: 12%;
 }
 
 .full-row{
@@ -601,5 +607,20 @@ input, button, select, textarea {
 /*  left: 25%;*/
 /*  right: 50%;*/
 /*  position: absolute; */
-  
+}
+
+#dietitian-accordion ul{
+  text-align: left;
+  list-style: none;
+  margin-left: -10%;
+}
+
+.dietitian-topics{
+  font-size: 20px;
+  color: rgba(17, 117, 59, 1);
+  font-weight: bold;
+}
+
+.dietitian-answers{
+/*  nothing added yet*/
 }

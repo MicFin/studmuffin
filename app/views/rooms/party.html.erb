@@ -57,15 +57,6 @@ TB.setLogLevel(TB.DEBUG);
       publisher = TB.initPublisher(apiKey, 'videobox');
       session.publish(publisher);
 
-      // publisher.on({
-      //   accessAllowed: function accessAllowedHandler(event) {
-      //     console.log(event);
-      //   },
-      //   accessDenied: function accessDeniedHandler (event) {
-      //     console.log(event);
-      //   }
-      // });
-
       // set listeners for video acces pop ups
       publisher.addEventListener('accessAllowed', accessAllowedHandler);
 
@@ -76,16 +67,22 @@ TB.setLogLevel(TB.DEBUG);
       // publisher.addEventListener('accessDialogClosed', accessDialogClosedHandler);
 
       function accessAllowedHandler(e) {
+        // for user allow
         $("#intro-container-2").hide(); 
         $("#intro-container-4").hide(); 
         $("#user-video").removeClass("video-center").addClass("video-right");
         $("#intro-container-3").hide();
         $("#orange-bar").hide();
         $(".dietitian-info").show();
-        $("#client-video-placeholder").hide();
-        $(".welcome-rd-container-large").each(function(i30,e30){
-          $(e30).addClass("welcome-rd-container-small").removeClass("welcome-rd-container-large");
-        });
+        // $("#client-video-placeholder").hide();
+        // $(".welcome-rd-container-large").each(function(i30,e30){
+        //   $(e30).addClass("welcome-rd-container-small").removeClass("welcome-rd-container-large");
+        // });
+        // for dietitian allow
+        $("#welcome-rd-2").hide();
+        $("#welcome-rd-3").show();
+        $("#dietitian-video").removeClass("video-left").addClass("video-right");
+        // both 
         addStream(event);
       };
 
@@ -109,10 +106,6 @@ TB.setLogLevel(TB.DEBUG);
       function addStream(event){
         subscribeToStreams(event.streams);
       };
-
-      // $("#intro-container-4-button").click(function(){
-
-      // });
 
     };
 

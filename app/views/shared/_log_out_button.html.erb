@@ -8,6 +8,15 @@
     <% end %>
   <% end %>
 
+  <% if current_user %>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <button id="logout" type="button" class="btn btn-default btn-sm" style="right: 1%; top: 1%">
+        <span class="glyphicon glyphicon-log-out"></span> Logout
+      </button>
+    <% end %>
+  <% end %>
+
+
   <% if current_admin_user %>
     <%= link_to "Edit Profile", edit_user_registration_path %>
     <%= link_to destroy_admin_user_session_path, method: :delete do %>
