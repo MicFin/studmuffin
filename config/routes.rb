@@ -53,6 +53,7 @@ Studmuffin::Application.routes.draw do
       root :to => 'devise/registrations#new', as: :unauthenticated_root
     end   
     match '/join' => 'registrations#new'
+    get "/thanks", to: "registrations#sign_up_thanks", as: :sign_up_thanks
   end
 
   ### routes for admin on main site pages

@@ -1,0 +1,73 @@
+<div class="modal fade" id="dietitianIntroModal" tabindex="-1" role="dialog" aria-labelledby="dietitianIntroModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 class="modal-title text-center" id="dietitianIntroModalLabel">Let's get ready for your appointment with <span class="cursive orange"><%= @appointment.appointment_host.first_name%></span></h3>
+      </div>
+      <div class="modal-body">
+        <div class="row" id="dietitian-intro-1">
+          <div id="dietitian-intro-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner form-group">
+              <div class="item active">
+                <div class="col-xs-12" id="dietitian-intro-1">
+                  <h4>
+                    The appointment begins at <span class="green"><%=@appointment.date.in_time_zone("Eastern Time (US & Canada)").strftime("%I:%M %p")%></span>. It is currently <span class="green"><%=DateTime.now.in_time_zone("Eastern Time (US & Canada)").strftime("%I:%M %p")%></span>. </h4> 
+
+                  <p style="font-size: 20px ">Following these steps willl help you prepare for the appointment. </p> 
+                  <ul class="form-group">
+                    <li style="font-size: 20px ">Review <span class="cursive orange"><%= @appointment.appointment_host.first_name%>'s</span> appointment and nutrition information by following this guide</li>
+                    <li style="font-size: 20px ">Turn on your webcam by accepting the prompt at the end of the guide</li>
+                    <li style="font-size: 20px ">When <span class="cursive orange"><%= @appointment.appointment_host.first_name%>'s</span> video appears on your screen then the session has begun.  </li>
+                    <li style="font-size: 20px "> Please great <span class="cursive orange"><%= @appointment.appointment_host.first_name%></span> with a warm welcome!  </li>
+                  </ul>
+                  <p style="font-size: 20px; margin-top: 5% ">Click next to learn more about <span class="cursive orange"><%= @appointment.appointment_host.first_name%></span></p>
+                </div>
+              </div>
+              <div class="item">
+                <div class="col-xs-12" id="dietitian-intro-2">
+                <%= render "family_info_modal" %>
+                </div>
+              </div>
+              <div class="item">
+                <div class="col-xs-12" id="dietitian-intro-3">
+                <%= render "technical_survey_modal" %>
+                </div>
+              </div>
+              <div class="item">
+                <div class="col-xs-12" id="dietitian-intro-4">
+                <%= render "appointment_survey_modal" %>
+                </div>
+              </div>
+              <div class="item">
+                <div class="col-xs-12" id="dietitian-intro-5" style="font-size: 20px ">
+                  <p>Turn on your webcam by accepting the prompt after you close this guide.</p>
+                  <p>Take a look around the appointment room.  You will be able to access all of the information from this guide during your appointment.</p>
+                  <p>When <span class="cursive orange"><%= @appointment.appointment_host.first_name%>'s</span> video appears on your screen then the session has begun.  Please great <span class="cursive orange"><%= @appointment.appointment_host.first_name%></span> with a warm welcome!  </p>   
+                  <p>Click close to leave the guide and enter the appointment room. </p>
+                  <div class="col-xs-12">
+                  <button type="button" class="btn btn-default btn-block green-background close-modal" id="close-intro" data-dismiss="modal" style="font-size: 30px">Close</button>    
+                  </div>            
+                </div>
+              </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="row text-center">
+              <a class="btn btn-default" href="#dietitian-intro-carousel" data-slide="prev">
+                <span>Prev</span>
+              </a>
+              <a class="btn btn-default green-background close-modal" href="#dietitian-intro-carousel" data-slide="next">
+                <span >Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer orange-background" >
+      </div>
+    </div>
+  </div>
+</div>

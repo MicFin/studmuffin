@@ -1,0 +1,72 @@
+                  <div class="panel-group" id="family-accordion-modal">
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#family-accordion-modal" href="#collapse-modal-<%=@appointment.appointment_host.id%>">
+                            <%= @appointment.appointment_host.first_name%> <%= @appointment.appointment_host.last_name %> (host)
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="collapse-modal-<%=@appointment.appointment_host.id%>" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                          <ul>
+                            <li><%= @appointment.appointment_host.sex%></li>
+                            <li>Age: <%= @appointment.appointment_host.age%></li>
+                            <li>Height: <%= @appointment.appointment_host.height%></li>
+                            <li>Weight: <%= @appointment.appointment_host.weight%></li>
+                            <h4>Dietary Restrictions</h4>
+                            <% if @appointment.appointment_host.dietary_restrictions.count > 0 %>
+                              <% @appointment.appointment_host.dietary_restrictions.each do |allergy| %>
+                                <li><%= allergy.name %></li>
+                              <% end %>
+                            <% else %>
+                            <p> none </p>
+                            <% end %>
+                            <% if @appointment.appointment_host.more_info != nil %>
+                              <h4>More Info</h4>
+                              <li><%= @appointment.appointment_host.more_info %></li>
+                            <% end %>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    <% @appointment.appointment_host.families.first.users.each do |family_member| %>
+                      <% if family_member.id != @appointment.appointment_host.id %>
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#family-accordion-modal" href="#collapse-modal-<%=family_member.id%>">
+                                <%=family_member.first_name%> <%= family_member.last_name %>
+                                <% if @appointment.patient_focus_id == family_member.id%>
+                                  (focus)
+                                <% end %>
+                              </a>
+                            </h4>
+                          </div>
+                          <div id="collapse-modal-<%=family_member.id%>" class="panel-collapse collapse">
+                            <div class="panel-body">
+                              <ul>
+                                <li><%= family_member.sex%></li>
+                                <li>Age: <%= family_member.age%></li>
+                                <li>Height: <%= family_member.height%></li>
+                                <li>Weight: <%= family_member.weight%></li>
+                                <h4>Dietary Restrictions</h4>
+                                <% if family_member.dietary_restrictions.count > 0 %>
+                                  <% family_member.dietary_restrictions.each do |allergy| %>
+                                    <li><%= allergy.name %></li>
+                                  <% end %>
+                                <% else %>
+                                  <p> none </p>
+                                <% end %>
+                                <% if family_member.more_info != nil %>
+                                  <h4>More Info</h4>
+                                  <li> <%= family_member.more_info %></li>
+                                <% end %>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  </div>

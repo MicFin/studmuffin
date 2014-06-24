@@ -386,9 +386,9 @@ $(document).ready(function() {
 	});
 
 
-	$("#tech-survey-container").hide();
-	$("#appointment-survey-container").hide();
-	$("#notes-container").hide();
+	// $("#tech-survey-container").hide();
+	// $("#appointment-survey-container").hide();
+	// $("#notes-container").hide(); 
 
 	$("#appointment-survey-button").click(function(){
 		$("#tech-survey-container").hide();	
@@ -421,7 +421,7 @@ $(document).ready(function() {
 	$("#welcome-rd-button-1").click(function(){
 		$("#welcome-rd-1").hide();
 		$("#welcome-rd-2").show();
-		$("#dietitian-video").show();
+		// $("#dietitian-video").show();
 	});
 	// $("#welcome-rd-button-2").click(function(){
 	// 	$("#welcome-rd-2").hide();
@@ -438,6 +438,10 @@ $(document).ready(function() {
 		e.preventDefault();
 		$("#change-password-fields").toggle();
 	})
+
+	$('#appointmentsModal').modal('show');
+
+
 
 
 });

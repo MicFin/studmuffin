@@ -119,7 +119,11 @@ class RegistrationsController < DeviseController
   # this method in your own RegistrationsController.
   def after_inactive_sign_up_path_for(resource)
     
-    respond_to?(:root_path) ? root_path : "/"
+    sign_up_thanks_path
+  end
+
+  def sign_up_thanks(resource)
+    binding.pry
   end
 
   # The default url to be used after updating a resource. You need to overwrite

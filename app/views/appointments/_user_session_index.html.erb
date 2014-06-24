@@ -10,18 +10,28 @@
 	<div class="row">
 	<% if @my_upcoming_appointments.count > 0 %>		
 		<% @my_upcoming_appointments.all.each do |appointment| %>
-		<div class="col-xs-3 appointment-div upcoming-appointment">
-			<ul>
-				<li> <%= appointment.date.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
-				<li class="text-center" style="margin-left: -5%"><%= image_tag(appointment.dietitian.avatar.url(:thumb), class: "img-circle") %></li>
-				<li class="green">	Dietitian: <span class="size-25 white-font"><%= appointment.dietitian.first_name%> <%= appointment.dietitian.last_name%></span>  </li> 
-				<li class="size-15 form-group">  Created: <%= appointment.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
-				<% if (((DateTime.now.in_time_zone("Eastern Time (US & Canada)") - appointment.date) / 60 / 60) > -1)%>
-					<li class="enter-room-li"><%= link_to 'Enter Room', {:controller => "rooms", :action => "party", :id => appointment.room_id, appointment: appointment.id }, class: "text-center action kindrd-button btn-block tilt"%> </li>
-				<% else %>
-					<h5>Return 1 hour before appointment to sign in</h5>
-				<% end %>
-			</ul>
+		<div class="col-xs-10 appointment-div upcoming-appointment">
+			<div class="col-xs-5 form-group">
+				<ul>
+					<li class="text-center"> <span class="large-white-font"><%= appointment.date.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y") %> </span></li>
+					<li class="text-center"><span class="large-white-font"><%= appointment.date.in_time_zone("Eastern Time (US & Canada)").strftime("%I:%M %p") %></span></li>	
+					<li class="text-center"><%= image_tag(appointment.dietitian.avatar.url(:thumb), class: "img-circle") %></li>
+					<li class="green text-center"><span class="size-25 white-font"><%= appointment.dietitian.first_name%> <%= appointment.dietitian.last_name%></span>  </li> 
+				</ul>
+			</div>
+			<div class="col-xs-6">
+				<div class="col-xs-12" style="overflow: scroll; background: white; border-radius: 15px; margin-top: 12%; height: 130px">
+					<h4 class="green"><%= @appt_survey_question = Survey.where(id: 1).first.questions[2].content %></h4>
+					<p class="orange"> <%= @appt_survey_response = @user.user_surveys.where(survey_id: 1).last.user_survey_answers[2].user_input %></p>
+				</div>
+				<div class="col-xs-12" style="margin-top: 5%">
+					<% if (((DateTime.now.in_time_zone("Eastern Time (US & Canada)") - appointment.date) / 60 / 60) > -1)%>
+						<%= link_to 'Start Appointment', {:controller => "rooms", :action => "party", :id => appointment.room_id, appointment: appointment.id }, class: "text-center action kindrd-button btn-block tilt"%>
+					<% else %>
+						<h5>Return 1 hour before appointment to sign in</h5>
+					<% end %>
+				</div>
+			</div>
 		</div>
 		<% end %>
 	<% else %>
@@ -38,12 +48,11 @@
 	<div class="row">
 	<% if @my_previous_appointments.count > 0 %>		
 		<% @my_previous_appointments.all.each do |appointment| %>
-		<div class="col-xs-3 appointment-div orange-background">
+		<div class="col-xs-4 appointment-div orange-background">
 			<ul>
-				<li> <%= appointment.date.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
+				<li> <span class="large-white-font"><%= appointment.date.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %></span> </li>
 				<li class="text-center" style="margin-left: -5%"><%= image_tag(appointment.dietitian.avatar.url(:thumb), class: "img-circle") %></li>
 				<li class="green"><span class="size-25 white-font"><%= appointment.dietitian.first_name%> <%= appointment.dietitian.last_name%></span>  </li> 
-				<li class="size-15">  Created: <%= appointment.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
 				<li > See Notes</li>
 			</ul>
 		</div>

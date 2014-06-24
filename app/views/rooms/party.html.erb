@@ -62,39 +62,46 @@ TB.setLogLevel(TB.DEBUG);
 
       publisher.addEventListener('accessDenied', accessDeniedHandler);
 
-      // publisher.addEventListener('accessDialogOpened', accessDialogOpenedHandler);
+      publisher.addEventListener('accessDialogOpened', accessDialogOpenedHandler);
 
       // publisher.addEventListener('accessDialogClosed', accessDialogClosedHandler);
 
       function accessAllowedHandler(e) {
         // for user allow
+        $("#intro-container-1").hide(); 
         $("#intro-container-2").hide(); 
         $("#intro-container-4").hide(); 
+        $("#user-video").show();
         $("#user-video").removeClass("video-center").addClass("video-right");
         $("#intro-container-3").hide();
         $("#orange-bar").hide();
         $(".dietitian-info").show();
+
         // $("#client-video-placeholder").hide();
         // $(".welcome-rd-container-large").each(function(i30,e30){
         //   $(e30).addClass("welcome-rd-container-small").removeClass("welcome-rd-container-large");
         // });
+
         // for dietitian allow
+        $("#welcome-rd-1").hide();
         $("#welcome-rd-2").hide();
         $("#welcome-rd-3").show();
+        $("#dietitian-video").show();
         $("#dietitian-video").removeClass("video-left").addClass("video-right");
         // both 
         addStream(event);
       };
 
       function accessDeniedHandler(e){
-        $("#intro-container-2").hide(); 
-        $("#intro-container-3").hide();
-        $("#intro-container-4").show();
+        // $("#intro-container-2").hide(); 
+        // $("#intro-container-3").hide();
+        // $("#intro-container-4").show();
       };
 
-      // function accessDialogOpenedHandler(event) {
-      //   // when "allow video" prompt pops up
-      // };
+      function accessDialogOpenedHandler(event) {
+        $('#dietitianIntroModal').modal('show');
+        // when "allow video" prompt pops up
+      };
 
       // function accessDialogClosedHandler(event){
       //   // when "allow video" prompt closes
@@ -125,6 +132,7 @@ TB.setLogLevel(TB.DEBUG);
         var div = document.createElement('div');
         div.setAttribute('id', 'stream' + streams[i].streamId);
         document.getElementById("videobox2").appendChild(div);
+        // set size of subscriber video box
         var subscriberProps = {
           width: 500, 
           height: 375};

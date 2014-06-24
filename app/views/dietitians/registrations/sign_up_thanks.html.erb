@@ -1,0 +1,27 @@
+ <div class="container">
+  <div class="row form-group">
+    <div class="col-xs-12" z>
+      <%= image_tag("logo.png", style: "height: 100px", class: "img-responsive") %>
+    </div>
+  </div>
+	<div class="row text-center orange-background form-group" id="orange-bar" style="height: 20px; margin-left: -20%; margin-right: -20%">
+
+	</div>
+	<div class="row" >
+		<div class="col-xs-2"></div>
+		<div class="col-xs-8 form-group">
+			<h2 class="text-center">Thank you for registering to be a
+
+				<a data-toggle="modal" data-target="#rdModal" style="cursor: pointer" class="nutritionist-link tilt">
+
+	      <span class="bright-green" style="font-size: 50px">KindRD</span><span class="orange" style="font-size: 50px">Nutritionist</span> 
+	      	<span class="glyphicon glyphicon-question-sign green"></span>
+	    	</a> 
+	    </h2>      
+
+			<%= render "/shared/kindrd_nutritionist_modal" %> 
+	    <h2 class="text-center">Please check your email for directions on how to set up your account!
+	  	</h2>
+	  </div>
+  </div>
+</div>

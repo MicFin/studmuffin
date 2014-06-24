@@ -1,5 +1,6 @@
 <div class="container">	
 	<%= render "/shared/log_out_button"%>
+	<%= render "appointments_modal" %>
 	<% if @user.class == User %>
 	  <%= render "user_session_index"%>
 	<% elsif @user.class == Dietitian %>

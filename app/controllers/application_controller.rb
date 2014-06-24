@@ -38,6 +38,8 @@ class ApplicationController < ActionController::Base
     end
   end 
 
+
+
   protected
 
   # def page_not_found

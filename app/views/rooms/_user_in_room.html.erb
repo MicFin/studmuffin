@@ -69,15 +69,21 @@
 				        </a>
 				      </h4>
 				    </div>
-				    <div id="collapse-education" class="panel-collapse collapse">
+				    <div id="collapse-education" class="panel-collapse collapse in">
 				      <div class="panel-body">
 								<ul>
-									<li><span class="dietitian-topics">Undergraduate:</span></br> <span class="dietitian-answers"><%= @appointment.dietitian.undergrad%></span></li>
-									<li><span class="dietitian-topics">Graduate:</span></br> <span class="dietitian-answers"><%= @appointment.dietitian.graduate%></span></li>
-									<li><span class="dietitian-topics">Notable Certificates:</span></br> <span class="dietitian-answers"><%= @appointment.dietitian.certifs%></span></li>
-									<li><span class="dietitian-topics">Areas of Specialty:</span></br> <span class="dietitian-answers"><%= @appointment.dietitian.specialties %></span></li>
-									<li><span class="dietitian-topics">Years of Experience:</span></br> <span class="dietitian-answers"><%= @appointment.dietitian.years_exp %></span></li>
-									<li><span class="dietitian-topics">Why a career in nutrition?</span></br> <span class="dietitian-answers"><%=@appointment.dietitian.why_nutrition%></span></li>
+									<li><span class="dietitian-topics">Undergraduate:</span></li>
+									<li> <span class="dietitian-answers"><%= @appointment.dietitian.undergrad%></span></li>
+									<li><span class="dietitian-topics">Graduate:</span></li>
+									<li> <span class="dietitian-answers"><%= @appointment.dietitian.graduate%></span></li>
+									<li><span class="dietitian-topics">Notable Certificates:</span></li>
+									<li> <span class="dietitian-answers"><%= @appointment.dietitian.certifs%></span></li>
+									<li><span class="dietitian-topics">Areas of Specialty:</span></li>
+									<li> <span class="dietitian-answers"><%= @appointment.dietitian.specialties %></span></li>
+									<li><span class="dietitian-topics">Years of Experience:</span></li>
+									<li> <span class="dietitian-answers"><%= @appointment.dietitian.years_exp %></span></li>
+									<li><span class="dietitian-topics">Why a career in nutrition?</span></li>
+									<li> <span class="dietitian-answers"><%=@appointment.dietitian.why_nutrition%></span></li>
 								</ul>
 				      </div>
 				    </div>
@@ -93,19 +99,41 @@
 				    <div id="collapse-personal" class="panel-collapse collapse">
 				      <div class="panel-body">
 								<ul>
-									<li><span class="dietitian-topics">My Family:</span></br> <span class="dietitian-answers"><%=@appointment.dietitian.family_bio%></span></li>
-									<li><span class="dietitian-topics">My Nutrition:</span></br> <span class="dietitian-answers"><%=@appointment.dietitian.dietary_bio%></span></li>
-									<li><span class="dietitian-topics">Favorite Food to Eat:</span></br> <span class="dietitian-answers"><%=@appointment.dietitian.fav_eat%></span></li>
-									<li><span class="dietitian-topics">Favorite Recipe to Cook:</span></br> <span class="dietitian-answers"><%=@appointment.dietitian.fav_cook%></span></li>
-									<li><span class="dietitian-topics">You wouldn't expect me to eat:</span></br> <span class="dietitian-answers"><%=@appointment.dietitian.fav_snack%></span></li>
+									<li><span class="dietitian-topics">My Family:</span></li>
+									<li> <span class="dietitian-answers"><%=@appointment.dietitian.family_bio%></span></li>
+									<li><span class="dietitian-topics">My Nutrition:</span></li>
+									<li> <span class="dietitian-answers"><%=@appointment.dietitian.dietary_bio%></span></li>
+									<li><span class="dietitian-topics">Favorite Food to Eat:</span></li>
+									<li> <span class="dietitian-answers"><%=@appointment.dietitian.fav_eat%></span></li>
+									<li><span class="dietitian-topics">Favorite Recipe to Cook:</span></li>
+									<li> <span class="dietitian-answers"><%=@appointment.dietitian.fav_cook%></span></li>
+									<li><span class="dietitian-topics">You wouldn't expect me to eat:</span></li>
+									<li> <span class="dietitian-answers"><%=@appointment.dietitian.fav_snack%></span></li>
 								</ul>
 				      </div>
 				    </div>
 				  </div>
 				</div>
 			</div>
-			<div class="col-xs-6 in-session-rd-video" id="videobox2">
-				<h1 class="dietitian-info"> <%= @appointment.dietitian.first_name%> <%= @appointment.dietitian.last_name %> </h1>
+			<div class="col-xs-5">
+				<div class="col-xs-12 in-session-rd-video form-group" id="videobox2">
+					<h1 class="dietitian-info"> <%= @appointment.dietitian.first_name%> <%= @appointment.dietitian.last_name %> </h1>
+				</div>
+				<div class="col-xs-12">
+					<p>Having trouble with your connection?</p>
+					<a data-toggle="modal" data-target="#connectionModal" style="cursor: pointer"><button class="btn">Click Here</button></a>
+					<%= render "connection_help" %>
+				</div>
+			</div>
+			<div class="col-xs-4 dietitian-info" style="margin-bottom: 200px">		
+				<div class="col-xs-12">
+				<h3>Take your notes here</h3>
+					<%= form_for(@appointment) do |f| %>
+						<textarea class="form-control form-group" name="appointment[note]" rows="10" placeholder="<%=@appointment.client_note%>"></textarea>
+						<p>Do not save note until session has ended.</p>
+		        <%= f.submit  "End Session & Save Note", class: " btn-block tilt kindrd-button" %>
+					<% end %>
+				</div>
 			</div>
 			<div class="col-xs-3 video-center" id="user-video">
 				<div class="col-xs-12" id="videobox">

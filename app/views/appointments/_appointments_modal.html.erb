@@ -1,0 +1,39 @@
+    <div class="modal fade" id="appointmentsModal" tabindex="-1" role="dialog" aria-labelledby="appointmentsModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 class="modal-title text-center" id="appointmentsModalLabel">Welcome to your <span class="bright-green" >Kindrd</span><span class="orange">food</span> dashboard</h3>
+          </div>
+          <div class="modal-body">
+            <p>From this page you will be able to:</p>
+              <ul>
+                <li>View all of your upcoming appointments</li>
+              <% if @user.class == User %>
+                <li>Start appointments by entering a room 5 minutes before the appointment starts</li>
+                <li>Learn more about your <span class="bright-green" >KindRD</span><span class="orange">Nutritionist</span> by clicking on their biography</li> 
+              <% elsif @user.class == Dietitian %>
+                <li>Get to know your client and patient better by clicking on their biography and appointment expectations</li>
+                <li>Start appointments by entering a room 15 minutes before the appointment starts (please arrive 15 minutes early, there will be a short walk through once you enter the room that will help you prepare for the appointment)</li>
+              <% end %> 
+                <li>View all of your previous appointments</li>
+                <li>Access your notes from your previous appointments</li>
+              <% if @user.class == User %>
+                <li>Edit your account information and family nutrition profile</li>
+              <% elsif @user.class == Dietitian %>
+                <li>Edit your account information and professional biography</li>  
+              <% end %>
+              </ul>
+              <p>
+                Please make sure that your computer's webcam and microphone are working properly in order to begin an appointment. 
+            </p>
+            <p>
+              Keep an eye out for updates.  We will share them with you through this pop up window anytime you sign in and we have new features for you!
+            </p>
+          </div>
+          <div class="modal-footer orange-background" >
+            <button type="button" class="btn btn-default green-background close-modal" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>

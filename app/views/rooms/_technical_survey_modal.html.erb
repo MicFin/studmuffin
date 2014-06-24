@@ -1,0 +1,11 @@
+		<div class="col-xs-12">
+			<h2 class="form-group text-center"><span class="cursive orange"><%= @appointment.appointment_host.first_name%>'s Technical Survey</span>
+			<% @tech_survey_questions.each do |question| %>
+				<h4 class="green"><%= question.content %></h4>
+				<% @tech_survey_responses.each do |response| %>
+					<% if response.question_id == question.id %>
+						<h4><%= response.list_of_choices %></h4>
+					<% end %>
+				<% end %>
+			<% end %>
+		</div>

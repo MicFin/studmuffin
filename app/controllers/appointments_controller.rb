@@ -7,11 +7,15 @@ before_filter :config_opentok,:except => [:index, :show, :new, :edit, :create, :
       @my_appointments = Appointment.where(appointment_host_id: @user.id)
       @my_upcoming_appointments = @my_appointments.where("date > ?", DateTime.now).order('date ASC, created_at ASC')
       @my_previous_appointments = @my_appointments.where("date < ?", DateTime.now).order('date ASC, created_at ASC')
+      ## relies on user only filling out 1 survey...multiple appointment surveys will not work
+      @appt_survey_question = Survey.where(id: 1).first.questions[2].content 
+      @appt_survey_response = @user.user_surveys.where(survey_id: 1).last.user_survey_answers[2].user_input
     elsif current_dietitian
       @user = current_dietitian 
       @my_appointments = Appointment.where(dietitian_id: @user.id)
       @my_upcoming_appointments = @my_appointments.where("date > ?", DateTime.now).order('date ASC, created_at ASC')
       @my_previous_appointments = @my_appointments.where("date < ?", DateTime.now).order('date ASC, created_at ASC')
+      @appt_survey_question = Survey.where(id: 1).first.questions[2].content
     elsif current_admin_user
       @user = current_admin_user
       @appointments = Appointment.all
