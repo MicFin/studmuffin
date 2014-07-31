@@ -69,6 +69,7 @@
 		<% @previous_appointments.all.each do |appointment| %>
 		<div class="col-xs-3 appointment-div orange-background">
 			<ul>
+				<li><%= link_to "Edit Appointment", edit_appointment_path(appointment.id), class: " size-25 form-group cursive" %></li>
 				<li> <%= appointment.date.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
 				<li >	Dietitian: <span class="size-25 white-font"><%= appointment.dietitian.first_name%> <%= appointment.dietitian.last_name%></span>  </li> 
 				<li >	Client: <span class="size-25 white-font"><%= appointment.appointment_host.first_name%> <%= appointment.appointment_host.last_name%></span>  </li> 
