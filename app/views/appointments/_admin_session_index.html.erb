@@ -44,10 +44,10 @@
 				<li class="green">	Client: <span class="size-25 white-font"><%= appointment.appointment_host.first_name%> <%= appointment.appointment_host.last_name%></span>  </li> 
 				<li class="green">  Patient: <span class="size-25 white-font"><%= appointment.patient_focus.first_name %> <%=appointment.appointment_host.last_name %></span>  </li>
 				<li class="size-15 form-group">  Created: <%= appointment.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %> </li>
-				<% if (((DateTime.now.in_time_zone("Eastern Time (US & Canada)") - appointment.date) / 60 / 60) > -1)%>
+				<% if (((DateTime.now.in_time_zone("Eastern Time (US & Canada)") - appointment.date) / 60 / 60) > -5)%>
 				<li class="enter-room-li"><%= link_to 'Enter Room', {:controller => "rooms", :action => "party", :id => appointment.room_id, appointment: appointment.id }, class: "text-center action kindrd-button btn-block tilt"%> </li>
 				<% else %>
-					<h5>Return 1 hour before appointment to sign in</h5>
+					<h5>Return 5 hours before appointment to sign in</h5>
 				<% end %>
 			</ul>
 		</div>

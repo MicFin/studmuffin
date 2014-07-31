@@ -25,10 +25,10 @@
 					<p class="orange"> <%= @appt_survey_response = @user.user_surveys.where(survey_id: 1).last.user_survey_answers[2].user_input %></p>
 				</div>
 				<div class="col-xs-12" style="margin-top: 5%">
-					<% if (((DateTime.now.in_time_zone("Eastern Time (US & Canada)") - appointment.date) / 60 / 60) > -1)%>
+					<% if (((DateTime.now.in_time_zone("Eastern Time (US & Canada)") - appointment.date) / 60 / 60) > -5)%>
 						<%= link_to 'Start Appointment', {:controller => "rooms", :action => "party", :id => appointment.room_id, appointment: appointment.id }, class: "text-center action kindrd-button btn-block tilt"%>
 					<% else %>
-						<h5>Return 1 hour before appointment to sign in</h5>
+						<h5>Return 5 hours before appointment to sign in</h5>
 					<% end %>
 				</div>
 			</div>
