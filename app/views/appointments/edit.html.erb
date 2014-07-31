@@ -21,6 +21,7 @@
         </div>
       </div>
     </div>
+    <% if current_admin %>
     <div class="row form-group">
       <div class="col-xs-6 text-center form-group">
         <div class="col-xs-3 text-right">
@@ -30,6 +31,16 @@
         </div>
       </div>
     </div>
+    <div class="row form-group">
+      <div class="col-xs-6 text-center form-group">
+        <div class="col-xs-3 text-right">
+          <h4>Client:</h4>
+        </div>
+        <div class="col-xs-9"><%= f.select(:user_id, options_for_select(@users.map { |user| ["#{user.first_name} #{user.last_name}", user.id ] }), {}, {class: "form-control select-drop-down"}) %>
+        </div>
+      </div>
+    </div>
+    <% end %>
     <div class="row text-center form-group">
       <div class='col-xs-6 form-group'>
         <div class="col-xs-3 text-right">
