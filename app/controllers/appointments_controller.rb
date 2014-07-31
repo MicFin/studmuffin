@@ -39,6 +39,7 @@ before_filter :config_opentok,:except => [:index, :show, :new, :edit, :create, :
   def edit
     @appointment = Appointment.find(params[:id])
     @dietitians = Dietitian.all
+    @users = User.all
     if @appointment.dietitian_id
       @dietitian_id = @appointment.dietitian.id
     else
