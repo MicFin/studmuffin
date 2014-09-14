@@ -40,9 +40,9 @@ before_filter :authenticate_admin_user!, only: [:index]
     elsif current_admin_user
       @user = current_admin_user
       @tech_survey_questions = Survey.where(id: 2).first.questions 
-      @tech_survey_responses = @appointment.appointment_host.user_surveys.where(survey_id: 2).last.user_survey_answers
+      # @tech_survey_responses = @appointment.appointment_host.user_surveys.where(survey_id: 2).last.user_survey_answers
       @appt_survey_questions = Survey.where(id: 1).first.questions 
-      @appt_survey_responses = @appointment.appointment_host.user_surveys.where(survey_id: 1).last.user_survey_answers
+      # @appt_survey_responses = @appointment.appointment_host.user_surveys.where(survey_id: 1).last.user_survey_answers
     end
   end
 
