@@ -4,23 +4,23 @@
 		</div>
 		<div class="col-xs-12 in-session-rd-bio" style="height:150px; overflow:scroll ">
 			<h3>Technical Survey</h3>
-			<% @tech_survey_questions.each do |question| %>
-				<h5><%= question.content %></h5>
-				<% @tech_survey_responses.each do |response| %>
-					<% if response.question_id == question.id %>
-						<h5><%= response.choices %></h5>
-					<% end %>
-				<% end %>
-			<% end %>
+			<%# @tech_survey_questions.each do |question| %>
+				<h5><%#= question.content %></h5>
+				<%# @tech_survey_responses.each do |response| %>
+					<%# if response.question_id == question.id %>
+						<h5><%#= response.choices %></h5>
+					<%# end %>
+				<%# end %>
+			<%# end %>
 			<h3>Appointment Prep Survey</h3>
-			<% @appt_survey_questions.each do |question| %>
-				<h5><%= question.content %></h5>
-				<% @appt_survey_responses.each do |response| %>
-					<% if response.question_id == question.id %>
-						<h5><%= response.user_input %></h5>
-					<% end %>
-				<% end %>
-			<% end %>		
+			<%# @appt_survey_questions.each do |question| %>
+				<h5><%#= question.content %></h5>
+				<%# @appt_survey_responses.each do |response| %>
+					<%# if response.question_id == question.id %>
+						<h5><%#= response.user_input %></h5>
+					<%# end %>
+				<%# end %>
+			<%# end %>		
 		</div>
 	</div>
 	<div class="col-xs-6">
