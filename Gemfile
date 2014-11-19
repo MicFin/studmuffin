@@ -20,7 +20,7 @@ gem 'simple_form'
 gem 'activerecord-postgres-hstore'
 gem "unicorn-rails"
 ## uploading pictures
-gem "paperclip", "~> 4.1"
+gem "paperclip", "~> 4.2"
 ## storing images in aws s3 bucket
 gem 'aws-sdk'
 ## for datepickers

@@ -123,7 +123,6 @@ class RegistrationsController < DeviseController
   end
 
   def sign_up_thanks(resource)
-    binding.pry
   end
 
   # The default url to be used after updating a resource. You need to overwrite
